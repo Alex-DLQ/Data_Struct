@@ -1,0 +1,171 @@
+---
+title: "Estructuras"
+author: "Alex Dannis Lipa Quispe"
+---
+
+Las estructuras o struct en C++ son una forma de definir un tipo de dato personalizado que puede contener varios elementos de diferentes tipos. Una estructura es similar a una clase, pero se utiliza principalmente para almacenar datos y no para definir comportamientos.
+
+## Definición de estructura:
+
+Para definir una estructura en c++, se utiliza la palabra reservada `struct` seguida del nombre de la estructura y los elementos que la componen.
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+struct Persona{
+    string nombre;
+    int edad;
+    string direccion;
+};
+\end{verbatim}
+\end{tcolorbox}
+```
+
+**Uso de una estructura:** Una vez definida la estructura, puedes crear variables de este tipo y acceder a sus parámetros.
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+  Persona persona; //creamos una variables de la estructura "Persona"
+  persona.nombre = "juan";
+  persona.edad = 15;
+  persona.direccion = "calle 13";
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Para acceder a las varibales de la estructura primeramente se pone las variables que definimos anteriormente seguida de un punto y en que valor de la estructura la deseamos guardar, tal y cual esta en el ejemplo de arriba. **Ventajas de las estructuras:** Las estructuras son útiles cuando necesitas almacenar varios datos relacionados en una sola unidad. Algunas ventajas de las estructuras son:
+
+-   Permiten organizar y estructurar los datos de manera lógica.
+
+-   Facilitan el acceso y la manipulación de los datos.
+
+-   Pueden ser utilizados como parámetros de funciones o como valores de retorno. Completemos el programa, pero ahora que el usuario completo los direferentes campos.
+
+``` cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+struct Persona{
+    string nombre;
+    int edad;
+    string direccion;
+}persona; // la variable lo podemos colocar aqui.
+int main(){
+    cout << "Digite su nombre: ";
+    getline(cin, persona.nombre);
+    cout << "Digite su edad: ";
+    cin >> persona.edad;
+    fflush(stdin); // lo usamos para vaciar el buffer.
+    cout << "Digite su direccion: ";
+    getline(cin, persona.direccion);
+    cout<<"\nMostrando los datos de la persona."<<endl;
+    cout << "El nombre es "<<persona.nombre<<endl;
+    cout << "La edad es "<<persona.edad<<endl;
+    cout << "La direccion es "<<persona.direccion<<endl;
+    return 0;
+}
+```
+
+En este caso guardamos y mostramos los datos que el usuario nos digita, el resultado nos quedaría de la siguiente manera:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: alex
+Digite su edad: 15
+Digite su direccion: calle 13
+
+Mostrando los datos de la persona.
+El nombre es alex
+La edad es 15
+La direccion es calle 13
+\end{verbatim}
+\end{tcolorbox}
+```
+
+## Estructuras anidadas:
+
+Las estructuras anidadas en C++ se refieren a la capacidad de definir una estructura dentro de otra estructura. Esto permite crear estructuras más complejas y jerárquicas, donde una estructura puede contener otra estructura como uno de sus miembros. **Ejemplo de estructura anidada**
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+struct Direccion{
+    string calle;
+    string ciudad;
+    string pais;
+};
+struct Persona{
+    string nombre;
+    int edad;
+    Direccion direccion;
+}persona; //declaramos la variable.
+\end{verbatim}
+\end{tcolorbox}
+```
+En este ejemplo, la estructura `Persona` contiene esa estructura `Direccion` como uno de sus miembros. Puedes acceder a los miembros de la estructura anidada utilizando el operador de punto `(.)`. **ventajas de las estructuras anidadas** Las estructuras anidadas son útiles cuando necesitas representar datos complejos y jerárquicos. Algunas ventajas de las estructuras anidadas son: - Permiten crear estructuras de datos más complejas y realistas. - Facilitan la organización y el acceso a los datos. - Pueden mejorar la legibilidad y la mantenibilidad del código. **Aplicaciones de las estructuras anidadas** Las estructuras anidadas se pueden utilizar en una variedad de aplicaciones, como:
+
+-   Representar datos de personas, como direcciones y contactos.
+-   Modelar estructuras de datos complejas, como árboles o grafos.
+-   Crear estructuras de datos para juegos o simulaciones.
+
+Vamos a completar el código e igualmente pediremos al usuario que lo rellene:
+
+``` cpp
+#include <iostream>
+#include <cstring>
+using namespace std;
+struct Direccion{
+    string calle;
+    string ciudad;
+    string pais;
+};
+struct Persona{
+    string nombre;
+    Direccion direccion; //con estos parámetros designamos a la
+                          //estructura anidada
+    int edad;
+}persona;
+int main(){
+    cout << "Digite su nombre: ";
+    getline(cin, persona.nombre);
+    cout << "Digite su calle: ";
+    getline(cin, persona.direccion.calle);
+    cout << "Digite su ciudad: ";
+    getline(cin, persona.direccion.ciudad);
+    cout << "Digite su pais: ";
+    getline(cin, persona.direccion.pais);
+    cout << "Digite su edad: ";
+    cin >> persona.edad;
+    cout<<"\nMostrando los datos de la persona\n";
+    cout << "Nombre "<<persona.nombre<<endl;
+    cout << "Calle " <<persona.direccion.calle<<endl;
+    cout << "Ciudad "<<persona.direccion.ciudad<<endl;
+    cout << "Pais " <<persona.direccion.pais<<endl;
+    cout << "Edad " <<persona.edad<<endl;
+}
+```
+
+Lo que hicimos es completar el ejemplo que pusimos en el inicio. La salida estandar nos quedaría de esta manera:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: alex
+Digite su calle: calle 13
+Digite su ciudad: puno
+Digite su pais: peru
+Digite su edad: 15
+
+Mostrando los datos de la persona
+Nombre alex
+Calle calle 13
+Ciudad puno
+Pais peru
+Edad 15
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Si te quedaste con ganas de más te invito a que veas este video donde aremos más ejercicios para que entiendas un poco más -\>

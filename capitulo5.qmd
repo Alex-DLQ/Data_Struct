@@ -1,0 +1,139 @@
+---
+title: "Bucles o Ciclos"
+author: "Alex Dannis Lipa Quispe"
+---
+Los **bucles** son una forma eficiente de repetir una serie de instrucciones sin tener que escribirlas múltiples veces.\
+
+Un ejemplo básico sería imprimir cinco veces el mensaje **"Hola mundo"**.\
+
+En este ejercicio, aprenderemos a hacerlo utilizando los diferentes tipos de **bucles o ciclos** que ofrece C++.
+
+## for: 
+
+El bucle **for** tiene 3 parámetros las cuales son:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+for(asignació; condición; iteración){ 
+    acción se la condición es verdadera; 
+}
+\end{verbatim}
+\end{tcolorbox}
+```
+
+La tarea que pusimos al inicio lo vamos a resolver, quedará de la siguiente manera:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+  // La asignación si se puede hacer dentro del bucle
+    for(int i=0; i<5; i++){ 
+        cout<< "Hola mundo."<<endl;
+    }
+    return 0;
+}
+```
+
+Lo que hace el código es recorrer del 0 la 4, ¿Por qué desde el cero? por que la asignamos el valor de 0 en el inicio -\> **int i=0;** ¿Por qué hasta 4? porque una vez llegado hasta el valor de **5\<5** esto nos dara una condición falsa por lo que saldra de bucle, que hace el **i++** lo que hace es recorrer uno por uno cada interación es decir a **i** lo va a ir sumando **+1** hasta que la condición sea falsa, el código tendra la siguiente salida:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Hola mundo. 
+Hola mundo. 
+Hola mundo. 
+Hola mundo. 
+Hola mundo.
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Para tener más información te envito a ver este video -\>
+
+## while:
+
+Este bucle al igual que el for primeramente compara su condición y si es verdad se ejecuta el código y si no se salta y sus partes son:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+While(condición){ 
+    acción a realizar si la condición es verdadera;     
+}
+\end{verbatim}
+\end{tcolorbox}
+```
+
+En esta parte tienes que tener cuidado porque si tienes un mínimo margen de error el bucle se ejecutará infinitamente. Vamos a realizar el ejercicio anterior de igual manera que la anterior:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int i=0;
+    while(i<5){
+        cout << "Hola mundo."<<endl;
+        i++; // esta parte es crucial ya que sin ella se crearía un bucle infinito
+    }
+    return 0;
+}
+```
+
+Que es lo que esta pasando, primeramente declaramos una variables de tipo entera llamada **i** que tiene como valor el **0** en la condicón que se toma en cuenta es esta -\> **(i\<5)**, ya sabesmos que es verdadera y pasará a ejecutarse el código, esta parte del código es fundamental -\> **i++** ¿Por qué? porque sin ella el valor de **i** seguirá siendo un **0** y asi hasta el infinito y más alla.
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo.
+\end{tcolorbox}
+```
+
+Para tener más información te envito a ver este video -\>
+
+## do-while:
+
+El bucle **do-while**, este bucle lo que hace primeramente es hacer la acción y luego verificar la condición y sus partes son estas:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+do{ 
+    acción 
+}While(condición);
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Como ves primeramente hace una acción y luego lo compara, pero bueno vamos a realizar la tarea:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int i = 0;
+    do{
+        cout << "Hola mundo."<<endl;
+        i++; // sin esto el buclue se hace infinitamente
+    }while(i<5);
+    return 0;
+}
+```
+
+Primeramente se ejecuta el código y recien va a la condición, esto es muy bueno por si quieres asegurarte almenos una ejecución en tu código, la salida es:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo.
+\end{tcolorbox}
+```
+
+Para mayor entendimiento ver el siguienete video -\> Como viste la mayor parte de los casoss de bucles funcionan con inicializaciones, pero no siempre es de esa manera ya que puede ser que solo se pare con un determinado caracter. Si te quedaste con la interrogante te envito a ver estos videos que te haran entender de una mejor manera estos tres tipos de bucles (en los videos se tomará en cuenta las palabras revervadas **break** y **continue**) -\>

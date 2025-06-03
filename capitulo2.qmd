@@ -1,0 +1,65 @@
+---
+title: "Operadores"
+author: "Alex Dannis Lipa Quispe"
+---
+## Matemáticos:
+
+Son operadores que conocemos desde la primaria, las cuales son:
+
+-   Suma: denotado por (+).
+
+-   Resta: denotado por = (-).
+
+-   Multiplicación: denotado por (\*).
+
+-   División: denotado por (/).
+
+-   Residuo: denotado por (%).
+
+Estos operadores nos sirven para que nuestros programas puedan ejecutar las operaciones aritméticas que nosotros conocemos por decir:
+
+| OPERADORES ARITMÉTICOS | OPERACIÓN | RESULTADO |
+|:----------------------:|:---------:|:---------:|
+|          Suma          |   8 + 9   |    17     |
+|         Resta          |  10 - 9   |     1     |
+|     Multiplicación     |  7 \* 2   |    14     |
+|        División        |  21 / 3   |     7     |
+|        Residuo         |  21 % 2   |     0     |
+
+## Relacionales:
+
+Son los signos que se usan para comparar dos valores, de los cuales si se cumple te va un resultado que puede ser **verdadero** ó **falso,** sé que lo has visto en estos caso:
+
+|    Operador     | Símbolo | Operación | Resultado |
+|:---------------:|:-------:|:---------:|:---------:|
+|    Mayor que    |   \>    |  4 \> 7   |   Falso   |
+|    Menor que    |   \<    |  9 \< 1   |   Falso   |
+| Mayor igual que |   \>=   |  7 \>= 2  | Verdadero |
+| Menor igual que |   \<=   |  8 \<= 8  | Verdadero |
+|      Igual      |   ==    |  7 == 1   |   Falso   |
+|    Diferente    |   !=    |  3 != 9   | Verdadero |
+
+## Lógicos:
+
+En matemáticas son conocidas como tabla proposicional en este oportunidad solo tomaremos los valores de (y), (o) y (negación). Sé que eres un génio en ese tema. Te muestro un ejemplo:
+
+Donde F es falso y V es verdadero.
+
+| Operador "Y" | Salida | Operador "O" | Salida | Negacio "!" | Salida |
+|:------------:|:------:|:------------:|:------:|:-----------:|:------:|
+|    V y V     |   V    |    V o V     |   V    |  !(V y F)   |   V    |
+|    V y F     |   F    |    V o F     |   V    |  !(V y V)   |   F    |
+|    F y V     |   F    |    F o V     |   V    |  !(F o V)   |   F    |
+|    F y F     |   F    |    F o F     |   F    |  !(F o F)   |   V    |
+
+## Asignación:
+
+Lo usamos en programación para asignar valor a una variable, como la siguiente manera:
+
+Asignamos una variable de nombre "a" de tipo entero -\> **int a**.
+
+si queremos asignar un valor a la variables ponemos "=" -\> **a = 5** -\> el valor de **a** será 5.
+
+Ahora si queremos restar un valor es decir **a - 1 = 4** (Recordemos que el valor de **a** es **5**), para asignar el nuevo valor a **"a"** es como poner -\> **a = a -1**, como vemos que el valor de **a** se repite dos veces, se puede escribir de esta manera -\> **a -= 1**, esto es lo mismo a -\> **a = a -1** entonces el operador de **"-="** quita un valor a la variable asignada.
+
+De igual manera para sumar un valor a la variables lo hacemos de esta manera -\> a = a +1, esto nos da como resultado **6** (el valor de **a** es **5**), la oparación se puede escribir de la siguiente manera -\> a += 1 que seria exáctamente como -\> a = a + 1.

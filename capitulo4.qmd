@@ -1,0 +1,214 @@
+---
+title: "Estructuras de Control"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## if-else
+
+Una breve explicación sobre ese tema es que cuando la condición dentro de **if** sea verdadera se ejecuta una parte del código, en cambio si la afirmación es falsa se ejecuta el código dentro de **else** la estructura principal es la siguiente:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    if(condición){
+        acción  // solo entrara en esta parte del código se la condición es verdadera
+    }
+    else{
+        acción // Este código se ejecuta si la afirmación es falsa
+    }
+    return 0;
+}
+```
+
+Un ejemplo básico para entender aún más la condicional **if-else**.
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    if(3>4){
+        cout << "3 es mayor que 4."<<endl;
+    }
+    else{
+        cout << "4 es mayor que 3."<< endl;
+    }
+    return 0;
+}
+```
+
+En este ejemplo vemos que la afirmación de **3\>4** es falsa por lo que se ejecuta el código que esta dentro de **else** como se muestra a continuación.
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+4 es mayor que 3.
+\end{tcolorbox}
+```
+
+Un ejercicio muy practico es comprobar si un numero es par o impar. En este código utilizaremos el operador **mod** (%) el código quedara de la siguiente manera:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int numero;
+    cout << "Digite un numero entero: ";
+    cin >> numero;
+    if((numero % 2) == 0){
+        cout << "El numero es par."<<endl;
+    }
+    else{
+        cout << "El numero es impar."<<endl;
+    }
+    return 0;
+}
+```
+
+En este ejercicio solicitamos al usuario que ingrese un número entero, el cual almacenamos en una variable de tipo entero llamada **numero**.
+
+La lógica del programa se basa en la operación módulo (`%`), que calcula el **residuo** de una división:
+
+``` mermaid
+flowchart LR
+  A["Solicitar número (numero = entrada)"] --> B[numero = 4]
+  B --> C{"numero % 2 == 0?"}
+  C -->|Verdadero| D[Mostrar "El número es par"]
+  C -->|Falso| E[Mostrar "El número es impar"]
+```
+
+para mayor entendimiento -\> **4 % 2** \<- el resultado nosda como resultado -\> **0** \<- por lo que la afirmación quedaría de la siguiente manera -\> **0 == 0** \<- y esta afirmación es verdadera e imprimiria el fragmento de código que esta dentro de **if**. Encanbio si la entrada fuera 5 esto pasaría -\> **(5 % 2) == 0** -\> **1 == 0** -\> esta afirmación es falsa por loque se imprime el código dentro de **else**.
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Digite un numero entero: 4 \\
+El numero es par.
+\end{tcolorbox}
+```
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Digite un numero entero: 5 \\
+El numero es impar.
+\end{tcolorbox}
+```
+
+## switch-case:
+
+De una manera fácil de entender, esta estructura lo que hace es verificar una serire de posibles valores es decir el usuario digite una dato y ese dato se va comparando con diferentes valores, la estructura es la siguiente:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    switch(valor){
+        case dato1: // si el valor es igual a dato1 ejecuta la acción.
+            acción
+            break; /* una vez realizada la accion la palabra reservada "break" ara 
+                      salir de la sentencia switch*/
+        case dato2:
+            acción
+            break;
+        case dato3:
+            acción
+            break;
+        default:    // si ninguno de los opciones se cumple se ejecuta la accion 
+            accion
+            break;
+    }
+    return 0;
+}
+```
+
+Como se vé es fácil de entender, como un ejemplo practico será realizar un progrma que dado una entrada decir si tiene que dar un exámen, que no tiene que dar un exámen o que digite un valor determinado:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    char opcion; // la opción solo podrá contener un string 'a', 'b', etc;
+    cout << "Diste el examen? (s/n): "; 
+    cin >> opcion; // solo podras ingresa si-> s ó no->n
+    switch(opcion){
+        case 's':
+            cout << "Espera tu resultado."<<endl;
+            break;
+        case 'n':
+            cout << "Dirigete al salon A3."<<endl;
+            break;
+        default:
+            cout << "Ingresaste un valor invalido."<<endl;
+            break;
+    }
+    return 0;
+}
+```
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Diste el examen? (s/n): s \\
+Espera tu resultado.
+\end{tcolorbox}
+```
+
+Lo que hace el programa es verificar si el caracter ingresado es 's' encaso de ser a si lo que hace es imprimir **Espera tu resultado.**, en caso de ser 'n' imprime el código que esta por debajo es decir **Dirigete al salon A3.** y en caso de no ingresar ninguno de los dos se imprimirá **Ingresate un valor invalido.** Con tu creatividad sé que podras crear programas con más opciones como por ejemplo hacer una calculadora que dada una opción hacer una suma, una resta o lo que tu quieras.
+
+## Ternario:
+
+El operador ternario es parecido al **if-else** pero de manera resumida es decir tiene esta estructura:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    (condicion) ? accion(si es verdadera) : acción si es falsa;
+    return 0;
+}
+```
+
+Si la condición es verdadera se ejecuta el código que esta despues de -\> **?** si la condición es falsa se ejecuta el código que esta después de -\> **:**. Ejemplo:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int a=5, b=6;
+    int resultado; 
+    resultado = (a>b) ? a:b;
+    cout << "El numero mayor es: " << resultado<<endl;
+    return 0;
+}
+```
+
+Primeramente lo que hicimos es declarar 3 variables entereas como se muestra ojo el operador ternario retorna un valor de acuerdo asus parámetros, que este caso son **a** y **b** primeramente compara los valores de la siguiente manera: (a\>b)? -\> esta operación es como -\> **5\>6**, esta condición es falsa por lo que retorno el código que esta de lado derecho de -\> **:** que es la **b**, dondo como resultado:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+El numero mayor es: 6
+\end{tcolorbox}
+```
+
+Puedes probrar de diferente manera como en este otro ejemplo:
+
+``` cpp
+#include <iostream>
+using namespace std;
+
+int main() {
+    int a = 10, b = 20;
+    string resultado;
+    // Operador ternario
+    resultado = (a > b) ? "Mayor." : "Menor o igual.";
+    cout << resultado << endl;
+    return 0;
+}
+```
+
+En este caso retornamos una cadena de caracteres y como sabemos que para poder guardar cadenas usamos la palabra reservada **string** seguido del nombre de la varibale, como vemos en la salida dara **Menor o igual.** por que el valor de **a** es menor que el valor de la variable **b**
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Menor o igual.
+\end{tcolorbox}
+```
+
+Puedes hacer una serie de ejercicio para tener más familiarización con las estructuras de control, para poder a si desarrollar tu lógica de programación.

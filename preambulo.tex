@@ -1,0 +1,29 @@
+% Activamos tcolorbox
+\usepackage[most]{tcolorbox}
+
+% Definimos un estilo personalizado
+\tcbset{
+  custombox/.style={
+    colback=red!10,         % fondo rojo claro
+    colframe=red!60!black,  % borde rojo oscuro
+    coltext=black,          % color del texto
+    boxrule=0.4pt,
+    arc=4pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt,
+  }
+}
+\tcbset{
+  codebox/.style={
+    colback=gray!10,     % Fondo gris claro (ajusta el color si lo prefieres)
+    colframe=black,      % Borde negro
+    boxrule=0.5pt,       % Grosor del borde
+    arc=3pt,             % Esquinas ligeramente redondeadas
+    left=6pt, right=6pt, top=6pt, bottom=6pt,  % Márgenes internos
+    fontupper=\ttfamily, % Fuente de tipo código
+    sharp corners        % Opcional: esquinas rectas
+    % ¡Sin 'coltext' aquí!
+  }
+}

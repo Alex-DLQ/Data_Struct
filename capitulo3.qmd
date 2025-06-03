@@ -1,0 +1,138 @@
+---
+title: "Entradas y Salidas"
+author: "Alex Dannis Lipa Quispe"
+---
+## Inicio:
+
+Para empezar a escribir un código es c++ nesecitas tener un lugar compilador o un lugar donde escribir código eso te lo dejo a tu elección.
+
+Primeramente cada progrma de inicia con:
+
+``` cpp
+#include <iostream>
+```
+
+la palabra **#include \<iostream\>** esto incluye la libreria para poder poder la entrada y salida de valores los cuales son:
+
+``` cpp
+cin >> //esto se utiliza para entrar o digitar valores a tu programa.
+cout << //esto se utiliza para mostrar mensaje en tu programa.
+```
+
+La estructura principal es de esta manera:
+
+``` cpp
+#include <iostream>
+int main(){  //Esta es la función principal que leerá el programa
+  
+    return 0; //Si el programa funciona bien retornara 0
+}
+```
+
+## Salidas:
+
+Para mostrar tu primer hola mundo en c++ se hace de la siguiente manera:
+
+``` cpp
+#include <iostream>
+int main(){
+    std::cout << "Hola mundo"<< std::endl;
+    return 0;
+}
+```
+
+Este fracmento de código imprimirá tu primir "Hola mundo", recuerda que para enviar un mensaje es importante que este en comillas dobles **""** y si solo va a tener una palabra debe de estar en comillas simples **''** .
+
+Para recortar el código si se te hace estresante puedes poner el **using namespace std** lo que hace en manera simple es abreviar u omitir el **std::** el código quedará de la siguiente manera:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    cout << "Hola mundo"<<endl;
+    return 0;
+}
+/* cabe recalcar que para proyectos grandes el "using namespace std" ara tu programa menos optimo */
+```
+
+Los mensajes que pongo en los códigos no se lee puesto que son comentarios, si tu deseas poner un comentario lineal usa **//** y para poner mensajes multilineas debes de usar **/\*\*/** escribiendo el mensaje dentro de asteriscos.
+
+## Entradas:
+
+Para guardar y mostrar valores para compilar el código hacemos esto:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int valor;
+    cout << "Digite un valor: ";
+    cout << "El valor es: "<<valor<<endl;
+    return 0;
+}
+```
+
+Este código loq ue hace es declarar una variables de nombre **valor** de tipo entero (int) con el mensaje de "Digite un valor" luego en tu programa el usuario digitará un valor numérico este valor se almacenará en **"valor"** y para imprimir el valor introducido se usa un cout seguido de el nombre de la variable a mostrar, cabe recalcar que si no se asigna un valor a la variable imprimira un dato basura o que no tenga nada que ver.
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Digite un valor: 15\\
+El valor es: 15
+\end{tcolorbox}
+```
+
+Para hacer operaciones de hace de la siguiente manera:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int num1 = 8;
+    int num2 = 4;
+    int suma, multiplicacion;
+    suma = num1 + num2;  //en este caso res será igual a 12.
+    multiplicacion = num1 * num2;
+    // el endl es como un salto de linea.
+    cout << suma <<" || "<< multiplicacion<<endl; 
+    // tambien lo podemos poner de manera directa.
+    cout << num1 - num2<<"  || "<< num1 / num2endl;
+    return 0;
+}
+```
+
+Hicimos las operaciones básicas que todos conocemos (+, -, \*, /), el fragmento de código se mostrará de la siguiente manera:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+12 || 32\\
+4  || 2\\
+\end{tcolorbox}
+```
+
+Tienes que ser creativo para poder realizar cualquier tipo de operaciones aritméticas por ejemplo realizaremos un ejercicio simple que es resolver esta ecuación: La fórmula es: $a \times \left( \frac{b}{c} \right)$ empezemos.
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    float a,b,c;
+    float resultado;
+    cout<<"Digite 3 numeros separados por espacios o saltos de linea: ";
+    cin>>a>>b>>c;
+    //En este caso primero se ejecuta la divisón y luego la multiplicaión.
+    resultado = a*(b/c); 
+    cout << "El resultado es: "<<resultado<<endl;
+    return 0;
+}
+```
+
+Lo que hicimos es declarar 4 variables de tipo flotante para no perder los decimales del resultado, tener en cuenta que **resultado** alamcena el resultado y lo imprimimos como se muestra acontinuación:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+Digite 3 numeros separados por espacios o saltos de linea: 3 4 5 \\
+El resultado es: 12
+\end{tcolorbox}
+```
+
+Para finalizar es recomendable que tengas cuidado con tus operaciones que tu programa va a realizar.

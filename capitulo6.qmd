@@ -1,0 +1,164 @@
+---
+title: "Arreglos o Vectores"
+author: "Alex Dannis Lipa Quispe"
+---
+
+Un **arreglo** (también llamado **vector** en programación básica) es una **estructura de datos** que permite almacenar múltiples valores **del mismo tipo** en una sola variable.
+
+Cada valor dentro del arreglo se guarda en una **posición o índice**, comenzando desde el **índice 0**.
+
+Los arreglos son útiles cuando se necesita **manejar colecciones de datos**, como listas de números, nombres o resultados, sin tener que declarar muchas variables por separado.
+
+## Vectores:
+
+Como se mencionó anteriormente los vectores almacenan una cantidad de valores de un solo tipo estos son sus partes y un par de ejemplos:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+// se tiene el tipo de dato entero -> int arreglo[5] es necesario que
+tenga los corchetes y la cantidad de valores que vamos a utilizar.
+    
+    int arreglo[5] = {1,2,3,4,5}; 
+    
+// en este ejemplo lo asignamos de manera directa en el código.
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Para poder mostrar el contenido de un arreglo puedes hacerlo con diferentes tipos de bucles, pero generalmente se utiliza el bucle **for**. Vamos a mostrar el código completo para mostrar el contenido del arreglo:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int arreglo[5] = {1,2,3,4,5};
+    for(int i=0; i<5; i++){
+        cout << arreglo[i]<<" ";
+    }
+    return 0;
+}
+```
+
+Recordemos lo siguiende, los arreglos tienen índices que inician desde 0 que esta caso sería:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+    tipo nombre[cantidad]      valores 
+    int     arreglo[5]     = {1, 2, 3, 4, 5};
+              
+    Los índices son ->        0, 1, 2, 3, 4
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Entonces lo que recorre el bucle son los indices del vector que en el ejemplo el vector tiene de nombre **arreglo**, ahora mostraremos la salida estandar:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+1 2 3 4 5
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Para mayor entendimiento te envito a ver este video -\> Hagamos un ejercicio de entrada y salida de arreglos de tipo entero (int):
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int arreglo[5];
+    cout<<"Digite 5 numeros: ";
+    for(int i=0; i<5; i++){
+        cin>>arreglo[i];
+    }
+    cout<<"Mostrando el arreglo."<<endl;
+    for(int i=0; i<5; i++){
+        cout<<arreglo[i]<<" ";
+    }
+    return 0;
+}
+```
+
+Lo que hicimos primeramente es asignar un arreglo como es en este caso -\> **int arreglo\[5\]** que almacerá 5 valores enteros de tipo de entero, esta será la compilación exacta del código:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite 5 numeros: 1 2 3 4 5
+Mostrando el arreglo.
+1 2 3 4 5
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Como se puede observar es es una manera fácil de de guardar datos y mostrarlos en un arregle, te envito a que puedas prácticar y desarrollar tu lógica de programación de manera constante.
+
+## Matrices:
+
+La matriz es una estructura de datos en un plano bidimensional que tiene filas y columnas, como en los arreglos las matrices empiezan por los índces de \[0\]\[0\], Para formar una matriz necesitamos bucles anidados ¿Qué son? son unos bucles dentro de otro como en este ejemplo:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            cout<<[i][j]<< " ";
+        }
+        cout << endl;
+    }
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Esta es la manera en la que se imprime una matriz de tipo 3 por 3, como se puede observar tenemos dos bucles for uno adentro de otro. Para guardar e imprimer los datos se hacen de esta manera:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    int matriz[3][3];
+    cout << "Digite un valor para la pariz: "<<endl;
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            cout << "["<<i<<"]["<<j<<"]: ";
+            cin >> matriz[i][j];
+        }
+    }
+    cout << "Mostrando la matriz."<<endl;
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            cout << matriz[i][j] <<" ";
+        }
+        cout << endl;
+    }
+    return 0;
+}
+```
+
+Bien, en este pequeño ejercicio que hicimos es declarar una matriz de tipo 3 por 3 guardamos los datos y los mostramos en pantalla, el ejemplo nos quedará de la siguente manera:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite un valor para la pariz:
+[0][0]: 1
+[0][1]: 2
+[0][2]: 3
+[1][0]: 4
+[1][1]: 5
+[1][2]: 6
+[2][0]: 7
+[2][1]: 8
+[2][2]: 9
+Mostrando la matriz.
+1 2 3
+4 5 6
+7 8 9
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Esta es la manera en la que debes de guardar los datos en la matriz y mostrarlos. Si te quedaste con ganas de entender más a fondo te envito a que veas este video -\>

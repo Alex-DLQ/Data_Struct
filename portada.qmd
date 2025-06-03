@@ -1,0 +1,7 @@
+---
+title: " "         # Vacío para que no ponga ningún título
+format: pdf
+page-break: false  # Para evitar saltos de página automáticos
+---
+
+![](c++.png){width="100%" height="100%"}

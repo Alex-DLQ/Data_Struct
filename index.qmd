@@ -1,0 +1,34 @@
+---
+title: "INTRODUCCIÓN"
+author: "Alex Dannis Lipa Quispe"
+---
+
+Bienvenio/a a este libro de "C++ Para Principiantes", darte la cálida vienvenida a este libro que fue echa especialmente para personas que a si como yo, teinen cierta dificultad entender y escribir código de manera fluida. Este es un pequeño paso para mi persona ya que será mi primer libro de programación y espero que pueda hacer muchos más.
+
+Este libro tomará conceptos básicos sobre la programación, pero tocara varios temas importantes, empezando desde el hola mundo terminando en loq ue tenga que acabar... El libro tendrá explicación detallada sobre cada parte del código de una manera clara y fáscil de entender por lo que te pido que solo tengas los ánimos para poder aprender de una manera más divertida.
+
+**C++** es un lenguaje de programación de propósito general creado por **Bjarne Stroustrup** en los años 80, como una extensión del lenguaje C. Su objetivo era combinar la eficiencia y el control de C con características más modernas, como la **programación orientada a objetos**.
+
+Desde entonces, C++ se ha convertido en uno de los lenguajes más utilizados del mundo, especialmente en áreas donde se necesita rendimiento, como:
+
+-   Desarrollo de **videojuegos**
+
+-   **Sistemas operativos**
+
+-   Programas que necesitan acceso directo a hardware
+
+-   **Software financiero** de alto rendimiento
+
+-   Aplicaciones **científicas y de ingeniería**
+
+**Características principales de C++**
+
+-   **Compilado**: el código debe convertirse a lenguaje máquina antes de ejecutarse.
+
+-   **Tipado estático**: debes declarar el tipo de cada variable.
+
+-   **Eficiente y rápido**: ideal para tareas exigentes.
+
+-   **Multiplataforma**: puedes usarlo en Windows, Linux y macOS.
+
+-   **Paradigma múltiple**: permite programación estructurada, orientada a objetos y genérica.

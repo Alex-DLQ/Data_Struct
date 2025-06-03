@@ -1,0 +1,172 @@
+---
+title: "Cadenas de Texto"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## char\[n\]:
+
+Una manera de guardar cadenas de texto es usar en vector de tipo char, es una manera un poco eficiente, pero esta bien si tu programa no requiere de mucho texto en las entradas, se guarda de la siguiente manera:
+
+``` cpp
+#include <iostream>
+using namespace std;
+int main(){
+    char nombre[100]; //cuardamos memoría para 100 carácteres
+    cout << "Digite su nombre: ";
+    cin.getline(nombre,100,'\n');
+    cout << "Su nombre guardado es: "<<nombre<<endl;
+    return 0;
+}
+```
+
+En este caso, para poder guardar las cadenas de texto utilizamos **`cin.getline()`**, que en este caso usa 3 parámetros:  
+en el primero nos preguntamos ¿Dónde lo quieres guardar? (en este caso es en **nombre**),  
+en el segundo, ¿cuántos espacios tiene? (ahí ponemos la cantidad que reservamos en el inicio),  
+y por último, ¿cuándo queremos que termine? En ese lugar pondremos un salto de línea que es **\texttt{`\textbackslash n`}**,  
+es decir, que al apretar la tecla **Enter** se guardará la cantidad de caracteres antes de dicha acción.  
+Ejemplo de compilación:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: Maria Gonzales Perez
+Su nombre guardado es: Maria Gonzales Perez
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Algunas carácteristicas especiales que puedes usar son las siguientes para que algunas de estas funciones correctamente es necesario usar **#include\<cstdlib\>** (donde var es una variables):
+
+Funciones clásicas de manejo de `char[]` (cstring)
+
+> Estas funciones trabajan con arreglos de caracteres (`char[]`), no con objetos `string`. Se requiere incluir la cabecera `#include <cstring>` y en algunos casos `#include <cstdlib>`.
+
+| **Método** | **¿Para qué sirve?** | **Ejemplo** | **Resultado** |
+|----------------|-------------------------|-----------------|----------------|
+| `strlen(var)` | Obtener la longitud de una cadena | `int num = strlen("alex");` | `num = 4` |
+| `strcpy(dest, src)` | Copiar el contenido de una cadena en otra | `strcpy(var1, "Alex");` | `var1 = "Alex"` |
+| `strcmp(a, b)` | Comparar dos cadenas | `strcmp("hola", "hola") == 0` | `true` si son iguales |
+| `strcat(a, b)` | Concatenar dos cadenas | `strcat(var1, "Alex");` | Si `var1 = "Hola "`, entonces `"Hola Alex"` |
+| `strrev(var)` | Invertir una cadena | `char r[10] = strrev(var1);` | Si `var1 = "dia"`, entonces `"aid"` |
+| `strupr(var)` | Convertir a mayúsculas | `strupr(var1);` | Si `var1 = "paz"`, será `"PAZ"` |
+| `strlwr(var)` | Convertir a minúsculas | `strlwr(var1);` | Si `var1 = "PAZ"`, será `"paz"` |
+| `strncmp(a, b, n)` | Comparar los primeros `n` caracteres de dos cadenas | `strncmp("alex", "a", 1) == 0` | `true` porque `'a' == 'a'` |
+| `atoi(var)` | Convertir texto a entero | `int num = atoi("2");` | `num = 2` |
+| `atof(var)` | Convertir texto a número con decimales | `float num = atof("2.3");` | `num = 2.3` |
+
+> ⚠️ Nota: `strrev`, `strupr` y `strlwr` no son funciones estándar en C++, pero funcionan en algunos compiladores como **Dev-C++**.
+
+Hagamos un ejercico simple que será verificar si una palabra tiene la 'a' minuscula en su nombre:
+
+``` cpp
+#include <iostream>
+#include <cstring> // lo utilizamos para usar strlen()
+using namespace std;
+int main(){
+    char nombre[20];
+    bool bandera = false;
+    int cantidad = 0;
+    cout << "Digite su nombre: ";
+    cin.getline(nombre, 20, '\n');
+    cantidad = strlen(nombre);
+    for(int i=0; i<cantidad; i++){
+        if(nombre[i] == 'a'){
+            bandera = true;
+            break;
+        }
+    }
+    if(bandera){
+        cout << "Su nombre contiene almenos una a."<<endl;
+    }else{
+        cout << "Su nombre no contiene la vocal a."<<endl;
+    }
+    return 0;
+}
+```
+
+Ente programa verifica si almenos tu nombre contiene una **a** usamos 3 variables de diferentes tipos que son **char\[20\]** para almacenar un nombre de máximo 20 carácteres, **bool** para verificar si hay almenos una **a** en el nombre y un **int** para saber exáctamente cuantos carácteres tiene el nombre introducido. La compilación del programa será de esta manera:
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: alex
+Su nombre contiene almenos una a.
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Si deseas ver más ejercicios de este tipo te invito a ver este video -\>
+
+## string
+
+Otra manera de guardar cadenas de texto es usar los string que una manera más fácil de alamacenar las palabras y se entien de mejor manera, a qui te muestro un ejemplo:
+
+``` cpp
+#include <iostream>
+#include <string>  //Agregamos esta librería para poder usar las strings
+using namespace std;
+int main(){
+    string nombre;
+    cout << "Digite su nombre: ";
+    getline(cin, nombre); // de esta manera es como se guarda los strings
+    cout << "Su nombre guardado es: "<<nombre<<endl;
+    return 0;
+}
+```
+
+Para guardar los string se usa la palabra reservada **getline()** que en este caso usamos dos parámetros, para saber que poner en el primer parámetro nos preguntamos ¿Qué queremos hacer? En este caso queremos guardar y por ello ponemos **cin** en el segundo parámetro va ¿Dónde lo quieres guardar? por esa razón va el nombre de la variable de tipo string. Algunas carácteristicas básicas de los string son estos:
+
+Métodos comunes de `string` en C++
+
+| MÉTODO | ¿Para qué sirve? | Ejemplo | Resultado |
+|---------------|---------------------------|---------------|---------------|
+| `.empty()` | Verifica si la cadena está vacía | `string s = ""; s.empty();` | `true` |
+| `.length()` | Devuelve el número de caracteres de la cadena | `string s = "Hola"; s.length();` | `4` |
+| `.size()` | Igual que `.length()` | `s.size();` | `4` |
+| `.substr(pos, n)` | Devuelve una subcadena desde `pos` con `n` caracteres | `s.substr(1, 2);` | `"ol"` |
+| `.find()` | Devuelve la posición de una subcadena o carácter | `s.find("la");` | `2` |
+| `.append(str)` | Añade `str` al final de la cadena | `s.append(" mundo");` | `"Hola mundo"` |
+| `.insert(pos, s)` | Inserta una subcadena `s` en la posición `pos` | `s.insert(2, "xx");` | `"Hoxxla"` |
+| `.erase(pos, n)` | Elimina `n` caracteres desde la posición `pos` | `s.erase(1, 2);` | `"Ha"` (de "Hola") |
+| `.replace(pos,n,s)` | Reemplaza `n` caracteres desde `pos` por `s` | `s.replace(0, 4, "Hi");` | `"Hi"` |
+| `toupper(c)` | Convierte un carácter a mayúscula | `toupper('a');` | `'A'` |
+| `tolower(c)` | Convierte un carácter a minúscula | `tolower('A');` | `'a'` |
+| `isalnum(c)` | Verifica si un carácter es alfanumérico | `isalnum('3');` | `true` |
+| `isalpha(c)` | Verifica si un carácter es una letra | `isalpha('A');` | `true` |
+| `isdigit(c)` | Verifica si un carácter es un dígito | `isdigit('8');` | `true` |
+
+> **Nota:** funciones como `toupper()`, `isdigit()`, etc., requieren incluir la librería `#include <cctype>`.
+
+Como modo de práctica hagámos un programa que verifique si la primera y última palabar inician con un caracter, si es haci que imprima "hola muno" y si no mostrar "buenas noches".
+```cpp
+#include <iostream>
+#include <cctype> // para usar isalpha()
+#include <cstring>
+using namespace std;
+int main(){
+    string palabra;
+    int tam = 0;
+    cout << "Digite una palabra: ";
+    getline(cin, palabra);
+    tam = palabra.length();
+    if(isalpha(palabra[0]) && isalpha(palabra[tam-1])){
+        cout << "hola mundo."<<endl;
+    }else{
+        cout << "buenas noches."<<endl;
+    }
+    return 0;
+}
+```
+En este lo que hicimos es verificar si una palabra empieza y termina con un caracter, como en los vectores las string tienen índices e inician de igual manera pos el 0. Por ese motivo en la estructura de control **if** pusimos `palabra[0]` y `palabra[tam-1]` si pusiera la palabra **casa** lo que la condicional verificaría sería esto: `c y a` ¿Son string? si, y por ello el resultado sería **true** e imprimiría "hola mundo" y en caso contrario "buenas noches", a qui te muestro un ejemplo de compilación:
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite una palabra: casa
+hola mundo.
+---> caso contrario <---
+Digite una palabra: casa7
+buenas noches.
+\end{verbatim}
+\end{tcolorbox}
+```
+Si te quedaste con intriga y deseas saber más te invito a que le des un vistaso a este video ->

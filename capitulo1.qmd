@@ -1,0 +1,30 @@
+---
+title: "Variables y Tipos de Datos"
+author: "Alex Dannis Lipa Quispe"
+---
+
+Los tipos de datos son un tipo de valor que se asignan a las variables para que puedan almacenar un tipo de valor en específico.
+
+## variables:
+
+Las variables pueden ser cualquier tipo de palabra excepto las palabras reservadas del leguaje de programación que estes usando, como buena practica te recomiendo que las variables que uses sean fáciles de leer como por ejemplo "numero", "nombre". Esto ayudara a que tu código sea fácil de entender en tu entorno de trabajo.
+
+## Datos numéricos:
+
+-   **float** **:** ocupa 32 bits, puede contener desde 1.4 x 10^-45^ hasta el valor de 3.4028235 x 10^38^.
+
+-   **double:** ocupa 64 bits, puede contener desde 4.9 x 10^324^ hasta el valor de 1.7976931348623157 x 10^308^.
+
+-   **short :** ocupa 16 bits, puede contener desde -32768 hasta el valor de 32767.
+
+-   **int :** ocupa 32 bits, puede contener desde -2147483648 hasta el valor de 2147483647.
+
+-   **long :** ocupa 64 bits, puede ocupar desde -9223372036854775805 hasta el valor de 9223372036854775807.
+
+## Cadena de caracteres:
+
+-   **char :** ocupa 8 bits, puede contener desde 0 (carácter nulo '\\0') hasta el valor de 127 (signed char) o 255 (unsigned char).
+
+-   **string :** ocupa 8 bits por cada carácter, puede contener desde "" (cadena vacía) hasta el valor que depende de la memoria disponible.
+
+Estos son los tipos de datos que asignaremos a nuestras variables en diferentes ejemplos y explicaciones de código.
