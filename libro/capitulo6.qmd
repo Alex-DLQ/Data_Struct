@@ -11,7 +11,7 @@ Los arreglos son útiles cuando se necesita **manejar colecciones de datos**, co
 
 ## Vectores:
 
-Como se mencionó anteriormente los vectores almacenan una cantidad de valores de un solo tipo estos son sus partes y un par de ejemplos:
+Como se mencionó anteriormente, los vectores almacenan una cantidad de valores de un solo tipo. A continuación, se muestran sus partes y un par de ejemplos:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -40,7 +40,7 @@ int main(){
 }
 ```
 
-Recordemos lo siguiende, los arreglos tienen índices que inician desde 0 que esta caso sería:
+Recordemos lo siguiente: los arreglos tienen índices que inician desde 0, que en este caso sería:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -53,7 +53,7 @@ Recordemos lo siguiende, los arreglos tienen índices que inician desde 0 que es
 \end{tcolorbox}
 ```
 
-Entonces lo que recorre el bucle son los indices del vector que en el ejemplo el vector tiene de nombre **arreglo**, ahora mostraremos la salida estandar:
+Entonces, lo que recorre el bucle son los índices del vector, que en el ejemplo tiene el nombre **arreglo**. Ahora mostraremos la salida estándar:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -63,7 +63,7 @@ Entonces lo que recorre el bucle son los indices del vector que en el ejemplo el
 \end{tcolorbox}
 ```
 
-Para mayor entendimiento te envito a ver este video -\> Hagamos un ejercicio de entrada y salida de arreglos de tipo entero (int):
+Hagamos un ejercicio de entrada y salida de arreglos de tipo entero (`int`):
 
 ``` cpp
 #include <iostream>
@@ -82,7 +82,8 @@ int main(){
 }
 ```
 
-Lo que hicimos primeramente es asignar un arreglo como es en este caso -\> **int arreglo\[5\]** que almacerá 5 valores enteros de tipo de entero, esta será la compilación exacta del código:
+Lo que hicimos primeramente es asignar un arreglo, como en este caso -\> **int arreglo\[5\]**, que almacenará 5 valores enteros de tipo `int`.\
+Esta será la compilación exacta del código:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -94,11 +95,14 @@ Mostrando el arreglo.
 \end{tcolorbox}
 ```
 
-Como se puede observar es es una manera fácil de de guardar datos y mostrarlos en un arregle, te envito a que puedas prácticar y desarrollar tu lógica de programación de manera constante.
+Como se puede observar, es una manera fácil de guardar datos y mostrarlos en un arreglo.\
+Te invito a que practiques y desarrolles tu lógica de programación de manera constante.
 
 ## Matrices:
 
-La matriz es una estructura de datos en un plano bidimensional que tiene filas y columnas, como en los arreglos las matrices empiezan por los índces de \[0\]\[0\], Para formar una matriz necesitamos bucles anidados ¿Qué son? son unos bucles dentro de otro como en este ejemplo:
+La matriz es una estructura de datos en un plano bidimensional que tiene filas y columnas.\
+Como en los arreglos, las matrices empiezan por los índices \[0\]\[0\].\
+Para formar una matriz necesitamos bucles anidados. ¿Qué son? Son bucles dentro de otros, como en este ejemplo:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -113,7 +117,9 @@ La matriz es una estructura de datos en un plano bidimensional que tiene filas y
 \end{tcolorbox}
 ```
 
-Esta es la manera en la que se imprime una matriz de tipo 3 por 3, como se puede observar tenemos dos bucles for uno adentro de otro. Para guardar e imprimer los datos se hacen de esta manera:
+Esta es la manera en la que se imprime una matriz de tipo 3 por 3.\
+Como se puede observar, tenemos dos bucles **for**, uno dentro del otro.\
+Para guardar e imprimir los datos, se hace de esta manera:
 
 ``` cpp
 #include <iostream>
@@ -138,7 +144,8 @@ int main(){
 }
 ```
 
-Bien, en este pequeño ejercicio que hicimos es declarar una matriz de tipo 3 por 3 guardamos los datos y los mostramos en pantalla, el ejemplo nos quedará de la siguente manera:
+Bien, en este pequeño ejercicio declaramos una matriz de tipo 3 por 3, guardamos los datos y los mostramos en pantalla.\
+El ejemplo nos quedará de la siguiente manera:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -161,4 +168,4 @@ Mostrando la matriz.
 \end{tcolorbox}
 ```
 
-Esta es la manera en la que debes de guardar los datos en la matriz y mostrarlos. Si te quedaste con ganas de entender más a fondo te envito a que veas este video -\>
+Esta es la manera en la que debes guardar los datos en la matriz y mostrarlos.

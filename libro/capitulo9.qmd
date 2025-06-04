@@ -3,7 +3,7 @@ title: "Funciones"
 author: "Alex Dannis Lipa Quispe"
 ---
 
-En pocas palabras las funciones consiste en dividir tareas para que este más legible y como buena práctica de programación es fundamental aprendertela y para ello veremos una structura básica:
+En pocas palabras, las funciones consisten en dividir tareas para que el programa sea más legible. Como buena práctica de programación, es fundamental aprenderlas. Para ello, veremos una estructura básica:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -22,7 +22,13 @@ void pedir() // Y en esta otra la función no recibe parámetros.
 \end{tcolorbox}
 ```
 
-Si te diste cuenta en este libro mayormente verás que usaremos mayormente la función de tipo `void` para pedir datos en nuestro programas, y cualquier otro tipo de función para realizar una tarea en específica, recuerda que en los parámetros puede ir el nombre que tu quieras, pero ten un cuenta que debes de espesificar muy bien el tipo de valor que tomará. Un aspecto de buena práctica es prototipar la función y despues de la función principal que es el **main** realizamos el código que realizará esa función en espesífica. Vamos a realizar un programa que retorme la suma de numeros enteros.
+Si te das cuenta, en este libro verás que mayormente utilizamos funciones de tipo `void` para pedir datos en nuestros programas, mientras que usaremos otros tipos de funciones cuando necesitemos realizar una tarea específica que devuelva un valor.
+
+Recuerda que en los parámetros puedes usar el nombre que tú quieras, pero debes tener en cuenta que es muy importante especificar correctamente el tipo de valor que tomará.
+
+Una buena práctica de programación es prototipar las funciones. Esto significa declarar cómo serán antes del `main`, y luego, después de la función principal, escribimos el código que realiza esa tarea específica.
+
+Ahora, vamos a crear un programa sencillo que retorne la suma de dos números enteros.
 
 ``` cpp
 #include <iostream>
@@ -52,11 +58,11 @@ int suma(int a, int b){ // a y b son variables.
 }
 ```
 
-El programa es básico que lo que hace es una simple suma, pero para programas más grandes en fundamental hacerlo con funciones y en todo caso es necesario que lo aprendas como una buena práctica.
+El programa es básico, ya que solo realiza una suma simple, pero para programas más grandes es **fundamental hacerlo con funciones**, y en todo caso, es necesario que lo aprendas como una buena práctica.
 
 ## Paso de Parámetros
 
-Para pasar arreglos, matrices, cadenas de texto se requiere de otro tipo de parámetros de que son:
+Para pasar arreglos, matrices o cadenas de texto, se requiere de otro tipo de parámetros que son:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -77,7 +83,9 @@ int caracteres(char n);
 \end{tcolorbox}
 ```
 
-Como ves estas son los parámetros que debes de aprender, pero para serlo más interesante vamos a crear un programa que haga la acción de una serie de opciones, lo vamos a realizar solo con funciones para que asi retroalimentes más tu conocimiento. Las opciones que habran en el `MENU` seran las siguientes:
+Como ves, estos son los parámetros que debes aprender. Pero para hacerlo más interesante, vamos a crear un programa que realice una serie de opciones. Lo haremos `solo con funciones` para que así puedas `reforzar tu conocimiento` y familiarizarte más con su uso.
+
+Las opciones que habrá en el `MENU` serán las siguientes:
 
 ```{=latex}
 \begin{tcolorbox}
@@ -92,8 +100,8 @@ Como ves estas son los parámetros que debes de aprender, pero para serlo más i
 \end{tcolorbox}
 ```
 
-Cabe racalacar que cada tema será de una manera casi profesional, porque también tengo mucho que aprender, pero por el motivo por el cual hago esto es para que no tengas complicaciones futuras y que lo entiendas de la mejor manera. haciendo esto aprenderas conceptos fundamentales.
+Cabe recalcar que cada tema será explicado de una manera casi profesional, porque yo también tengo mucho que aprender. Sin embargo, el motivo por el cual hago esto es para que no tengas complicaciones futuras y logres entender todo de la mejor manera posible. Haciendo esto, aprenderás conceptos fundamentales que te servirán mucho más adelante.
 
-## Programa N°1
+## Programa N.º 1
 
-Para poder realizar este programa es fundamental retroceder y ver los temas anteriores de manera detenida para que luego se te haga fácil entender este pequeño programa.
+Para poder realizar este programa, es fundamental retroceder y repasar los temas anteriores con atención. Esto te ayudará a que luego te sea mucho más fácil entender este pequeño programa.

@@ -3,11 +3,11 @@ title: "Estructuras"
 author: "Alex Dannis Lipa Quispe"
 ---
 
-Las estructuras o struct en C++ son una forma de definir un tipo de dato personalizado que puede contener varios elementos de diferentes tipos. Una estructura es similar a una clase, pero se utiliza principalmente para almacenar datos y no para definir comportamientos.
+Las **estructuras** o `struct` en C++ son una forma de definir un **tipo de dato personalizado** que puede contener varios elementos de diferentes tipos. Una estructura es similar a una clase, pero se utiliza principalmente para **almacenar datos** y no para definir comportamientos.
 
-## Definición de estructura:
+## Definición de estructura
 
-Para definir una estructura en c++, se utiliza la palabra reservada `struct` seguida del nombre de la estructura y los elementos que la componen.
+Para definir una estructura en C++, se utiliza la palabra reservada struct, seguida del **nombre de la estructura** y los **elementos que la componen**.
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -21,7 +21,9 @@ struct Persona{
 \end{tcolorbox}
 ```
 
-**Uso de una estructura:** Una vez definida la estructura, puedes crear variables de este tipo y acceder a sus parámetros.
+**Uso de una estructura** Una vez definida la estructura, puedes crear variables de ese tipo y acceder a sus miembros utilizando el operador punto (`.`).
+
+Esto te permite agrupar datos relacionados bajo una sola variable, lo cual es muy útil para organizar la información de forma clara y ordenada.
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -34,13 +36,15 @@ struct Persona{
 \end{tcolorbox}
 ```
 
-Para acceder a las varibales de la estructura primeramente se pone las variables que definimos anteriormente seguida de un punto y en que valor de la estructura la deseamos guardar, tal y cual esta en el ejemplo de arriba. **Ventajas de las estructuras:** Las estructuras son útiles cuando necesitas almacenar varios datos relacionados en una sola unidad. Algunas ventajas de las estructuras son:
+Para acceder a las variables de la estructura, primeramente se coloca la variable que definimos anteriormente, seguida de un punto (`.`) y el nombre del campo de la estructura al que deseamos acceder, tal y como se muestra en el ejemplo anterior.
+
+## Ventajas de las estructuras
+
+Las estructuras son muy útiles cuando necesitas almacenar varios datos relacionados en una sola unidad. Algunas ventajas importantes de utilizarlas son:
 
 -   Permiten organizar y estructurar los datos de manera lógica.
-
 -   Facilitan el acceso y la manipulación de los datos.
-
--   Pueden ser utilizados como parámetros de funciones o como valores de retorno. Completemos el programa, pero ahora que el usuario completo los direferentes campos.
+-   Pueden ser utilizadas como parámetros de funciones o como valores de retorno.
 
 ``` cpp
 #include <iostream>
@@ -67,7 +71,7 @@ int main(){
 }
 ```
 
-En este caso guardamos y mostramos los datos que el usuario nos digita, el resultado nos quedaría de la siguiente manera:
+En este caso, guardamos y mostramos los datos que el usuario nos proporciona. El resultado final del programa nos quedaría de la siguiente manera:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -84,9 +88,11 @@ La direccion es calle 13
 \end{tcolorbox}
 ```
 
-## Estructuras anidadas:
+## Estructuras anidadas
 
-Las estructuras anidadas en C++ se refieren a la capacidad de definir una estructura dentro de otra estructura. Esto permite crear estructuras más complejas y jerárquicas, donde una estructura puede contener otra estructura como uno de sus miembros. **Ejemplo de estructura anidada**
+Las estructuras anidadas en C++ se refieren a la capacidad de definir una estructura dentro de otra. Esto permite crear estructuras más complejas y jerárquicas, donde una estructura puede contener otra como uno de sus miembros.
+
+**Ejemplo de estructura anidada:**
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -104,13 +110,26 @@ struct Persona{
 \end{verbatim}
 \end{tcolorbox}
 ```
-En este ejemplo, la estructura `Persona` contiene esa estructura `Direccion` como uno de sus miembros. Puedes acceder a los miembros de la estructura anidada utilizando el operador de punto `(.)`. **ventajas de las estructuras anidadas** Las estructuras anidadas son útiles cuando necesitas representar datos complejos y jerárquicos. Algunas ventajas de las estructuras anidadas son: - Permiten crear estructuras de datos más complejas y realistas. - Facilitan la organización y el acceso a los datos. - Pueden mejorar la legibilidad y la mantenibilidad del código. **Aplicaciones de las estructuras anidadas** Las estructuras anidadas se pueden utilizar en una variedad de aplicaciones, como:
 
--   Representar datos de personas, como direcciones y contactos.
--   Modelar estructuras de datos complejas, como árboles o grafos.
--   Crear estructuras de datos para juegos o simulaciones.
+En este ejemplo, la estructura `Persona` contiene otra estructura llamada `Direccion` como uno de sus miembros. Puedes acceder a los campos de la estructura anidada usando el operador punto `(.)`.
 
-Vamos a completar el código e igualmente pediremos al usuario que lo rellene:
+**Ventajas de las estructuras anidadas**
+
+Las estructuras anidadas son muy útiles cuando necesitas representar datos complejos y jerárquicos. Algunas ventajas importantes son:
+
+-   Permiten crear estructuras de datos más complejas y realistas.
+-   Facilitan la organización y el acceso a la información.
+-   Mejoran la legibilidad y mantenibilidad del código.
+
+**Aplicaciones de las estructuras anidadas**
+
+Las estructuras anidadas se utilizan en múltiples escenarios, tales como:
+
+-   Representar datos personales, como direcciones y contactos.
+-   Modelar estructuras complejas como árboles o grafos.
+-   Crear estructuras para juegos o simulaciones.
+
+Ahora, vamos a completar el código y pediremos al usuario que llene los datos correspondientes:
 
 ``` cpp
 #include <iostream>
@@ -147,7 +166,7 @@ int main(){
 }
 ```
 
-Lo que hicimos es completar el ejemplo que pusimos en el inicio. La salida estandar nos quedaría de esta manera:
+Lo que hicimos es completar el ejemplo que mostramos al inicio. La salida estándar del programa quedaría de la siguiente manera:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -167,5 +186,3 @@ Edad 15
 \end{verbatim}
 \end{tcolorbox}
 ```
-
-Si te quedaste con ganas de más te invito a que veas este video donde aremos más ejercicios para que entiendas un poco más -\>

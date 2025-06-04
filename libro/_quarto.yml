@@ -18,6 +18,11 @@ book:
     - capitulo7.qmd
     - capitulo8.qmd
     - capitulo9.qmd
+    - capitulo10.qmd
+    - capitulo11.qmd
+    - capitulo12.qmd
+    - capitulo13.qmd
+    - capitulo14.qmd
 format:
   pdf:
     pdf-engine: xelatex

@@ -1,0 +1,182 @@
+---
+title: "Colas"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## Introducción
+
+Imagina que estás en la fila de una tienda para pagar. Llega una persona, se pone al final. El cajero atiende al primero en la fila. Esa es la lógica de una cola en programación: el primero en entrar es el primero en salir. A esto se le llama estructura FIFO (First In, First Out). En este capítulo, aprenderás a crear y manejar colas en C++ utilizando listas enlazadas.
+
+## Teoría
+
+Una cola es una estructura lineal donde los datos se insertan por un extremo llamado final y se eliminan por otro llamado frente. Las operaciones más comunes son:
+
+-   `enqueue:` insertar un elemento al final (en nuestro código: `insertar`).
+
+-   `dequeue:` eliminar un elemento del frente (en nuestro código: `quitar`).
+
+Usaremos listas enlazadas para construir la cola, sin usar bibliotecas externas ni STL.
+
+## Código y explicación
+
+Ten en cuenta que el código estará por partes y tu reto será juntarlos y hacer que compile:
+
+``` cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+struct Nodo{
+    char dato;
+    Nodo *siguiente;
+};
+```
+
+-   Definimos la estructura básica de la cola: cada `Nodo` tiene un carácter (`dato`) y un puntero al siguiente nodo.
+
+``` cpp
+void menu();
+void insertar(Nodo *&, Nodo *&, char);
+bool cola_vacia(Nodo *);
+void quitar(Nodo *&, Nodo *&, char &);
+```
+
+-   Declaramos las funciones para el menú, insertar, verificar si la cola está vacía y quitar elementos.
+
+``` cpp
+int main(){
+    menu();
+    system("pause");
+    return 0;
+}
+```
+
+La función `main` solo llama al menú y espera una tecla para terminar. Menú principal
+
+``` cpp
+void menu(){
+    int opcion;
+    char dato;
+    Nodo *frente = NULL;
+    Nodo *fin = NULL;
+```
+
+-   `frente` es el primer elemento de la cola.
+-   `fin` apunta al último elemento.
+
+``` cpp
+    do{
+        cout<<"\tMenu de opciones\n";
+        cout<<"1. Insertar un caracter en la cola\n";
+        cout<<"2. Mostrar los elementos de la cola\n";
+        cout<<"3. Salir"<<endl;
+        cout<<"Opcion: ";
+        cin >> opcion;
+```
+
+-   Mostramos el menú al usuario con tres opciones.
+
+``` cpp
+        switch(opcion){
+            case 1: cout<<"\nDigite un caracter: ";
+                    cin >> dato;
+                    insertar(frente, fin, dato);
+                    break;
+```
+
+-   Si elige la opción 1, se inserta un nuevo carácter al final de la cola.
+
+``` cpp
+            case 2: cout<<"\nMostrando los elementos de la cola: ";
+                    while(frente != NULL){
+                        quitar(frente, fin, dato);
+                        if(frente != NULL){
+                            cout << dato<< " , ";
+                        }
+                        else{
+                            cout << dato<<"."; // Último elemento
+                        }
+                    }
+                    cout << endl;
+                    system("pause");
+                    break;
+            case 3: break;
+        }
+        system("cls");
+    }while(opcion != 3);
+}
+```
+
+-   Si elige la opción 2, se recorren y eliminan todos los elementos de la cola.
+-   Se imprime el dato y se libera la memoria. **Insertar elemento (`enqueue`)**
+
+``` cpp
+void insertar(Nodo *&frente, Nodo *&fin, char n){
+    Nodo *nuevo_nodo = new Nodo();
+    nuevo_nodo->dato = n;
+    nuevo_nodo->siguiente = NULL;
+```
+
+-   Creamos un nuevo nodo con el dato ingresado y apuntamos su `siguiente` a `NULL` (porque será el último).
+
+``` cpp
+    if(cola_vacia(frente)){
+        frente = nuevo_nodo;
+    }
+    else{
+        fin->siguiente = nuevo_nodo;
+    }
+    fin = nuevo_nodo;
+}
+```
+
+-   Si la cola está vacía, tanto `frente` como `fin` apuntan al nuevo nodo.
+-   Si ya hay nodos, lo conectamos al final y actualizamos el puntero `fin`. **Verificar si la cola está vacía**
+
+``` cpp
+bool cola_vacia(Nodo *frente){
+    return (frente == NULL)? true : false;
+}
+```
+
+-   Una función sencilla que devuelve `true` si no hay elementos en la cola. **Quitar elemento (`dequeue`)**
+
+``` cpp
+void quitar(Nodo *&frente, Nodo *&fin, char &n){
+    n = frente->dato;
+    Nodo *aux = frente;
+
+    if(frente == fin){
+        frente = NULL;
+        fin = NULL;
+    }
+    else{
+        frente = frente->siguiente;
+    }
+    delete aux;
+}
+```
+
+-   Se guarda el dato del frente, se mueve el puntero `frente` al siguiente nodo y se libera el anterior.
+-   Si solo había un elemento, ambos punteros quedan en `NULL`. **Ejemplo en ejecución**
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+    Menu de opciones
+1. Insertar un caracter en la cola
+2. Mostrar los elementos de la cola
+3. Salir
+Opcion: 1
+Digite un caracter: A
+
+Opcion: 1
+Digite un caracter: B
+
+Opcion: 2
+Mostrando los elementos de la cola: A , B.
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Como puedes ver, el primer carácter en entrar fue el primero en salir. Exactamente como en una fila de personas.

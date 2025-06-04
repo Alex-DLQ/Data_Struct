@@ -2,21 +2,19 @@
 title: "Operadores"
 author: "Alex Dannis Lipa Quispe"
 ---
-## Matemáticos:
 
-Son operadores que conocemos desde la primaria, las cuales son:
+## Matemáticos
+
+Son operadores que conocemos desde la primaria, los cuales son:
 
 -   Suma: denotado por (+).
-
--   Resta: denotado por = (-).
-
+-   Resta: denotado por (-).
 -   Multiplicación: denotado por (\*).
-
 -   División: denotado por (/).
-
 -   Residuo: denotado por (%).
+-   Potencia: denotado por (\^).
 
-Estos operadores nos sirven para que nuestros programas puedan ejecutar las operaciones aritméticas que nosotros conocemos por decir:
+Estos operadores nos sirven para que nuestros programas puedan ejecutar las operaciones aritméticas que conocemos, por ejemplo:
 
 | OPERADORES ARITMÉTICOS | OPERACIÓN | RESULTADO |
 |:----------------------:|:---------:|:---------:|
@@ -24,11 +22,13 @@ Estos operadores nos sirven para que nuestros programas puedan ejecutar las oper
 |         Resta          |  10 - 9   |     1     |
 |     Multiplicación     |  7 \* 2   |    14     |
 |        División        |  21 / 3   |     7     |
-|        Residuo         |  21 % 2   |     0     |
+|        Residuo         |  21 % 2   |     1     |
+|        Potencia        |  4 \^ 2   |    16     |
 
-## Relacionales:
 
-Son los signos que se usan para comparar dos valores, de los cuales si se cumple te va un resultado que puede ser **verdadero** ó **falso,** sé que lo has visto en estos caso:
+## Relacionales
+
+Son los signos que se usan para comparar dos valores, cuyo resultado es un valor booleano: **verdadero** o **falso**. Probablemente ya los conoces:
 
 |    Operador     | Símbolo | Operación | Resultado |
 |:---------------:|:-------:|:---------:|:---------:|
@@ -39,27 +39,66 @@ Son los signos que se usan para comparar dos valores, de los cuales si se cumple
 |      Igual      |   ==    |  7 == 1   |   Falso   |
 |    Diferente    |   !=    |  3 != 9   | Verdadero |
 
-## Lógicos:
 
-En matemáticas son conocidas como tabla proposicional en este oportunidad solo tomaremos los valores de (y), (o) y (negación). Sé que eres un génio en ese tema. Te muestro un ejemplo:
+## Lógicos
 
-Donde F es falso y V es verdadero.
+En matemáticas se conocen como tablas proposicionales. Aquí tomaremos los operadores **Y**, **O** y **Negación**.
 
-| Operador "Y" | Salida | Operador "O" | Salida | Negacio "!" | Salida |
-|:------------:|:------:|:------------:|:------:|:-----------:|:------:|
-|    V y V     |   V    |    V o V     |   V    |  !(V y F)   |   V    |
-|    V y F     |   F    |    V o F     |   V    |  !(V y V)   |   F    |
-|    F y V     |   F    |    F o V     |   V    |  !(F o V)   |   F    |
-|    F y F     |   F    |    F o F     |   F    |  !(F o F)   |   V    |
+Donde **V** es verdadero y **F** es falso.
 
-## Asignación:
+| Operador "Y" | Salida | Operador "O" | Salida | Negación "!" | Salida |
+|:------------:|:------:|:------------:|:------:|:------------:|:------:|
+|    V y V     |   V    |    V o V     |   V    |   !(V y F)   |   V    |
+|    V y F     |   F    |    V o F     |   V    |   !(V y V)   |   F    |
+|    F y V     |   F    |    F o V     |   V    |   !(F o V)   |   F    |
+|    F y F     |   F    |    F o F     |   F    |   !(F o F)   |   V    |
 
-Lo usamos en programación para asignar valor a una variable, como la siguiente manera:
 
-Asignamos una variable de nombre "a" de tipo entero -\> **int a**.
+## Asignación
 
-si queremos asignar un valor a la variables ponemos "=" -\> **a = 5** -\> el valor de **a** será 5.
+La asignación se usa en programación para dar un valor a una variable. Por ejemplo, si declaramos una variable entera llamada **a**:
 
-Ahora si queremos restar un valor es decir **a - 1 = 4** (Recordemos que el valor de **a** es **5**), para asignar el nuevo valor a **"a"** es como poner -\> **a = a -1**, como vemos que el valor de **a** se repite dos veces, se puede escribir de esta manera -\> **a -= 1**, esto es lo mismo a -\> **a = a -1** entonces el operador de **"-="** quita un valor a la variable asignada.
+``` cpp
+    int a;
+```
 
-De igual manera para sumar un valor a la variables lo hacemos de esta manera -\> a = a +1, esto nos da como resultado **6** (el valor de **a** es **5**), la oparación se puede escribir de la siguiente manera -\> a += 1 que seria exáctamente como -\> a = a + 1.
+Para asignarle un valor:
+
+``` cpp
+    a = 5;
+```
+
+Ahora, si queremos restarle 1 a la variable, escribimos:
+
+``` cpp
+    a = a - 1;  // Resultado: 4
+```
+
+Como el nombre de la variable se repite, podemos usar el operador compuesto:
+
+``` cpp
+    a -= 1;     // Equivalente a: a = a - 1
+```
+
+De la misma manera, para sumar 1:
+
+``` cpp
+    a = a + 1;  // Resultado: 6
+```
+
+O usando el operador compuesto:
+
+``` cpp
+    a += 1;     // Equivalente a: a = a + 1
+```
+
+## Operadores de incremento y decremento
+
+Existen operadores que aumentan o disminuyen el valor en 1 de forma más sencilla:
+
+| Operador | Descripción | Ejemplo | Resultado si a = 5 |
+|:----------------:|:----------------:|:----------------:|:----------------:|
+| `++a` | Incremento antes de usar el valor. | `++a;` | 6 |
+| `a++` | Incremento después de usar el valor. | `a++;` | 6 (pero el valor usado primero es 5) |
+| `--a` | Decremento antes de usar el valor. | `--a;` | 4 |
+| `a--` | Decremento después de usar el valor. | `a--;` | 4 (pero el valor usado primero es 5) |

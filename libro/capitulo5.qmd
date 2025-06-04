@@ -2,15 +2,16 @@
 title: "Bucles o Ciclos"
 author: "Alex Dannis Lipa Quispe"
 ---
-Los **bucles** son una forma eficiente de repetir una serie de instrucciones sin tener que escribirlas múltiples veces.\
 
-Un ejemplo básico sería imprimir cinco veces el mensaje **"Hola mundo"**.\
+Los **bucles** son una forma eficiente de repetir una serie de instrucciones sin tener que escribirlas múltiples veces.
+
+Un ejemplo básico sería imprimir cinco veces el mensaje **"Hola mundo"**.
 
 En este ejercicio, aprenderemos a hacerlo utilizando los diferentes tipos de **bucles o ciclos** que ofrece C++.
 
-## for: 
+## for:
 
-El bucle **for** tiene 3 parámetros las cuales son:
+El bucle **for** tiene 3 parámetros, los cuales son:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -22,7 +23,7 @@ for(asignació; condición; iteración){
 \end{tcolorbox}
 ```
 
-La tarea que pusimos al inicio lo vamos a resolver, quedará de la siguiente manera:
+La tarea que pusimos al inicio la vamos a resolver, quedará de la siguiente manera:
 
 ``` cpp
 #include <iostream>
@@ -36,7 +37,10 @@ int main(){
 }
 ```
 
-Lo que hace el código es recorrer del 0 la 4, ¿Por qué desde el cero? por que la asignamos el valor de 0 en el inicio -\> **int i=0;** ¿Por qué hasta 4? porque una vez llegado hasta el valor de **5\<5** esto nos dara una condición falsa por lo que saldra de bucle, que hace el **i++** lo que hace es recorrer uno por uno cada interación es decir a **i** lo va a ir sumando **+1** hasta que la condición sea falsa, el código tendra la siguiente salida:
+Lo que hace el código es recorrer desde 0 hasta 4. ¿Por qué desde cero? Porque asignamos el valor de 0 al inicio → **int i = 0;**\
+¿Por qué hasta 4? Porque una vez que **i** llegue a 5, la condición **i \< 5** será falsa y saldrá del bucle.\
+¿Qué hace el **i++**? Lo que hace es incrementar **i** en 1 en cada iteración, es decir, **i** irá sumando **+1** hasta que la condición sea falsa.\
+El código tendrá la siguiente salida:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -50,11 +54,9 @@ Hola mundo.
 \end{tcolorbox}
 ```
 
-Para tener más información te envito a ver este video -\>
-
 ## while:
 
-Este bucle al igual que el for primeramente compara su condición y si es verdad se ejecuta el código y si no se salta y sus partes son:
+Este bucle, al igual que el **for**, primero compara su condición; si es verdadera, se ejecuta el código, y si no, se salta. Sus partes son:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -66,7 +68,7 @@ While(condición){
 \end{tcolorbox}
 ```
 
-En esta parte tienes que tener cuidado porque si tienes un mínimo margen de error el bucle se ejecutará infinitamente. Vamos a realizar el ejercicio anterior de igual manera que la anterior:
+En esta parte tienes que tener cuidado porque si tienes un mínimo margen de error, el bucle se ejecutará infinitamente. Vamos a realizar el ejercicio anterior de igual manera que la anterior:
 
 ``` cpp
 #include <iostream>
@@ -81,7 +83,7 @@ int main(){
 }
 ```
 
-Que es lo que esta pasando, primeramente declaramos una variables de tipo entera llamada **i** que tiene como valor el **0** en la condicón que se toma en cuenta es esta -\> **(i\<5)**, ya sabesmos que es verdadera y pasará a ejecutarse el código, esta parte del código es fundamental -\> **i++** ¿Por qué? porque sin ella el valor de **i** seguirá siendo un **0** y asi hasta el infinito y más alla.
+¿Qué es lo que está pasando? Primeramente declaramos una variable de tipo entero llamada **i** que tiene como valor **0**. La condición que se toma en cuenta es esta -\> **(i \< 5)**, ya sabemos que es verdadera y pasará a ejecutarse el código. Esta parte del código es fundamental -\> **i++**. ¿Por qué? Porque sin ella, el valor de **i** seguirá siendo **0** y así hasta el infinito y más allá.
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -93,11 +95,9 @@ Hola mundo.
 \end{tcolorbox}
 ```
 
-Para tener más información te envito a ver este video -\>
-
 ## do-while:
 
-El bucle **do-while**, este bucle lo que hace primeramente es hacer la acción y luego verificar la condición y sus partes son estas:
+El bucle **do-while** lo que hace primeramente es ejecutar la acción y luego verificar la condición. Sus partes son las siguientes:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -109,7 +109,7 @@ do{
 \end{tcolorbox}
 ```
 
-Como ves primeramente hace una acción y luego lo compara, pero bueno vamos a realizar la tarea:
+Como ves, primeramente ejecuta una acción y luego compara la condición. Bueno, vamos a realizar la tarea:
 
 ``` cpp
 #include <iostream>
@@ -124,7 +124,7 @@ int main(){
 }
 ```
 
-Primeramente se ejecuta el código y recien va a la condición, esto es muy bueno por si quieres asegurarte almenos una ejecución en tu código, la salida es:
+Primeramente se ejecuta el código y recién se evalúa la condición. Esto es muy útil si quieres asegurarte al menos una ejecución en tu código. La salida es:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -136,4 +136,14 @@ Hola mundo.
 \end{tcolorbox}
 ```
 
-Para mayor entendimiento ver el siguienete video -\> Como viste la mayor parte de los casoss de bucles funcionan con inicializaciones, pero no siempre es de esa manera ya que puede ser que solo se pare con un determinado caracter. Si te quedaste con la interrogante te envito a ver estos videos que te haran entender de una mejor manera estos tres tipos de bucles (en los videos se tomará en cuenta las palabras revervadas **break** y **continue**) -\>
+Como viste, en la mayoría de los casos los bucles funcionan con inicializaciones y condiciones que controlan su ejecución, pero no siempre es así. A veces, un bucle puede detenerse o saltar iteraciones según ciertas condiciones específicas, por ejemplo, basándose en un carácter o valor determinado.
+
+Si te quedó la duda, te invito a ver estos videos que te ayudarán a entender mejor los tres tipos de bucles (`for`, `while`, `do-while`). En los videos también se explican dos palabras reservadas muy importantes que se usan dentro de los bucles: **break** y **continue**.
+
+-   **break**: Esta palabra reservada se utiliza para detener por completo la ejecución de un bucle, sin importar si la condición principal sigue siendo verdadera. Cuando el programa encuentra un `break` dentro de un bucle, sale inmediatamente del mismo y continúa con la siguiente instrucción después del bucle.
+
+-   **continue**: Esta palabra reservada se usa para saltar la iteración actual del bucle y continuar con la siguiente. Es decir, cuando se ejecuta un `continue`, el código que queda dentro del bucle para esa iteración se omite y se pasa a evaluar la condición para la siguiente iteración.
+
+Ambas instrucciones son muy útiles para controlar el flujo dentro de los bucles de forma precisa, haciendo que el código sea más flexible y eficiente.
+
+Te recomiendo prestar atención a cómo se usan en los ejemplos para que comprendas bien su funcionamiento.

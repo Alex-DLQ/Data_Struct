@@ -5,7 +5,7 @@ author: "Alex Dannis Lipa Quispe"
 
 ## char\[n\]:
 
-Una manera de guardar cadenas de texto es usar en vector de tipo char, es una manera un poco eficiente, pero esta bien si tu programa no requiere de mucho texto en las entradas, se guarda de la siguiente manera:
+Una forma común de almacenar cadenas de texto en C++ es usando un arreglo (vector) de tipo `char`. Es un método bastante eficiente, aunque limitado, ideal para programas que no requieren manejar textos muy largos en las entradas. Se declara y usa de la siguiente manera:
 
 ``` cpp
 #include <iostream>
@@ -19,12 +19,11 @@ int main(){
 }
 ```
 
-En este caso, para poder guardar las cadenas de texto utilizamos **`cin.getline()`**, que en este caso usa 3 parámetros:  
-en el primero nos preguntamos ¿Dónde lo quieres guardar? (en este caso es en **nombre**),  
-en el segundo, ¿cuántos espacios tiene? (ahí ponemos la cantidad que reservamos en el inicio),  
-y por último, ¿cuándo queremos que termine? En ese lugar pondremos un salto de línea que es **\texttt{`\textbackslash n`}**,  
-es decir, que al apretar la tecla **Enter** se guardará la cantidad de caracteres antes de dicha acción.  
-Ejemplo de compilación:
+En este caso, para guardar cadenas de texto utilizamos `cin.getline()`, que recibe tres parámetros:
+
+-   En el primero, indicamos **dónde queremos guardar** la cadena (en este ejemplo, en la variable nombre).
+-   En el segundo, especificamos **cuántos espacios reservamos** para almacenar la cadena (la cantidad que definimos al inicio).\
+-   Y en el tercero, indicamos cuándo debe **terminar la lectura**, que normalmente es un salto de línea \texttt{`\textbackslash n`} (es decir, cuando presionamos la tecla **Enter**, se guarda la cadena hasta ese momento). **Ejemplo de uso y compilación:**
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -35,14 +34,14 @@ Su nombre guardado es: Maria Gonzales Perez
 \end{tcolorbox}
 ```
 
-Algunas carácteristicas especiales que puedes usar son las siguientes para que algunas de estas funciones correctamente es necesario usar **#include\<cstdlib\>** (donde var es una variables):
+Algunas carácteristicas especiales que puedes usar son las siguientes. Para que algunas de estas funciones correctamente es necesario incluir la librería **#include\<cstdlib\>** (donde `var` es una variables):
 
 Funciones clásicas de manejo de `char[]` (cstring)
 
 > Estas funciones trabajan con arreglos de caracteres (`char[]`), no con objetos `string`. Se requiere incluir la cabecera `#include <cstring>` y en algunos casos `#include <cstdlib>`.
 
 | **Método** | **¿Para qué sirve?** | **Ejemplo** | **Resultado** |
-|----------------|-------------------------|-----------------|----------------|
+|----|----|----|----|
 | `strlen(var)` | Obtener la longitud de una cadena | `int num = strlen("alex");` | `num = 4` |
 | `strcpy(dest, src)` | Copiar el contenido de una cadena en otra | `strcpy(var1, "Alex");` | `var1 = "Alex"` |
 | `strcmp(a, b)` | Comparar dos cadenas | `strcmp("hola", "hola") == 0` | `true` si son iguales |
@@ -56,7 +55,7 @@ Funciones clásicas de manejo de `char[]` (cstring)
 
 > ⚠️ Nota: `strrev`, `strupr` y `strlwr` no son funciones estándar en C++, pero funcionan en algunos compiladores como **Dev-C++**.
 
-Hagamos un ejercico simple que será verificar si una palabra tiene la 'a' minuscula en su nombre:
+Hagamos un ejercico simple que será, verificar si una palabra tiene la `a` minuscula en su nombre:
 
 ``` cpp
 #include <iostream>
@@ -84,7 +83,9 @@ int main(){
 }
 ```
 
-Ente programa verifica si almenos tu nombre contiene una **a** usamos 3 variables de diferentes tipos que son **char\[20\]** para almacenar un nombre de máximo 20 carácteres, **bool** para verificar si hay almenos una **a** en el nombre y un **int** para saber exáctamente cuantos carácteres tiene el nombre introducido. La compilación del programa será de esta manera:
+Este programa verifica si al menos tu nombre contiene una **a**. Usamos 3 variables de diferentes tipos que son: **`char[20]`** para almacenar un nombre de máximo 20 caracteres, **`bool`** para verificar si hay al menos una **a** en el nombre y un **`int`** para saber exactamente cuántos caracteres tiene el nombre introducido.
+
+La compilación del programa será de esta manera:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -95,11 +96,11 @@ Su nombre contiene almenos una a.
 \end{tcolorbox}
 ```
 
-Si deseas ver más ejercicios de este tipo te invito a ver este video -\>
-
 ## string
 
-Otra manera de guardar cadenas de texto es usar los string que una manera más fácil de alamacenar las palabras y se entien de mejor manera, a qui te muestro un ejemplo:
+Otra manera de guardar cadenas de texto es usar los **`string`**, que es una forma más fácil de almacenar palabras y se entiende mejor.
+
+Aquí te muestro un ejemplo:
 
 ``` cpp
 #include <iostream>
@@ -114,12 +115,20 @@ int main(){
 }
 ```
 
-Para guardar los string se usa la palabra reservada **getline()** que en este caso usamos dos parámetros, para saber que poner en el primer parámetro nos preguntamos ¿Qué queremos hacer? En este caso queremos guardar y por ello ponemos **cin** en el segundo parámetro va ¿Dónde lo quieres guardar? por esa razón va el nombre de la variable de tipo string. Algunas carácteristicas básicas de los string son estos:
+Para guardar los **string** se usa la función reservada **getline()**, que en este caso utiliza dos parámetros.
+
+Para saber qué poner en el primer parámetro, nos preguntamos: ¿Qué queremos hacer?\
+En este caso, queremos **guardar** y por ello ponemos **`cin`**.
+
+En el segundo parámetro, va: ¿Dónde lo quieres guardar?\
+Por esa razón, colocamos el nombre de la variable de tipo **string**.
+
+Algunas características básicas de los **string** son estas:
 
 Métodos comunes de `string` en C++
 
 | MÉTODO | ¿Para qué sirve? | Ejemplo | Resultado |
-|---------------|---------------------------|---------------|---------------|
+|----|----|----|----|
 | `.empty()` | Verifica si la cadena está vacía | `string s = ""; s.empty();` | `true` |
 | `.length()` | Devuelve el número de caracteres de la cadena | `string s = "Hola"; s.length();` | `4` |
 | `.size()` | Igual que `.length()` | `s.size();` | `4` |
@@ -137,8 +146,11 @@ Métodos comunes de `string` en C++
 
 > **Nota:** funciones como `toupper()`, `isdigit()`, etc., requieren incluir la librería `#include <cctype>`.
 
-Como modo de práctica hagámos un programa que verifique si la primera y última palabar inician con un caracter, si es haci que imprima "hola muno" y si no mostrar "buenas noches".
-```cpp
+Como modo de práctica, hagamos un programa que verifique si la primera y última palabra inician con un mismo carácter.
+
+Si es así, que imprima **"hola mundo"**, y si no, muestre **"buenas noches"**.
+
+``` cpp
 #include <iostream>
 #include <cctype> // para usar isalpha()
 #include <cstring>
@@ -157,7 +169,19 @@ int main(){
     return 0;
 }
 ```
-En este lo que hicimos es verificar si una palabra empieza y termina con un caracter, como en los vectores las string tienen índices e inician de igual manera pos el 0. Por ese motivo en la estructura de control **if** pusimos `palabra[0]` y `palabra[tam-1]` si pusiera la palabra **casa** lo que la condicional verificaría sería esto: `c y a` ¿Son string? si, y por ello el resultado sería **true** e imprimiría "hola mundo" y en caso contrario "buenas noches", a qui te muestro un ejemplo de compilación:
+
+En este programa lo que hicimos es verificar si una palabra empieza y termina con un mismo carácter.
+
+Como en los vectores, las `string` tienen índices que empiezan en 0. Por esa razón, en la estructura de control **if** usamos `palabra[0]` y `palabra[tam-1]`.
+
+Si la palabra es **casa**, lo que la condicional verificaría sería: `c` y `a`.
+
+¿Son iguales? No, por eso el resultado sería **false** y el programa imprimiría "buenas noches".
+
+En cambio, si la palabra fuera, por ejemplo, **alba**, la comparación sería entre `a` y `a`, dando **true** y el programa imprimiría "hola mundo".
+
+Aquí te muestro un ejemplo de compilación:
+
 ```{=latex}
 \begin{tcolorbox}[custombox]
 \begin{verbatim}
@@ -169,4 +193,3 @@ buenas noches.
 \end{verbatim}
 \end{tcolorbox}
 ```
-Si te quedaste con intriga y deseas saber más te invito a que le des un vistaso a este video ->

@@ -1,0 +1,149 @@
+---
+title: "Listas enlazadas"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## Introducción
+
+Una lista enlazada es como una cadena de personas tomadas de la mano: cada persona conoce a la siguiente.
+En programación, una lista enlazada es una estructura de datos en la que cada elemento (llamado nodo) contiene un dato y un puntero al siguiente nodo.
+A diferencia de los arreglos, no necesitamos saber el tamaño de antemano, y podemos insertar o eliminar elementos sin mover todos los demás.
+
+## Teoría
+**¿Qué es una lista enlazada?**
+
+Es una colección dinámica de nodos donde cada nodo apunta al siguiente. Existen distintos tipos:
+
+-   Lista enlazada simple: cada nodo apunta al siguiente.
+-   Lista doblemente enlazada: cada nodo apunta al anterior y al siguiente.
+-   Lista circular: el último nodo apunta al primero.
+
+Aquí trabajaremos con una `lista enlazada simple`.
+
+Operaciones básicas:
+
+-   Insertar elementos al inicio o al final.
+-   Mostrar todos los elementos.
+-   Eliminar elementos.
+
+## Código y explicación
+
+A continuación, te presento un código básico de lista enlazada con inserción al inicio, recorrido y eliminación de nodos.
+```cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+};
+```
+-   Cada `Nodo` contiene un dato (`int`) y un puntero al siguiente nodo de la lista.
+```cpp
+void insertarInicio(Nodo*&, int);
+void mostrarLista(Nodo*);
+void eliminarLista(Nodo*&);
+```
+-   Declaramos las funciones que nos permiten manipular la lista.
+```cpp
+int main() {
+    Nodo* lista = NULL;
+    int opcion, valor;
+
+    do {
+        cout << "\n--- MENÚ DE LISTA ENLAZADA ---\n";
+        cout << "1. Insertar elemento al inicio\n";
+        cout << "2. Mostrar lista\n";
+        cout << "3. Eliminar lista\n";
+        cout << "4. Salir\n";
+        cout << "Opción: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                cout << "Ingrese un número: ";
+                cin >> valor;
+                insertarInicio(lista, valor);
+                break;
+            case 2:
+                cout << "Contenido de la lista: ";
+                mostrarLista(lista);
+                break;
+            case 3:
+                eliminarLista(lista);
+                cout << "Lista eliminada.\n";
+                break;
+            case 4:
+                cout << "Saliendo...\n";
+                break;
+            default:
+                cout << "Opción inválida.\n";
+        }
+        system("pause");
+        system("cls");
+    } while(opcion != 4);
+
+    return 0;
+}
+```
+-   Menú clásico que permite insertar, mostrar y eliminar la lista enlazada.
+**Función: Insertar al inicio**
+```cpp
+void insertarInicio(Nodo*& lista, int valor) {
+    Nodo* nuevo_nodo = new Nodo();
+    nuevo_nodo->dato = valor;
+    nuevo_nodo->siguiente = lista;
+    lista = nuevo_nodo;
+}
+```
+-   Se crea un nuevo nodo, se enlaza al inicio y el puntero de la lista se actualiza.
+-   Esta operación es rápida, siempre toma el mismo tiempo sin importar cuántos nodos haya.
+**Función: Mostrar la lista**
+```cpp
+void mostrarLista(Nodo* lista) {
+    while(lista != NULL) {
+        cout << lista->dato;
+        if (lista->siguiente != NULL)
+            cout << " -> ";
+        lista = lista->siguiente;
+    }
+    cout << "." << endl;
+}
+```
+-   Recorre todos los nodos desde el primero hasta el último.
+-   Imprime cada dato seguido por una flecha, excepto el último que termina en punto.
+**Función: Eliminar todos los nodos**
+```cpp
+void eliminarLista(Nodo*& lista) {
+    Nodo* aux;
+    while(lista != NULL) {
+        aux = lista;
+        lista = lista->siguiente;
+        delete aux;
+    }
+}
+```
+-   Libera la memoria nodo por nodo, evitando pérdidas de memoria (muy importante en programas grandes).
+
+**Ejemplo en ejecución**
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+--- MENÚ DE LISTA ENLAZADA ---
+1. Insertar elemento al inicio
+2. Mostrar lista
+3. Eliminar lista
+4. Salir
+Opción: 1
+Ingrese un número: 5
+
+Opción: 1
+Ingrese un número: 8
+
+Opción: 2
+Contenido de la lista: 8 -> 5.
+\end{verbatim}
+\end{tcolorbox}
+```
+-   Como estamos insertando al inicio, el último elemento agregado aparece primero.

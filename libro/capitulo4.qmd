@@ -5,7 +5,9 @@ author: "Alex Dannis Lipa Quispe"
 
 ## if-else
 
-Una breve explicación sobre ese tema es que cuando la condición dentro de **if** sea verdadera se ejecuta una parte del código, en cambio si la afirmación es falsa se ejecuta el código dentro de **else** la estructura principal es la siguiente:
+Una breve explicación sobre este tema es que cuando la condición dentro de un **if** sea verdadera, se ejecuta una parte del código. En cambio, si la condición es falsa, se ejecuta el código dentro de **else**.
+
+La estructura principal es la siguiente:
 
 ``` cpp
 #include <iostream>
@@ -37,7 +39,7 @@ int main(){
 }
 ```
 
-En este ejemplo vemos que la afirmación de **3\>4** es falsa por lo que se ejecuta el código que esta dentro de **else** como se muestra a continuación.
+En este ejemplo vemos que la afirmación de **3 \> 4** es falsa, por lo que se ejecuta el código que está dentro de **else**, como se muestra a continuación.
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -45,7 +47,7 @@ En este ejemplo vemos que la afirmación de **3\>4** es falsa por lo que se ejec
 \end{tcolorbox}
 ```
 
-Un ejercicio muy practico es comprobar si un numero es par o impar. En este código utilizaremos el operador **mod** (%) el código quedara de la siguiente manera:
+Un ejercicio muy práctico es comprobar si un número es par o impar. En este código utilizaremos el operador **mod** (%) y el código quedará de la siguiente manera:
 
 ``` cpp
 #include <iostream>
@@ -76,7 +78,9 @@ flowchart LR
   C -->|Falso| E[Mostrar "El número es impar"]
 ```
 
-para mayor entendimiento -\> **4 % 2** \<- el resultado nosda como resultado -\> **0** \<- por lo que la afirmación quedaría de la siguiente manera -\> **0 == 0** \<- y esta afirmación es verdadera e imprimiria el fragmento de código que esta dentro de **if**. Encanbio si la entrada fuera 5 esto pasaría -\> **(5 % 2) == 0** -\> **1 == 0** -\> esta afirmación es falsa por loque se imprime el código dentro de **else**.
+Para mayor entendimiento, veamos el ejemplo de **4 % 2**, cuyo resultado es **0**, por lo que la afirmación queda así: **0 == 0**, la cual es verdadera, e imprimirá el fragmento de código que está dentro del **if**.
+
+En cambio, si la entrada fuera 5, el cálculo sería: **(5 % 2) == 0** → **1 == 0**, que es falso, por lo que se ejecutará el código dentro del **else**.
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -94,7 +98,9 @@ El numero es impar.
 
 ## switch-case:
 
-De una manera fácil de entender, esta estructura lo que hace es verificar una serire de posibles valores es decir el usuario digite una dato y ese dato se va comparando con diferentes valores, la estructura es la siguiente:
+De una manera fácil de entender, esta estructura verifica una serie de posibles valores. Es decir, el usuario ingresa un dato y ese dato se compara con diferentes valores.
+
+La estructura es la siguiente:
 
 ``` cpp
 #include <iostream>
@@ -119,7 +125,9 @@ int main(){
 }
 ```
 
-Como se vé es fácil de entender, como un ejemplo practico será realizar un progrma que dado una entrada decir si tiene que dar un exámen, que no tiene que dar un exámen o que digite un valor determinado:
+Como se ve, es fácil de entender. Un ejemplo práctico será realizar un programa que, dado un valor de entrada, indique si una persona tiene que presentar un examen, no tiene que presentarlo o que ingrese un valor válido.
+
+El programa quedaría así:
 
 ``` cpp
 #include <iostream>
@@ -150,11 +158,15 @@ Espera tu resultado.
 \end{tcolorbox}
 ```
 
-Lo que hace el programa es verificar si el caracter ingresado es 's' encaso de ser a si lo que hace es imprimir **Espera tu resultado.**, en caso de ser 'n' imprime el código que esta por debajo es decir **Dirigete al salon A3.** y en caso de no ingresar ninguno de los dos se imprimirá **Ingresate un valor invalido.** Con tu creatividad sé que podras crear programas con más opciones como por ejemplo hacer una calculadora que dada una opción hacer una suma, una resta o lo que tu quieras.
+Lo que hace el programa es verificar si el carácter ingresado es `'s'`. En caso de ser así, imprime **"Espera tu resultado."**.\
+Si el carácter es `'n'`, imprime **"Dirígete al salón A3."**.\
+Y si no es ninguno de los dos, se imprimirá **"Ingresaste un valor inválido."**.
+
+Con tu creatividad, sé que podrás crear programas con más opciones, como por ejemplo, una calculadora que, dada una opción, haga una suma, una resta o cualquier operación que desees.
 
 ## Ternario:
 
-El operador ternario es parecido al **if-else** pero de manera resumida es decir tiene esta estructura:
+El operador ternario es parecido al **if-else**, pero de manera resumida. Tiene esta estructura:
 
 ``` cpp
 #include <iostream>
@@ -165,7 +177,10 @@ int main(){
 }
 ```
 
-Si la condición es verdadera se ejecuta el código que esta despues de -\> **?** si la condición es falsa se ejecuta el código que esta después de -\> **:**. Ejemplo:
+Si la condición es verdadera, se ejecuta el código que está después de **`?`**.\
+Si la condición es falsa, se ejecuta el código que está después de **`:`**.
+
+Ejemplo:
 
 ``` cpp
 #include <iostream>
@@ -179,7 +194,9 @@ int main(){
 }
 ```
 
-Primeramente lo que hicimos es declarar 3 variables entereas como se muestra ojo el operador ternario retorna un valor de acuerdo asus parámetros, que este caso son **a** y **b** primeramente compara los valores de la siguiente manera: (a\>b)? -\> esta operación es como -\> **5\>6**, esta condición es falsa por lo que retorno el código que esta de lado derecho de -\> **:** que es la **b**, dondo como resultado:
+Primeramente, declaramos 3 variables enteras como se muestra. Ojo, el operador ternario retorna un valor de acuerdo a sus parámetros, que en este caso son **a** y **b**.
+
+Primeramente compara los valores de la siguiente manera: `(a > b)?` — esta operación es como `5 > 6`, esta condición es falsa, por lo que retorna el código que está del lado derecho de `:` que es la **b**, dando como resultado:
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -187,7 +204,7 @@ El numero mayor es: 6
 \end{tcolorbox}
 ```
 
-Puedes probrar de diferente manera como en este otro ejemplo:
+Puedes probrar de diferente manera, como en este otro ejemplo:
 
 ``` cpp
 #include <iostream>
@@ -203,7 +220,9 @@ int main() {
 }
 ```
 
-En este caso retornamos una cadena de caracteres y como sabemos que para poder guardar cadenas usamos la palabra reservada **string** seguido del nombre de la varibale, como vemos en la salida dara **Menor o igual.** por que el valor de **a** es menor que el valor de la variable **b**
+En este caso retornamos una cadena de caracteres y, como sabemos, para poder guardar cadenas usamos la palabra reservada **string** seguida del nombre de la variable.
+
+Como vemos en la salida, dará **Menor o igual**, porque el valor de **a** es menor que el valor de la variable **b**.
 
 ```{=latex}
 \begin{tcolorbox}[custombox]
@@ -211,4 +230,4 @@ Menor o igual.
 \end{tcolorbox}
 ```
 
-Puedes hacer una serie de ejercicio para tener más familiarización con las estructuras de control, para poder a si desarrollar tu lógica de programación.
+Puedes hacer una serie de ejercicios para tener más familiarización con las estructuras de control, para poder así desarrollar tu lógica de programación.

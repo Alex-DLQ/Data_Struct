@@ -1,0 +1,3254 @@
+% Options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  11pt,
+  a4paper,
+  DIV=11,
+  numbers=noendperiod]{scrreprt}
+\usepackage{xcolor}
+\usepackage[lmargin=2cm,rmargin=2cm,tmargin=2cm,bmargin=2cm]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{5}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage{setspace}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+% Make \paragraph and \subparagraph free-standing
+\makeatletter
+\ifx\paragraph\undefined\else
+  \let\oldparagraph\paragraph
+  \renewcommand{\paragraph}{
+    \@ifstar
+      \xxxParagraphStar
+      \xxxParagraphNoStar
+  }
+  \newcommand{\xxxParagraphStar}[1]{\oldparagraph*{#1}\mbox{}}
+  \newcommand{\xxxParagraphNoStar}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+  \let\oldsubparagraph\subparagraph
+  \renewcommand{\subparagraph}{
+    \@ifstar
+      \xxxSubParagraphStar
+      \xxxSubParagraphNoStar
+  }
+  \newcommand{\xxxSubParagraphStar}[1]{\oldsubparagraph*{#1}\mbox{}}
+  \newcommand{\xxxSubParagraphNoStar}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+\makeatother
+
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{241,243,245}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.40,0.45,0.13}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.28,0.35,0.67}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.46,0.62}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.68,0.00,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.00,0.23,0.31}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.07,0.07,0.07}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.13,0.47,0.30}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.37,0.37,0.37}{\textit{#1}}}
+
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+
+
+
+
+
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+
+
+
+ 
+
+
+% Activamos tcolorbox
+\usepackage[most]{tcolorbox}
+
+% Definimos un estilo personalizado
+\tcbset{
+  custombox/.style={
+    colback=red!10,         % fondo rojo claro
+    colframe=red!60!black,  % borde rojo oscuro
+    coltext=black,          % color del texto
+    boxrule=0.4pt,
+    arc=4pt,
+    left=6pt,
+    right=6pt,
+    top=6pt,
+    bottom=6pt,
+  }
+}
+\tcbset{
+  codebox/.style={
+    colback=gray!10,     % Fondo gris claro (ajusta el color si lo prefieres)
+    colframe=black,      % Borde negro
+    boxrule=0.5pt,       % Grosor del borde
+    arc=3pt,             % Esquinas ligeramente redondeadas
+    left=6pt, right=6pt, top=6pt, bottom=6pt,  % Márgenes internos
+    fontupper=\ttfamily, % Fuente de tipo código
+    sharp corners        % Opcional: esquinas rectas
+    % ¡Sin 'coltext' aquí!
+  }
+}
+\KOMAoption{captions}{tableheading}
+\makeatletter
+\@ifpackageloaded{bookmark}{}{\usepackage{bookmark}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\AtBeginDocument{%
+\ifdefined\contentsname
+  \renewcommand*\contentsname{Table of contents}
+\else
+  \newcommand\contentsname{Table of contents}
+\fi
+\ifdefined\listfigurename
+  \renewcommand*\listfigurename{List of Figures}
+\else
+  \newcommand\listfigurename{List of Figures}
+\fi
+\ifdefined\listtablename
+  \renewcommand*\listtablename{List of Tables}
+\else
+  \newcommand\listtablename{List of Tables}
+\fi
+\ifdefined\figurename
+  \renewcommand*\figurename{Figure}
+\else
+  \newcommand\figurename{Figure}
+\fi
+\ifdefined\tablename
+  \renewcommand*\tablename{Table}
+\else
+  \newcommand\tablename{Table}
+\fi
+}
+\@ifpackageloaded{float}{}{\usepackage{float}}
+\floatstyle{ruled}
+\@ifundefined{c@chapter}{\newfloat{codelisting}{h}{lop}}{\newfloat{codelisting}{h}{lop}[chapter]}
+\floatname{codelisting}{Listing}
+\newcommand*\listoflistings{\listof{codelisting}{List of Listings}}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\@ifpackageloaded{caption}{}{\usepackage{caption}}
+\@ifpackageloaded{subcaption}{}{\usepackage{subcaption}}
+\makeatother
+\makeatletter
+\@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
+\makeatother
+\makeatletter
+\@ifundefined{shadecolor}{\definecolor{shadecolor}{HTML}{3C3C3C}}{}
+\makeatother
+\makeatletter
+\makeatother
+\makeatletter
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, sharp corners, breakable, boxrule=0pt, interior hidden, borderline west={3pt}{0pt}{shadecolor}, enhanced]}{\end{tcolorbox}}\fi
+\makeatother
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={C++ para Principiantes},
+  pdfauthor={Alex Dannis Lipa Quispe},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={Blue},
+  pdfcreator={LaTeX via pandoc}}
+
+
+\title{C++ para Principiantes}
+\author{Alex Dannis Lipa Quispe}
+\date{2025-05-29}
+\begin{document}
+\maketitle
+
+\renewcommand*\contentsname{Table of contents}
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{2}
+\tableofcontents
+}
+
+\setstretch{1.3}
+\bookmarksetup{startatroot}
+
+\chapter{INTRODUCCIÓN}\label{introducciuxf3n}
+
+Bienvenio/a a este libro de ``C++ Para Principiantes'', darte la cálida
+vienvenida a este libro que fue echa especialmente para personas que a
+si como yo, teinen cierta dificultad entender y escribir código de
+manera fluida. Este es un pequeño paso para mi persona ya que será mi
+primer libro de programación y espero que pueda hacer muchos más.
+
+Este libro tomará conceptos básicos sobre la programación, pero tocara
+varios temas importantes, empezando desde el hola mundo terminando en
+loq ue tenga que acabar\ldots{} El libro tendrá explicación detallada
+sobre cada parte del código de una manera clara y fáscil de entender por
+lo que te pido que solo tengas los ánimos para poder aprender de una
+manera más divertida.
+
+\textbf{C++} es un lenguaje de programación de propósito general creado
+por \textbf{Bjarne Stroustrup} en los años 80, como una extensión del
+lenguaje C. Su objetivo era combinar la eficiencia y el control de C con
+características más modernas, como la \textbf{programación orientada a
+objetos}.
+
+Desde entonces, C++ se ha convertido en uno de los lenguajes más
+utilizados del mundo, especialmente en áreas donde se necesita
+rendimiento, como:
+
+\begin{itemize}
+\item
+  Desarrollo de \textbf{videojuegos}
+\item
+  \textbf{Sistemas operativos}
+\item
+  Programas que necesitan acceso directo a hardware
+\item
+  \textbf{Software financiero} de alto rendimiento
+\item
+  Aplicaciones \textbf{científicas y de ingeniería}
+\end{itemize}
+
+\textbf{Características principales de C++}
+
+\begin{itemize}
+\item
+  \textbf{Compilado}: el código debe convertirse a lenguaje máquina
+  antes de ejecutarse.
+\item
+  \textbf{Tipado estático}: debes declarar el tipo de cada variable.
+\item
+  \textbf{Eficiente y rápido}: ideal para tareas exigentes.
+\item
+  \textbf{Multiplataforma}: puedes usarlo en Windows, Linux y macOS.
+\item
+  \textbf{Paradigma múltiple}: permite programación estructurada,
+  orientada a objetos y genérica.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Variables y Tipos de Datos}\label{variables-y-tipos-de-datos}
+
+\section{Tipos de datos}\label{tipos-de-datos}
+
+Los tipos de datos son una categoría que se asigna a las variables para
+que puedan almacenar un tipo de valor específico.
+
+\section{Variables}\label{variables}
+
+Las variables pueden tener cualquier nombre, excepto las
+\textbf{palabras reservadas} del lenguaje de programación que estés
+usando. Como buena práctica, te recomiendo que las variables sean
+fáciles de leer, como por ejemplo: \texttt{numero}, \texttt{nombre}.\\
+Esto ayudará a que tu código sea fácil de entender en tu entorno de
+trabajo.
+
+\section{Datos numéricos}\label{datos-numuxe9ricos}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{float}: ocupa 32 bits. Puede contener desde
+  \texttt{1.4\ ×\ 10\^{}-45} hasta \texttt{3.4028235\ ×\ 10\^{}38}.
+\item
+  \textbf{double}: ocupa 64 bits. Puede contener desde
+  \texttt{4.9\ ×\ 10\^{}-324} hasta
+  \texttt{1.7976931348623157\ ×\ 10\^{}308}.
+\item
+  \textbf{short}: ocupa 16 bits. Puede contener desde \texttt{-32,768}
+  hasta \texttt{32,767}.
+\item
+  \textbf{int}: ocupa 32 bits. Puede contener desde
+  \texttt{-2,147,483,648} hasta \texttt{2,147,483,647}.
+\item
+  \textbf{long}: ocupa 64 bits. Puede contener desde
+  \texttt{-9,223,372,036,854,775,808} hasta
+  \texttt{9,223,372,036,854,775,807}.
+\end{itemize}
+
+\section{Cadenas de caracteres}\label{cadenas-de-caracteres}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{char}: ocupa 8 bits. Puede contener desde el carácter nulo
+  (\texttt{\textquotesingle{}\textbackslash{}0\textquotesingle{}}) hasta
+  \texttt{127} (para \texttt{signed\ char}) o \texttt{255} (para
+  \texttt{unsigned\ char}).
+\item
+  \textbf{string}: ocupa 8 bits por cada carácter. Puede contener desde
+  \texttt{""} (cadena vacía) hasta un tamaño que depende de la memoria
+  disponible.
+\end{itemize}
+
+\section{Ejemplo de declaración de
+variables}\label{ejemplo-de-declaraciuxf3n-de-variables}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}string\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
+    \CommentTok{// Variables numéricas}
+    \DataTypeTok{int}\NormalTok{ edad }\OperatorTok{=} \DecValTok{25}\OperatorTok{;}
+    \DataTypeTok{float}\NormalTok{ altura }\OperatorTok{=} \FloatTok{1.75}\OperatorTok{;}
+    \DataTypeTok{double}\NormalTok{ peso }\OperatorTok{=} \FloatTok{65.7}\OperatorTok{;}
+    
+    \CommentTok{// Cadenas de texto}
+    \DataTypeTok{char}\NormalTok{ inicial }\OperatorTok{=} \CharTok{\textquotesingle{}A\textquotesingle{}}\OperatorTok{;}
+\NormalTok{    string nombre }\OperatorTok{=} \StringTok{"Carlos"}\OperatorTok{;}
+    
+    \CommentTok{// Mostrar los valores}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Nombre: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ nombre }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Inicial: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ inicial }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Edad: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ edad }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Altura: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ altura }\OperatorTok{\textless{}\textless{}} \StringTok{" m"} \OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Peso: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ peso }\OperatorTok{\textless{}\textless{}} \StringTok{" kg"} \OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\bookmarksetup{startatroot}
+
+\chapter{Operadores}\label{operadores}
+
+\section{Matemáticos}\label{matemuxe1ticos}
+
+Son operadores que conocemos desde la primaria, los cuales son:
+
+\begin{itemize}
+\tightlist
+\item
+  Suma: denotado por (+).
+\item
+  Resta: denotado por (-).
+\item
+  Multiplicación: denotado por (*).
+\item
+  División: denotado por (/).
+\item
+  Residuo: denotado por (\%).
+\item
+  Potencia: denotado por (\^{}).
+\end{itemize}
+
+Estos operadores nos sirven para que nuestros programas puedan ejecutar
+las operaciones aritméticas que conocemos, por ejemplo:
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule\noalign{}
+OPERADORES ARITMÉTICOS & OPERACIÓN & RESULTADO \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Suma & 8 + 9 & 17 \\
+Resta & 10 - 9 & 1 \\
+Multiplicación & 7 * 2 & 14 \\
+División & 21 / 3 & 7 \\
+Residuo & 21 \% 2 & 1 \\
+Potencia & 4 \^{} 2 & 16 \\
+\end{longtable}
+
+\section{Relacionales}\label{relacionales}
+
+Son los signos que se usan para comparar dos valores, cuyo resultado es
+un valor booleano: \textbf{verdadero} o \textbf{falso}. Probablemente ya
+los conoces:
+
+\begin{longtable}[]{@{}cccc@{}}
+\toprule\noalign{}
+Operador & Símbolo & Operación & Resultado \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Mayor que & \textgreater{} & 4 \textgreater{} 7 & Falso \\
+Menor que & \textless{} & 9 \textless{} 1 & Falso \\
+Mayor igual que & \textgreater= & 7 \textgreater= 2 & Verdadero \\
+Menor igual que & \textless= & 8 \textless= 8 & Verdadero \\
+Igual & == & 7 == 1 & Falso \\
+Diferente & != & 3 != 9 & Verdadero \\
+\end{longtable}
+
+\section{Lógicos}\label{luxf3gicos}
+
+En matemáticas se conocen como tablas proposicionales. Aquí tomaremos
+los operadores \textbf{Y}, \textbf{O} y \textbf{Negación}.
+
+Donde \textbf{V} es verdadero y \textbf{F} es falso.
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2121}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1212}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2121}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1212}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.2121}}
+  >{\centering\arraybackslash}p{(\linewidth - 10\tabcolsep) * \real{0.1212}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Operador ``Y''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Salida
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Operador ``O''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Salida
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Negación ``!''
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Salida
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+V y V & V & V o V & V & !(V y F) & V \\
+V y F & F & V o F & V & !(V y V) & F \\
+F y V & F & F o V & V & !(F o V) & F \\
+F y F & F & F o F & F & !(F o F) & V \\
+\end{longtable}
+
+\section{Asignación}\label{asignaciuxf3n}
+
+La asignación se usa en programación para dar un valor a una variable.
+Por ejemplo, si declaramos una variable entera llamada \textbf{a}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \DataTypeTok{int}\NormalTok{ a}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Para asignarle un valor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    a }\OperatorTok{=} \DecValTok{5}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Ahora, si queremos restarle 1 a la variable, escribimos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    a }\OperatorTok{=}\NormalTok{ a }\OperatorTok{{-}} \DecValTok{1}\OperatorTok{;}  \CommentTok{// Resultado: 4}
+\end{Highlighting}
+\end{Shaded}
+
+Como el nombre de la variable se repite, podemos usar el operador
+compuesto:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    a }\OperatorTok{{-}=} \DecValTok{1}\OperatorTok{;}     \CommentTok{// Equivalente a: a = a {-} 1}
+\end{Highlighting}
+\end{Shaded}
+
+De la misma manera, para sumar 1:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    a }\OperatorTok{=}\NormalTok{ a }\OperatorTok{+} \DecValTok{1}\OperatorTok{;}  \CommentTok{// Resultado: 6}
+\end{Highlighting}
+\end{Shaded}
+
+O usando el operador compuesto:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{    a }\OperatorTok{+=} \DecValTok{1}\OperatorTok{;}     \CommentTok{// Equivalente a: a = a + 1}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Operadores de incremento y
+decremento}\label{operadores-de-incremento-y-decremento}
+
+Existen operadores que aumentan o disminuyen el valor en 1 de forma más
+sencilla:
+
+\begin{longtable}[]{@{}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\centering
+Operador
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Descripción
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Ejemplo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Resultado si a = 5
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{++a} & Incremento antes de usar el valor. & \texttt{++a;} & 6 \\
+\texttt{a++} & Incremento después de usar el valor. & \texttt{a++;} & 6
+(pero el valor usado primero es 5) \\
+\texttt{-\/-a} & Decremento antes de usar el valor. & \texttt{-\/-a;} &
+4 \\
+\texttt{a-\/-} & Decremento después de usar el valor. & \texttt{a-\/-;}
+& 4 (pero el valor usado primero es 5) \\
+\end{longtable}
+
+\bookmarksetup{startatroot}
+
+\chapter{Entradas y Salidas}\label{entradas-y-salidas}
+
+\section{Inicio:}\label{inicio}
+
+Para empezar a escribir un código en C++ necesitas tener un lugar
+compilador o un lugar donde escribir código, eso te lo dejo a tu
+elección.
+
+Primeramente, cada programa se inicia con:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\end{Highlighting}
+\end{Shaded}
+
+La palabra \textbf{\#include \textless iostream\textgreater{}} incluye
+la librería para poder hacer la entrada y salida de valores, los cuales
+son:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{cin }\OperatorTok{\textgreater{}\textgreater{}} \CommentTok{//esto se utiliza para entrar o digitar valores a tu programa.}
+\NormalTok{cout }\OperatorTok{\textless{}\textless{}} \CommentTok{//esto se utiliza para mostrar mensaje en tu programa.}
+\end{Highlighting}
+\end{Shaded}
+
+La estructura principal es de esta manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}  \CommentTok{//Esta es la función principal que leerá el programa}
+  
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;} \CommentTok{//Si el programa funciona bien retornara 0}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Salidas:}\label{salidas}
+
+Para mostrar tu primer \texttt{hola\ mundo} en c++ se hace de la
+siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \BuiltInTok{std::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Hola mundo"}\OperatorTok{\textless{}\textless{}} \BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Este fragmento de código imprimirá tu primer ``Hola mundo''. Recuerda
+que para enviar un mensaje es importante que esté entre comillas dobles
+\textbf{``\,``}, y si solo va a tener un carácter debe estar entre
+comillas simples \textbf{'\,'}.
+
+Para simplificar el código, si te resulta estresante, puedes usar
+\textbf{using namespace std}. Esto, de manera simple, permite abreviar u
+omitir el \textbf{std::}. El código quedará de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \BuiltInTok{std::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Hola mundo"}\OperatorTok{\textless{}\textless{}}\BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}\CommentTok{/* cabe recalcar que para proyectos grandes el "using namespace std" }
+\CommentTok{ara tu programa menos optimo */}
+\end{Highlighting}
+\end{Shaded}
+
+Los mensajes que pongo en los códigos no se leen porque son comentarios.
+Si deseas poner un comentario lineal, usa \textbf{//} y para comentarios
+multilínea debes usar \textbf{/} \ldots{} \textbf{/} escribiendo el
+mensaje dentro de los asteriscos.
+
+\section{Entradas:}\label{entradas}
+
+Para guardar y mostrar valores, para compilar el código hacemos esto:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ valor}\OperatorTok{;}
+    \BuiltInTok{std::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite un valor: "}\OperatorTok{;} 
+    \BuiltInTok{std::}\NormalTok{ cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ valor}\OperatorTok{;}
+    \BuiltInTok{std::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El valor es: "}\OperatorTok{\textless{}\textless{}}\NormalTok{valor}\OperatorTok{\textless{}\textless{}}\BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Este código lo que hace es declarar una variable de nombre
+\textbf{valor} de tipo entero (int) con el mensaje ``Digite un valor''.
+Luego, en el programa, el usuario digitara un valor numérico que se
+almacenará en \textbf{valor}.
+
+Para imprimir el valor introducido, se usa un \texttt{cout} seguido del
+nombre de la variable a mostrar. Cabe recalcar que si no se asigna un
+valor a la variable, se imprimirá un dato basura o un valor sin sentido.
+
+\begin{tcolorbox}[custombox]
+Digite un valor: 15\\
+El valor es: 15
+\end{tcolorbox}
+
+Para hacer operaciones se hace de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ num1 }\OperatorTok{=} \DecValTok{8}\OperatorTok{,}\NormalTok{ num2 }\OperatorTok{=} \DecValTok{4}\OperatorTok{,}\NormalTok{ suma}\OperatorTok{,}\NormalTok{ multiplicacion}\OperatorTok{;}
+\NormalTok{    suma }\OperatorTok{=}\NormalTok{ num1 }\OperatorTok{+}\NormalTok{ num2}\OperatorTok{;}  \CommentTok{//en este caso res será igual a 12.}
+\NormalTok{    multiplicacion }\OperatorTok{=}\NormalTok{ num1 }\OperatorTok{*}\NormalTok{ num2}\OperatorTok{;}
+    \CommentTok{// el endl es como un salto de linea.}
+\NormalTok{    atd}\OperatorTok{::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ suma }\OperatorTok{\textless{}\textless{}}\StringTok{" || "}\OperatorTok{\textless{}\textless{}}\NormalTok{ multiplicacion}\OperatorTok{\textless{}\textless{}}\BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;} 
+    \CommentTok{// tambien lo podemos poner de manera directa.}
+    \BuiltInTok{std::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ num1 }\OperatorTok{{-}}\NormalTok{ num2}\OperatorTok{\textless{}\textless{}}\StringTok{"  || "}\OperatorTok{\textless{}\textless{}}\NormalTok{ num1 }\OperatorTok{/}\NormalTok{ num2}\OperatorTok{\textless{}\textless{}}\BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Hicimos las operaciones básicas que todos conocemos (+, -, *, /). El
+fragmento de código se mostrará de la siguiente manera:
+
+\begin{tcolorbox}[custombox]
+12 || 32\\
+4  || 2
+\end{tcolorbox}
+
+Tienes que ser creativo para poder realizar cualquier tipo de
+operaciones aritméticas. Por ejemplo, realizaremos un ejercicio simple
+que es resolver esta ecuación: La fórmula es:
+\([ a \times \left( \frac{b}{c} \right) ]\)
+
+Empecemos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{float}\NormalTok{ a}\OperatorTok{,}\NormalTok{b}\OperatorTok{,}\NormalTok{c}\OperatorTok{,}\NormalTok{ resultado}\OperatorTok{;}
+    \BuiltInTok{std::}\NormalTok{cout}\OperatorTok{\textless{}\textless{}}\StringTok{"Digite 3 numeros separados por espacios o saltos de linea: "}\OperatorTok{;}
+    \BuiltInTok{std::}\NormalTok{cin}\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{a}\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{b}\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{c}\OperatorTok{;}
+    \CommentTok{//En este caso primero se ejecuta la divisón y luego la multiplicaión.}
+\NormalTok{    resultado }\OperatorTok{=}\NormalTok{ a}\OperatorTok{*(}\NormalTok{b}\OperatorTok{/}\NormalTok{c}\OperatorTok{);} 
+    \BuiltInTok{std::}\NormalTok{cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El resultado es: "}\OperatorTok{\textless{}\textless{}}\NormalTok{resultado}\OperatorTok{\textless{}\textless{}}\BuiltInTok{std::}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Lo que hicimos es declarar 4 variables de tipo flotante para no perder
+los decimales del resultado. Ten en cuenta que \textbf{resultado}
+almacena el resultado y lo imprimimos como se muestra a continuación:
+
+\begin{tcolorbox}[custombox]
+Digite 3 numeros separados por espacios o saltos de linea: 3 4 5 \\
+El resultado es: 12
+\end{tcolorbox}
+
+Para finalizar es recomendable que tengas cuidado con las operaciones
+que agregues a tu programa.
+
+\bookmarksetup{startatroot}
+
+\chapter{Estructuras de Control}\label{estructuras-de-control}
+
+\section{if-else}\label{if-else}
+
+Una breve explicación sobre este tema es que cuando la condición dentro
+de un \textbf{if} sea verdadera, se ejecuta una parte del código. En
+cambio, si la condición es falsa, se ejecuta el código dentro de
+\textbf{else}.
+
+La estructura principal es la siguiente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \ControlFlowTok{if}\OperatorTok{(}\NormalTok{condición}\OperatorTok{)\{}
+\NormalTok{        acción  }\CommentTok{// solo entrara en esta parte del código se la condición es verdadera}
+    \OperatorTok{\}}
+    \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        acción }\CommentTok{// Este código se ejecuta si la afirmación es falsa}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Un ejemplo básico para entender aún más la condicional \textbf{if-else}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \ControlFlowTok{if}\OperatorTok{(}\DecValTok{3}\OperatorTok{\textgreater{}}\DecValTok{4}\OperatorTok{)\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"3 es mayor que 4."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"4 es mayor que 3."}\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+En este ejemplo vemos que la afirmación de \textbf{3 \textgreater{} 4}
+es falsa, por lo que se ejecuta el código que está dentro de
+\textbf{else}, como se muestra a continuación.
+
+\begin{tcolorbox}[custombox]
+4 es mayor que 3.
+\end{tcolorbox}
+
+Un ejercicio muy práctico es comprobar si un número es par o impar. En
+este código utilizaremos el operador \textbf{mod} (\%) y el código
+quedará de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ numero}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite un numero entero: "}\OperatorTok{;}
+\NormalTok{    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ numero}\OperatorTok{;}
+    \ControlFlowTok{if}\OperatorTok{((}\NormalTok{numero }\OperatorTok{\%} \DecValTok{2}\OperatorTok{)} \OperatorTok{==} \DecValTok{0}\OperatorTok{)\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El numero es par."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El numero es impar."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+En este ejercicio solicitamos al usuario que ingrese un número entero,
+el cual almacenamos en una variable de tipo entero llamada
+\textbf{numero}.
+
+La lógica del programa se basa en la operación módulo (\texttt{\%}), que
+calcula el \textbf{residuo} de una división:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{flowchart LR}
+\NormalTok{  A["Solicitar número (numero = entrada)"] {-}{-}\textgreater{} B[numero = 4]}
+\NormalTok{  B {-}{-}\textgreater{} C\{"numero \% 2 == 0?"\}}
+\NormalTok{  C {-}{-}\textgreater{}|Verdadero| D[Mostrar "El número es par"]}
+\NormalTok{  C {-}{-}\textgreater{}|Falso| E[Mostrar "El número es impar"]}
+\end{Highlighting}
+\end{Shaded}
+
+Para mayor entendimiento, veamos el ejemplo de \textbf{4 \% 2}, cuyo
+resultado es \textbf{0}, por lo que la afirmación queda así: \textbf{0
+== 0}, la cual es verdadera, e imprimirá el fragmento de código que está
+dentro del \textbf{if}.
+
+En cambio, si la entrada fuera 5, el cálculo sería: \textbf{(5 \% 2) ==
+0} → \textbf{1 == 0}, que es falso, por lo que se ejecutará el código
+dentro del \textbf{else}.
+
+\begin{tcolorbox}[custombox]
+Digite un numero entero: 4 \\
+El numero es par.
+\end{tcolorbox}
+
+\begin{tcolorbox}[custombox]
+Digite un numero entero: 5 \\
+El numero es impar.
+\end{tcolorbox}
+
+\section{switch-case:}\label{switch-case}
+
+De una manera fácil de entender, esta estructura verifica una serie de
+posibles valores. Es decir, el usuario ingresa un dato y ese dato se
+compara con diferentes valores.
+
+La estructura es la siguiente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \ControlFlowTok{switch}\OperatorTok{(}\NormalTok{valor}\OperatorTok{)\{}
+        \ControlFlowTok{case}\NormalTok{ dato1}\OperatorTok{:} \CommentTok{// si el valor es igual a dato1 ejecuta la acción.}
+\NormalTok{            acción}
+            \ControlFlowTok{break}\OperatorTok{;} \CommentTok{/* una vez realizada la accion la palabra reservada "break" ara }
+\CommentTok{                      salir de la sentencia switch*/}
+        \ControlFlowTok{case}\NormalTok{ dato2}\OperatorTok{:}
+\NormalTok{            acción}
+            \ControlFlowTok{break}\OperatorTok{;}
+        \ControlFlowTok{case}\NormalTok{ dato3}\OperatorTok{:}
+\NormalTok{            acción}
+            \ControlFlowTok{break}\OperatorTok{;}
+        \ControlFlowTok{default}\OperatorTok{:}    \CommentTok{// si ninguno de los opciones se cumple se ejecuta la accion }
+\NormalTok{            accion}
+            \ControlFlowTok{break}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Como se ve, es fácil de entender. Un ejemplo práctico será realizar un
+programa que, dado un valor de entrada, indique si una persona tiene que
+presentar un examen, no tiene que presentarlo o que ingrese un valor
+válido.
+
+El programa quedaría así:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{char}\NormalTok{ opcion}\OperatorTok{;} \CommentTok{// la opción solo podrá contener un string \textquotesingle{}a\textquotesingle{}, \textquotesingle{}b\textquotesingle{}, etc;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Diste el examen? (s/n): "}\OperatorTok{;} 
+\NormalTok{    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ opcion}\OperatorTok{;} \CommentTok{// solo podras ingresa si{-}\textgreater{} s ó no{-}\textgreater{}n}
+    \ControlFlowTok{switch}\OperatorTok{(}\NormalTok{opcion}\OperatorTok{)\{}
+        \ControlFlowTok{case} \CharTok{\textquotesingle{}s\textquotesingle{}}\OperatorTok{:}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Espera tu resultado."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+            \ControlFlowTok{break}\OperatorTok{;}
+        \ControlFlowTok{case} \CharTok{\textquotesingle{}n\textquotesingle{}}\OperatorTok{:}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Dirigete al salon A3."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+            \ControlFlowTok{break}\OperatorTok{;}
+        \ControlFlowTok{default}\OperatorTok{:}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Ingresaste un valor invalido."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+            \ControlFlowTok{break}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tcolorbox}[custombox]
+Diste el examen? (s/n): s \\
+Espera tu resultado.
+\end{tcolorbox}
+
+Lo que hace el programa es verificar si el carácter ingresado es
+\texttt{\textquotesingle{}s\textquotesingle{}}. En caso de ser así,
+imprime \textbf{``Espera tu resultado.''}.\\
+Si el carácter es \texttt{\textquotesingle{}n\textquotesingle{}},
+imprime \textbf{``Dirígete al salón A3.''}.\\
+Y si no es ninguno de los dos, se imprimirá \textbf{``Ingresaste un
+valor inválido.''}.
+
+Con tu creatividad, sé que podrás crear programas con más opciones, como
+por ejemplo, una calculadora que, dada una opción, haga una suma, una
+resta o cualquier operación que desees.
+
+\section{Ternario:}\label{ternario}
+
+El operador ternario es parecido al \textbf{if-else}, pero de manera
+resumida. Tiene esta estructura:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \OperatorTok{(}\NormalTok{condicion}\OperatorTok{)} \OperatorTok{?}\NormalTok{ accion}\OperatorTok{(}\NormalTok{si es verdadera}\OperatorTok{)} \OperatorTok{:}\NormalTok{ acción si es falsa}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Si la condición es verdadera, se ejecuta el código que está después de
+\textbf{\texttt{?}}.\\
+Si la condición es falsa, se ejecuta el código que está después de
+\textbf{\texttt{:}}.
+
+Ejemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ a}\OperatorTok{=}\DecValTok{5}\OperatorTok{,}\NormalTok{ b}\OperatorTok{=}\DecValTok{6}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ resultado}\OperatorTok{;} 
+\NormalTok{    resultado }\OperatorTok{=} \OperatorTok{(}\NormalTok{a}\OperatorTok{\textgreater{}}\NormalTok{b}\OperatorTok{)} \OperatorTok{?}\NormalTok{ a}\OperatorTok{:}\NormalTok{b}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El numero mayor es: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ resultado}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Primeramente, declaramos 3 variables enteras como se muestra. Ojo, el
+operador ternario retorna un valor de acuerdo a sus parámetros, que en
+este caso son \textbf{a} y \textbf{b}.
+
+Primeramente compara los valores de la siguiente manera:
+\texttt{(a\ \textgreater{}\ b)?} --- esta operación es como
+\texttt{5\ \textgreater{}\ 6}, esta condición es falsa, por lo que
+retorna el código que está del lado derecho de \texttt{:} que es la
+\textbf{b}, dando como resultado:
+
+\begin{tcolorbox}[custombox]
+El numero mayor es: 6
+\end{tcolorbox}
+
+Puedes probrar de diferente manera, como en este otro ejemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
+    \DataTypeTok{int}\NormalTok{ a }\OperatorTok{=} \DecValTok{10}\OperatorTok{,}\NormalTok{ b }\OperatorTok{=} \DecValTok{20}\OperatorTok{;}
+\NormalTok{    string resultado}\OperatorTok{;}
+    \CommentTok{// Operador ternario}
+\NormalTok{    resultado }\OperatorTok{=} \OperatorTok{(}\NormalTok{a }\OperatorTok{\textgreater{}}\NormalTok{ b}\OperatorTok{)} \OperatorTok{?} \StringTok{"Mayor."} \OperatorTok{:} \StringTok{"Menor o igual."}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ resultado }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+En este caso retornamos una cadena de caracteres y, como sabemos, para
+poder guardar cadenas usamos la palabra reservada \textbf{string}
+seguida del nombre de la variable.
+
+Como vemos en la salida, dará \textbf{Menor o igual}, porque el valor de
+\textbf{a} es menor que el valor de la variable \textbf{b}.
+
+\begin{tcolorbox}[custombox]
+Menor o igual.
+\end{tcolorbox}
+
+Puedes hacer una serie de ejercicios para tener más familiarización con
+las estructuras de control, para poder así desarrollar tu lógica de
+programación.
+
+\bookmarksetup{startatroot}
+
+\chapter{Bucles o Ciclos}\label{bucles-o-ciclos}
+
+Los \textbf{bucles} son una forma eficiente de repetir una serie de
+instrucciones sin tener que escribirlas múltiples veces.
+
+Un ejemplo básico sería imprimir cinco veces el mensaje \textbf{``Hola
+mundo''}.
+
+En este ejercicio, aprenderemos a hacerlo utilizando los diferentes
+tipos de \textbf{bucles o ciclos} que ofrece C++.
+
+\section{for:}\label{for}
+
+El bucle \textbf{for} tiene 3 parámetros, los cuales son:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+for(asignació; condición; iteración){ 
+    acción se la condición es verdadera; 
+}
+\end{verbatim}
+\end{tcolorbox}
+
+La tarea que pusimos al inicio la vamos a resolver, quedará de la
+siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+  \CommentTok{// La asignación si se puede hacer dentro del bucle}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\DecValTok{5}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{} 
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}} \StringTok{"Hola mundo."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Lo que hace el código es recorrer desde 0 hasta 4. ¿Por qué desde cero?
+Porque asignamos el valor de 0 al inicio → \textbf{int i = 0;}\\
+¿Por qué hasta 4? Porque una vez que \textbf{i} llegue a 5, la condición
+\textbf{i \textless{} 5} será falsa y saldrá del bucle.\\
+¿Qué hace el \textbf{i++}? Lo que hace es incrementar \textbf{i} en 1 en
+cada iteración, es decir, \textbf{i} irá sumando \textbf{+1} hasta que
+la condición sea falsa.\\
+El código tendrá la siguiente salida:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Hola mundo. 
+Hola mundo. 
+Hola mundo. 
+Hola mundo. 
+Hola mundo.
+\end{verbatim}
+\end{tcolorbox}
+
+\section{while:}\label{while}
+
+Este bucle, al igual que el \textbf{for}, primero compara su condición;
+si es verdadera, se ejecuta el código, y si no, se salta. Sus partes
+son:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+While(condición){ 
+    acción a realizar si la condición es verdadera;     
+}
+\end{verbatim}
+\end{tcolorbox}
+
+En esta parte tienes que tener cuidado porque si tienes un mínimo margen
+de error, el bucle se ejecutará infinitamente. Vamos a realizar el
+ejercicio anterior de igual manera que la anterior:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}
+    \ControlFlowTok{while}\OperatorTok{(}\NormalTok{i}\OperatorTok{\textless{}}\DecValTok{5}\OperatorTok{)\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Hola mundo."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{        i}\OperatorTok{++;} \CommentTok{// esta parte es crucial ya que sin ella se crearía un bucle infinito}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+¿Qué es lo que está pasando? Primeramente declaramos una variable de
+tipo entero llamada \textbf{i} que tiene como valor \textbf{0}. La
+condición que se toma en cuenta es esta -\textgreater{} \textbf{(i
+\textless{} 5)}, ya sabemos que es verdadera y pasará a ejecutarse el
+código. Esta parte del código es fundamental -\textgreater{}
+\textbf{i++}. ¿Por qué? Porque sin ella, el valor de \textbf{i} seguirá
+siendo \textbf{0} y así hasta el infinito y más allá.
+
+\begin{tcolorbox}[custombox]
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo.
+\end{tcolorbox}
+
+\section{do-while:}\label{do-while}
+
+El bucle \textbf{do-while} lo que hace primeramente es ejecutar la
+acción y luego verificar la condición. Sus partes son las siguientes:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+do{ 
+    acción 
+}While(condición);
+\end{verbatim}
+\end{tcolorbox}
+
+Como ves, primeramente ejecuta una acción y luego compara la condición.
+Bueno, vamos a realizar la tarea:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ i }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}
+    \ControlFlowTok{do}\OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Hola mundo."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{        i}\OperatorTok{++;} \CommentTok{// sin esto el buclue se hace infinitamente}
+    \OperatorTok{\}}\ControlFlowTok{while}\OperatorTok{(}\NormalTok{i}\OperatorTok{\textless{}}\DecValTok{5}\OperatorTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Primeramente se ejecuta el código y recién se evalúa la condición. Esto
+es muy útil si quieres asegurarte al menos una ejecución en tu código.
+La salida es:
+
+\begin{tcolorbox}[custombox]
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo. \\
+Hola mundo.
+\end{tcolorbox}
+
+Como viste, en la mayoría de los casos los bucles funcionan con
+inicializaciones y condiciones que controlan su ejecución, pero no
+siempre es así. A veces, un bucle puede detenerse o saltar iteraciones
+según ciertas condiciones específicas, por ejemplo, basándose en un
+carácter o valor determinado.
+
+Si te quedó la duda, te invito a ver estos videos que te ayudarán a
+entender mejor los tres tipos de bucles (\texttt{for}, \texttt{while},
+\texttt{do-while}). En los videos también se explican dos palabras
+reservadas muy importantes que se usan dentro de los bucles:
+\textbf{break} y \textbf{continue}.
+
+\begin{itemize}
+\item
+  \textbf{break}: Esta palabra reservada se utiliza para detener por
+  completo la ejecución de un bucle, sin importar si la condición
+  principal sigue siendo verdadera. Cuando el programa encuentra un
+  \texttt{break} dentro de un bucle, sale inmediatamente del mismo y
+  continúa con la siguiente instrucción después del bucle.
+\item
+  \textbf{continue}: Esta palabra reservada se usa para saltar la
+  iteración actual del bucle y continuar con la siguiente. Es decir,
+  cuando se ejecuta un \texttt{continue}, el código que queda dentro del
+  bucle para esa iteración se omite y se pasa a evaluar la condición
+  para la siguiente iteración.
+\end{itemize}
+
+Ambas instrucciones son muy útiles para controlar el flujo dentro de los
+bucles de forma precisa, haciendo que el código sea más flexible y
+eficiente.
+
+Te recomiendo prestar atención a cómo se usan en los ejemplos para que
+comprendas bien su funcionamiento.
+
+\bookmarksetup{startatroot}
+
+\chapter{Arreglos o Vectores}\label{arreglos-o-vectores}
+
+Un \textbf{arreglo} (también llamado \textbf{vector} en programación
+básica) es una \textbf{estructura de datos} que permite almacenar
+múltiples valores \textbf{del mismo tipo} en una sola variable.
+
+Cada valor dentro del arreglo se guarda en una \textbf{posición o
+índice}, comenzando desde el \textbf{índice 0}.
+
+Los arreglos son útiles cuando se necesita \textbf{manejar colecciones
+de datos}, como listas de números, nombres o resultados, sin tener que
+declarar muchas variables por separado.
+
+\section{Vectores:}\label{vectores}
+
+Como se mencionó anteriormente, los vectores almacenan una cantidad de
+valores de un solo tipo. A continuación, se muestran sus partes y un par
+de ejemplos:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+// se tiene el tipo de dato entero -> int arreglo[5] es necesario que
+tenga los corchetes y la cantidad de valores que vamos a utilizar.
+    
+    int arreglo[5] = {1,2,3,4,5}; 
+    
+// en este ejemplo lo asignamos de manera directa en el código.
+\end{verbatim}
+\end{tcolorbox}
+
+Para poder mostrar el contenido de un arreglo puedes hacerlo con
+diferentes tipos de bucles, pero generalmente se utiliza el bucle
+\textbf{for}. Vamos a mostrar el código completo para mostrar el
+contenido del arreglo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ arreglo}\OperatorTok{[}\DecValTok{5}\OperatorTok{]} \OperatorTok{=} \OperatorTok{\{}\DecValTok{1}\OperatorTok{,}\DecValTok{2}\OperatorTok{,}\DecValTok{3}\OperatorTok{,}\DecValTok{4}\OperatorTok{,}\DecValTok{5}\OperatorTok{\};}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\DecValTok{5}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ arreglo}\OperatorTok{[}\NormalTok{i}\OperatorTok{]\textless{}\textless{}}\StringTok{" "}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Recordemos lo siguiente: los arreglos tienen índices que inician desde
+0, que en este caso sería:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+    tipo nombre[cantidad]      valores 
+    int     arreglo[5]     = {1, 2, 3, 4, 5};
+              
+    Los índices son ->        0, 1, 2, 3, 4
+\end{verbatim}
+\end{tcolorbox}
+
+Entonces, lo que recorre el bucle son los índices del vector, que en el
+ejemplo tiene el nombre \textbf{arreglo}. Ahora mostraremos la salida
+estándar:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+1 2 3 4 5
+\end{verbatim}
+\end{tcolorbox}
+
+Hagamos un ejercicio de entrada y salida de arreglos de tipo entero
+(\texttt{int}):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ arreglo}\OperatorTok{[}\DecValTok{5}\OperatorTok{];}
+\NormalTok{    cout}\OperatorTok{\textless{}\textless{}}\StringTok{"Digite 5 numeros: "}\OperatorTok{;}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\DecValTok{5}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{}
+\NormalTok{        cin}\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{arreglo}\OperatorTok{[}\NormalTok{i}\OperatorTok{];}
+    \OperatorTok{\}}
+\NormalTok{    cout}\OperatorTok{\textless{}\textless{}}\StringTok{"Mostrando el arreglo."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\DecValTok{5}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{}
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}}\NormalTok{arreglo}\OperatorTok{[}\NormalTok{i}\OperatorTok{]\textless{}\textless{}}\StringTok{" "}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Lo que hicimos primeramente es asignar un arreglo, como en este caso
+-\textgreater{} \textbf{int arreglo{[}5{]}}, que almacenará 5 valores
+enteros de tipo \texttt{int}.\\
+Esta será la compilación exacta del código:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite 5 numeros: 1 2 3 4 5
+Mostrando el arreglo.
+1 2 3 4 5
+\end{verbatim}
+\end{tcolorbox}
+
+Como se puede observar, es una manera fácil de guardar datos y
+mostrarlos en un arreglo.\\
+Te invito a que practiques y desarrolles tu lógica de programación de
+manera constante.
+
+\section{Matrices:}\label{matrices}
+
+La matriz es una estructura de datos en un plano bidimensional que tiene
+filas y columnas.\\
+Como en los arreglos, las matrices empiezan por los índices
+{[}0{]}{[}0{]}.\\
+Para formar una matriz necesitamos bucles anidados. ¿Qué son? Son bucles
+dentro de otros, como en este ejemplo:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+    for(int i=0; i<3; i++){
+        for(int j=0; j<3; j++){
+            cout<<[i][j]<< " ";
+        }
+        cout << endl;
+    }
+\end{verbatim}
+\end{tcolorbox}
+
+Esta es la manera en la que se imprime una matriz de tipo 3 por 3.\\
+Como se puede observar, tenemos dos bucles \textbf{for}, uno dentro del
+otro.\\
+Para guardar e imprimir los datos, se hace de esta manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ matriz}\OperatorTok{[}\DecValTok{3}\OperatorTok{][}\DecValTok{3}\OperatorTok{];}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite un valor para la pariz: "}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\DecValTok{3}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{}
+        \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ j}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ j}\OperatorTok{\textless{}}\DecValTok{3}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)\{}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}} \StringTok{"["}\OperatorTok{\textless{}\textless{}}\NormalTok{i}\OperatorTok{\textless{}\textless{}}\StringTok{"]["}\OperatorTok{\textless{}\textless{}}\NormalTok{j}\OperatorTok{\textless{}\textless{}}\StringTok{"]: "}\OperatorTok{;}
+\NormalTok{            cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ matriz}\OperatorTok{[}\NormalTok{i}\OperatorTok{][}\NormalTok{j}\OperatorTok{];}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Mostrando la matriz."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\DecValTok{3}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{}
+        \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ j}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ j}\OperatorTok{\textless{}}\DecValTok{3}\OperatorTok{;}\NormalTok{ j}\OperatorTok{++)\{}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ matriz}\OperatorTok{[}\NormalTok{i}\OperatorTok{][}\NormalTok{j}\OperatorTok{]} \OperatorTok{\textless{}\textless{}}\StringTok{" "}\OperatorTok{;}
+        \OperatorTok{\}}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Bien, en este pequeño ejercicio declaramos una matriz de tipo 3 por 3,
+guardamos los datos y los mostramos en pantalla.\\
+El ejemplo nos quedará de la siguiente manera:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite un valor para la pariz:
+[0][0]: 1
+[0][1]: 2
+[0][2]: 3
+[1][0]: 4
+[1][1]: 5
+[1][2]: 6
+[2][0]: 7
+[2][1]: 8
+[2][2]: 9
+Mostrando la matriz.
+1 2 3
+4 5 6
+7 8 9
+\end{verbatim}
+\end{tcolorbox}
+
+Esta es la manera en la que debes guardar los datos en la matriz y
+mostrarlos.
+
+\bookmarksetup{startatroot}
+
+\chapter{Cadenas de Texto}\label{cadenas-de-texto}
+
+\section{char{[}n{]}:}\label{charn}
+
+Una forma común de almacenar cadenas de texto en C++ es usando un
+arreglo (vector) de tipo \texttt{char}. Es un método bastante eficiente,
+aunque limitado, ideal para programas que no requieren manejar textos
+muy largos en las entradas. Se declara y usa de la siguiente manera:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{char}\NormalTok{ nombre}\OperatorTok{[}\DecValTok{100}\OperatorTok{];} \CommentTok{//cuardamos memoría para 100 carácteres}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su nombre: "}\OperatorTok{;}
+\NormalTok{    cin}\OperatorTok{.}\NormalTok{getline}\OperatorTok{(}\NormalTok{nombre}\OperatorTok{,}\DecValTok{100}\OperatorTok{,}\CharTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\CharTok{\textquotesingle{}}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Su nombre guardado es: "}\OperatorTok{\textless{}\textless{}}\NormalTok{nombre}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+En este caso, para guardar cadenas de texto utilizamos
+\texttt{cin.getline()}, que recibe tres parámetros:
+
+\begin{itemize}
+\tightlist
+\item
+  En el primero, indicamos \textbf{dónde queremos guardar} la cadena (en
+  este ejemplo, en la variable nombre).
+\item
+  En el segundo, especificamos \textbf{cuántos espacios reservamos} para
+  almacenar la cadena (la cantidad que definimos al inicio).\\
+\item
+  Y en el tercero, indicamos cuándo debe \textbf{terminar la lectura},
+  que normalmente es un salto de línea \texttt{`\textbackslash n`} (es
+  decir, cuando presionamos la tecla \textbf{Enter}, se guarda la cadena
+  hasta ese momento). \textbf{Ejemplo de uso y compilación:}
+\end{itemize}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: Maria Gonzales Perez
+Su nombre guardado es: Maria Gonzales Perez
+\end{verbatim}
+\end{tcolorbox}
+
+Algunas carácteristicas especiales que puedes usar son las siguientes.
+Para que algunas de estas funciones correctamente es necesario incluir
+la librería \textbf{\#include\textless cstdlib\textgreater{}} (donde
+\texttt{var} es una variables):
+
+Funciones clásicas de manejo de \texttt{char{[}{]}} (cstring)
+
+\begin{quote}
+Estas funciones trabajan con arreglos de caracteres
+(\texttt{char{[}{]}}), no con objetos \texttt{string}. Se requiere
+incluir la cabecera \texttt{\#include\ \textless{}cstring\textgreater{}}
+y en algunos casos \texttt{\#include\ \textless{}cstdlib\textgreater{}}.
+\end{quote}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Método}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{¿Para qué sirve?}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Ejemplo}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Resultado}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{strlen(var)} & Obtener la longitud de una cadena &
+\texttt{int\ num\ =\ strlen("alex");} & \texttt{num\ =\ 4} \\
+\texttt{strcpy(dest,\ src)} & Copiar el contenido de una cadena en otra
+& \texttt{strcpy(var1,\ "Alex");} & \texttt{var1\ =\ "Alex"} \\
+\texttt{strcmp(a,\ b)} & Comparar dos cadenas &
+\texttt{strcmp("hola",\ "hola")\ ==\ 0} & \texttt{true} si son
+iguales \\
+\texttt{strcat(a,\ b)} & Concatenar dos cadenas &
+\texttt{strcat(var1,\ "Alex");} & Si \texttt{var1\ =\ "Hola\ "},
+entonces \texttt{"Hola\ Alex"} \\
+\texttt{strrev(var)} & Invertir una cadena &
+\texttt{char\ r{[}10{]}\ =\ strrev(var1);} & Si \texttt{var1\ =\ "dia"},
+entonces \texttt{"aid"} \\
+\texttt{strupr(var)} & Convertir a mayúsculas & \texttt{strupr(var1);} &
+Si \texttt{var1\ =\ "paz"}, será \texttt{"PAZ"} \\
+\texttt{strlwr(var)} & Convertir a minúsculas & \texttt{strlwr(var1);} &
+Si \texttt{var1\ =\ "PAZ"}, será \texttt{"paz"} \\
+\texttt{strncmp(a,\ b,\ n)} & Comparar los primeros \texttt{n}
+caracteres de dos cadenas & \texttt{strncmp("alex",\ "a",\ 1)\ ==\ 0} &
+\texttt{true} porque
+\texttt{\textquotesingle{}a\textquotesingle{}\ ==\ \textquotesingle{}a\textquotesingle{}} \\
+\texttt{atoi(var)} & Convertir texto a entero &
+\texttt{int\ num\ =\ atoi("2");} & \texttt{num\ =\ 2} \\
+\texttt{atof(var)} & Convertir texto a número con decimales &
+\texttt{float\ num\ =\ atof("2.3");} & \texttt{num\ =\ 2.3} \\
+\end{longtable}
+
+\begin{quote}
+⚠️ Nota: \texttt{strrev}, \texttt{strupr} y \texttt{strlwr} no son
+funciones estándar en C++, pero funcionan en algunos compiladores como
+\textbf{Dev-C++}.
+\end{quote}
+
+Hagamos un ejercico simple que será, verificar si una palabra tiene la
+\texttt{a} minuscula en su nombre:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstring\textgreater{}}\PreprocessorTok{ }\CommentTok{// lo utilizamos para usar strlen()}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{char}\NormalTok{ nombre}\OperatorTok{[}\DecValTok{20}\OperatorTok{];}
+    \DataTypeTok{bool}\NormalTok{ bandera }\OperatorTok{=} \KeywordTok{false}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ cantidad }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su nombre: "}\OperatorTok{;}
+\NormalTok{    cin}\OperatorTok{.}\NormalTok{getline}\OperatorTok{(}\NormalTok{nombre}\OperatorTok{,} \DecValTok{20}\OperatorTok{,} \CharTok{\textquotesingle{}}\SpecialCharTok{\textbackslash{}n}\CharTok{\textquotesingle{}}\OperatorTok{);}
+\NormalTok{    cantidad }\OperatorTok{=}\NormalTok{ strlen}\OperatorTok{(}\NormalTok{nombre}\OperatorTok{);}
+    \ControlFlowTok{for}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ i}\OperatorTok{=}\DecValTok{0}\OperatorTok{;}\NormalTok{ i}\OperatorTok{\textless{}}\NormalTok{cantidad}\OperatorTok{;}\NormalTok{ i}\OperatorTok{++)\{}
+        \ControlFlowTok{if}\OperatorTok{(}\NormalTok{nombre}\OperatorTok{[}\NormalTok{i}\OperatorTok{]} \OperatorTok{==} \CharTok{\textquotesingle{}a\textquotesingle{}}\OperatorTok{)\{}
+\NormalTok{            bandera }\OperatorTok{=} \KeywordTok{true}\OperatorTok{;}
+            \ControlFlowTok{break}\OperatorTok{;}
+        \OperatorTok{\}}
+    \OperatorTok{\}}
+    \ControlFlowTok{if}\OperatorTok{(}\NormalTok{bandera}\OperatorTok{)\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Su nombre contiene almenos una a."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}\ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Su nombre no contiene la vocal a."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Este programa verifica si al menos tu nombre contiene una \textbf{a}.
+Usamos 3 variables de diferentes tipos que son:
+\textbf{\texttt{char{[}20{]}}} para almacenar un nombre de máximo 20
+caracteres, \textbf{\texttt{bool}} para verificar si hay al menos una
+\textbf{a} en el nombre y un \textbf{\texttt{int}} para saber
+exactamente cuántos caracteres tiene el nombre introducido.
+
+La compilación del programa será de esta manera:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: alex
+Su nombre contiene almenos una a.
+\end{verbatim}
+\end{tcolorbox}
+
+\section{string}\label{string}
+
+Otra manera de guardar cadenas de texto es usar los
+\textbf{\texttt{string}}, que es una forma más fácil de almacenar
+palabras y se entiende mejor.
+
+Aquí te muestro un ejemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}string\textgreater{}}\PreprocessorTok{  }\CommentTok{//Agregamos esta librería para poder usar las strings}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+\NormalTok{    string nombre}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su nombre: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ nombre}\OperatorTok{);} \CommentTok{// de esta manera es como se guarda los strings}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Su nombre guardado es: "}\OperatorTok{\textless{}\textless{}}\NormalTok{nombre}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Para guardar los \textbf{string} se usa la función reservada
+\textbf{getline()}, que en este caso utiliza dos parámetros.
+
+Para saber qué poner en el primer parámetro, nos preguntamos: ¿Qué
+queremos hacer?\\
+En este caso, queremos \textbf{guardar} y por ello ponemos
+\textbf{\texttt{cin}}.
+
+En el segundo parámetro, va: ¿Dónde lo quieres guardar?\\
+Por esa razón, colocamos el nombre de la variable de tipo
+\textbf{string}.
+
+Algunas características básicas de los \textbf{string} son estas:
+
+Métodos comunes de \texttt{string} en C++
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+MÉTODO
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+¿Para qué sirve?
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Ejemplo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Resultado
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{.empty()} & Verifica si la cadena está vacía &
+\texttt{string\ s\ =\ "";\ s.empty();} & \texttt{true} \\
+\texttt{.length()} & Devuelve el número de caracteres de la cadena &
+\texttt{string\ s\ =\ "Hola";\ s.length();} & \texttt{4} \\
+\texttt{.size()} & Igual que \texttt{.length()} & \texttt{s.size();} &
+\texttt{4} \\
+\texttt{.substr(pos,\ n)} & Devuelve una subcadena desde \texttt{pos}
+con \texttt{n} caracteres & \texttt{s.substr(1,\ 2);} & \texttt{"ol"} \\
+\texttt{.find()} & Devuelve la posición de una subcadena o carácter &
+\texttt{s.find("la");} & \texttt{2} \\
+\texttt{.append(str)} & Añade \texttt{str} al final de la cadena &
+\texttt{s.append("\ mundo");} & \texttt{"Hola\ mundo"} \\
+\texttt{.insert(pos,\ s)} & Inserta una subcadena \texttt{s} en la
+posición \texttt{pos} & \texttt{s.insert(2,\ "xx");} &
+\texttt{"Hoxxla"} \\
+\texttt{.erase(pos,\ n)} & Elimina \texttt{n} caracteres desde la
+posición \texttt{pos} & \texttt{s.erase(1,\ 2);} & \texttt{"Ha"} (de
+``Hola'') \\
+\texttt{.replace(pos,n,s)} & Reemplaza \texttt{n} caracteres desde
+\texttt{pos} por \texttt{s} & \texttt{s.replace(0,\ 4,\ "Hi");} &
+\texttt{"Hi"} \\
+\texttt{toupper(c)} & Convierte un carácter a mayúscula &
+\texttt{toupper(\textquotesingle{}a\textquotesingle{});} &
+\texttt{\textquotesingle{}A\textquotesingle{}} \\
+\texttt{tolower(c)} & Convierte un carácter a minúscula &
+\texttt{tolower(\textquotesingle{}A\textquotesingle{});} &
+\texttt{\textquotesingle{}a\textquotesingle{}} \\
+\texttt{isalnum(c)} & Verifica si un carácter es alfanumérico &
+\texttt{isalnum(\textquotesingle{}3\textquotesingle{});} &
+\texttt{true} \\
+\texttt{isalpha(c)} & Verifica si un carácter es una letra &
+\texttt{isalpha(\textquotesingle{}A\textquotesingle{});} &
+\texttt{true} \\
+\texttt{isdigit(c)} & Verifica si un carácter es un dígito &
+\texttt{isdigit(\textquotesingle{}8\textquotesingle{});} &
+\texttt{true} \\
+\end{longtable}
+
+\begin{quote}
+\textbf{Nota:} funciones como \texttt{toupper()}, \texttt{isdigit()},
+etc., requieren incluir la librería
+\texttt{\#include\ \textless{}cctype\textgreater{}}.
+\end{quote}
+
+Como modo de práctica, hagamos un programa que verifique si la primera y
+última palabra inician con un mismo carácter.
+
+Si es así, que imprima \textbf{``hola mundo''}, y si no, muestre
+\textbf{``buenas noches''}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cctype\textgreater{}}\PreprocessorTok{ }\CommentTok{// para usar isalpha()}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstring\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+\NormalTok{    string palabra}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ tam }\OperatorTok{=} \DecValTok{0}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite una palabra: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ palabra}\OperatorTok{);}
+\NormalTok{    tam }\OperatorTok{=}\NormalTok{ palabra}\OperatorTok{.}\NormalTok{length}\OperatorTok{();}
+    \ControlFlowTok{if}\OperatorTok{(}\NormalTok{isalpha}\OperatorTok{(}\NormalTok{palabra}\OperatorTok{[}\DecValTok{0}\OperatorTok{])} \OperatorTok{\&\&}\NormalTok{ isalpha}\OperatorTok{(}\NormalTok{palabra}\OperatorTok{[}\NormalTok{tam}\OperatorTok{{-}}\DecValTok{1}\OperatorTok{]))\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"hola mundo."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}\ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"buenas noches."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+En este programa lo que hicimos es verificar si una palabra empieza y
+termina con un mismo carácter.
+
+Como en los vectores, las \texttt{string} tienen índices que empiezan en
+0. Por esa razón, en la estructura de control \textbf{if} usamos
+\texttt{palabra{[}0{]}} y \texttt{palabra{[}tam-1{]}}.
+
+Si la palabra es \textbf{casa}, lo que la condicional verificaría sería:
+\texttt{c} y \texttt{a}.
+
+¿Son iguales? No, por eso el resultado sería \textbf{false} y el
+programa imprimiría ``buenas noches''.
+
+En cambio, si la palabra fuera, por ejemplo, \textbf{alba}, la
+comparación sería entre \texttt{a} y \texttt{a}, dando \textbf{true} y
+el programa imprimiría ``hola mundo''.
+
+Aquí te muestro un ejemplo de compilación:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite una palabra: casa
+hola mundo.
+---> caso contrario <---
+Digite una palabra: casa7
+buenas noches.
+\end{verbatim}
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{Estructuras}\label{estructuras}
+
+Las \textbf{estructuras} o \texttt{struct} en C++ son una forma de
+definir un \textbf{tipo de dato personalizado} que puede contener varios
+elementos de diferentes tipos. Una estructura es similar a una clase,
+pero se utiliza principalmente para \textbf{almacenar datos} y no para
+definir comportamientos.
+
+\section{Definición de estructura}\label{definiciuxf3n-de-estructura}
+
+Para definir una estructura en C++, se utiliza la palabra reservada
+struct, seguida del \textbf{nombre de la estructura} y los
+\textbf{elementos que la componen}.
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+struct Persona{
+    string nombre;
+    int edad;
+    string direccion;
+};
+\end{verbatim}
+\end{tcolorbox}
+
+\textbf{Uso de una estructura} Una vez definida la estructura, puedes
+crear variables de ese tipo y acceder a sus miembros utilizando el
+operador punto (\texttt{.}).
+
+Esto te permite agrupar datos relacionados bajo una sola variable, lo
+cual es muy útil para organizar la información de forma clara y
+ordenada.
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+  Persona persona; //creamos una variables de la estructura "Persona"
+  persona.nombre = "juan";
+  persona.edad = 15;
+  persona.direccion = "calle 13";
+\end{verbatim}
+\end{tcolorbox}
+
+Para acceder a las variables de la estructura, primeramente se coloca la
+variable que definimos anteriormente, seguida de un punto (\texttt{.}) y
+el nombre del campo de la estructura al que deseamos acceder, tal y como
+se muestra en el ejemplo anterior.
+
+\section{Ventajas de las estructuras}\label{ventajas-de-las-estructuras}
+
+Las estructuras son muy útiles cuando necesitas almacenar varios datos
+relacionados en una sola unidad. Algunas ventajas importantes de
+utilizarlas son:
+
+\begin{itemize}
+\tightlist
+\item
+  Permiten organizar y estructurar los datos de manera lógica.
+\item
+  Facilitan el acceso y la manipulación de los datos.
+\item
+  Pueden ser utilizadas como parámetros de funciones o como valores de
+  retorno.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstring\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\KeywordTok{struct}\NormalTok{ Persona}\OperatorTok{\{}
+\NormalTok{    string nombre}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ edad}\OperatorTok{;}
+\NormalTok{    string direccion}\OperatorTok{;}
+\OperatorTok{\}}\NormalTok{persona}\OperatorTok{;} \CommentTok{// la variable lo podemos colocar aqui.}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su nombre: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ persona}\OperatorTok{.}\NormalTok{nombre}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su edad: "}\OperatorTok{;}
+\NormalTok{    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ persona}\OperatorTok{.}\NormalTok{edad}\OperatorTok{;}
+\NormalTok{    fflush}\OperatorTok{(}\NormalTok{stdin}\OperatorTok{);} \CommentTok{// lo usamos para vaciar el buffer.}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su direccion: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{);}
+\NormalTok{    cout}\OperatorTok{\textless{}\textless{}}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mostrando los datos de la persona."}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El nombre es "}\OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{nombre}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"La edad es "}\OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{edad}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"La direccion es "}\OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+En este caso, guardamos y mostramos los datos que el usuario nos
+proporciona. El resultado final del programa nos quedaría de la
+siguiente manera:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: alex
+Digite su edad: 15
+Digite su direccion: calle 13
+
+Mostrando los datos de la persona.
+El nombre es alex
+La edad es 15
+La direccion es calle 13
+\end{verbatim}
+\end{tcolorbox}
+
+\section{Estructuras anidadas}\label{estructuras-anidadas}
+
+Las estructuras anidadas en C++ se refieren a la capacidad de definir
+una estructura dentro de otra. Esto permite crear estructuras más
+complejas y jerárquicas, donde una estructura puede contener otra como
+uno de sus miembros.
+
+\textbf{Ejemplo de estructura anidada:}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+struct Direccion{
+    string calle;
+    string ciudad;
+    string pais;
+};
+struct Persona{
+    string nombre;
+    int edad;
+    Direccion direccion;
+}persona; //declaramos la variable.
+\end{verbatim}
+\end{tcolorbox}
+
+En este ejemplo, la estructura \texttt{Persona} contiene otra estructura
+llamada \texttt{Direccion} como uno de sus miembros. Puedes acceder a
+los campos de la estructura anidada usando el operador punto
+\texttt{(.)}.
+
+\textbf{Ventajas de las estructuras anidadas}
+
+Las estructuras anidadas son muy útiles cuando necesitas representar
+datos complejos y jerárquicos. Algunas ventajas importantes son:
+
+\begin{itemize}
+\tightlist
+\item
+  Permiten crear estructuras de datos más complejas y realistas.
+\item
+  Facilitan la organización y el acceso a la información.
+\item
+  Mejoran la legibilidad y mantenibilidad del código.
+\end{itemize}
+
+\textbf{Aplicaciones de las estructuras anidadas}
+
+Las estructuras anidadas se utilizan en múltiples escenarios, tales
+como:
+
+\begin{itemize}
+\tightlist
+\item
+  Representar datos personales, como direcciones y contactos.
+\item
+  Modelar estructuras complejas como árboles o grafos.
+\item
+  Crear estructuras para juegos o simulaciones.
+\end{itemize}
+
+Ahora, vamos a completar el código y pediremos al usuario que llene los
+datos correspondientes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstring\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+\KeywordTok{struct}\NormalTok{ Direccion}\OperatorTok{\{}
+\NormalTok{    string calle}\OperatorTok{;}
+\NormalTok{    string ciudad}\OperatorTok{;}
+\NormalTok{    string pais}\OperatorTok{;}
+\OperatorTok{\};}
+\KeywordTok{struct}\NormalTok{ Persona}\OperatorTok{\{}
+\NormalTok{    string nombre}\OperatorTok{;}
+\NormalTok{    Direccion direccion}\OperatorTok{;} \CommentTok{//con estos parámetros designamos a la}
+                          \CommentTok{//estructura anidada}
+    \DataTypeTok{int}\NormalTok{ edad}\OperatorTok{;}
+\OperatorTok{\}}\NormalTok{persona}\OperatorTok{;}
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su nombre: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ persona}\OperatorTok{.}\NormalTok{nombre}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su calle: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{.}\NormalTok{calle}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su ciudad: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{.}\NormalTok{ciudad}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su pais: "}\OperatorTok{;}
+\NormalTok{    getline}\OperatorTok{(}\NormalTok{cin}\OperatorTok{,}\NormalTok{ persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{.}\NormalTok{pais}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite su edad: "}\OperatorTok{;}
+\NormalTok{    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ persona}\OperatorTok{.}\NormalTok{edad}\OperatorTok{;}
+\NormalTok{    cout}\OperatorTok{\textless{}\textless{}}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mostrando los datos de la persona}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Nombre "}\OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{nombre}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Calle "} \OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{.}\NormalTok{calle}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Ciudad "}\OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{.}\NormalTok{ciudad}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Pais "} \OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{direccion}\OperatorTok{.}\NormalTok{pais}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Edad "} \OperatorTok{\textless{}\textless{}}\NormalTok{persona}\OperatorTok{.}\NormalTok{edad}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Lo que hicimos es completar el ejemplo que mostramos al inicio. La
+salida estándar del programa quedaría de la siguiente manera:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+Digite su nombre: alex
+Digite su calle: calle 13
+Digite su ciudad: puno
+Digite su pais: peru
+Digite su edad: 15
+
+Mostrando los datos de la persona
+Nombre alex
+Calle calle 13
+Ciudad puno
+Pais peru
+Edad 15
+\end{verbatim}
+\end{tcolorbox}
+
+\bookmarksetup{startatroot}
+
+\chapter{Funciones}\label{funciones}
+
+En pocas palabras, las funciones consisten en dividir tareas para que el
+programa sea más legible. Como buena práctica de programación, es
+fundamental aprenderlas. Para ello, veremos una estructura básica:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+En el tipo de la función, si se requiere retornar un tipo de valor en espesífico 
+puedes
+usar (int, float, bool) que son las más comunes.
+
+Existen funciones que no retornan nada y el más comun es el "void".
+
+La manera en la que creamos la funcion puede y no puede tener valores es decir:
+int sumar(int n, int m) //En este caso la función recebe dos parámetros de tipo 
+                        //entero.
+void pedir() // Y en esta otra la función no recibe parámetros.
+\end{verbatim}
+\end{tcolorbox}
+
+Si te das cuenta, en este libro verás que mayormente utilizamos
+funciones de tipo \texttt{void} para pedir datos en nuestros programas,
+mientras que usaremos otros tipos de funciones cuando necesitemos
+realizar una tarea específica que devuelva un valor.
+
+Recuerda que en los parámetros puedes usar el nombre que tú quieras,
+pero debes tener en cuenta que es muy importante especificar
+correctamente el tipo de valor que tomará.
+
+Una buena práctica de programación es prototipar las funciones. Esto
+significa declarar cómo serán antes del \texttt{main}, y luego, después
+de la función principal, escribimos el código que realiza esa tarea
+específica.
+
+Ahora, vamos a crear un programa sencillo que retorne la suma de dos
+números enteros.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\DataTypeTok{int}\NormalTok{ suma}\OperatorTok{(}\DataTypeTok{int}\OperatorTok{,} \DataTypeTok{int}\OperatorTok{);} \CommentTok{// este será nuestro prototipo de nueestra función }
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ num1}\OperatorTok{,}\NormalTok{ num2}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ resultado}\OperatorTok{;} \CommentTok{// como la funcion retorna un valor, ese valor lo guardamos en}
+                  \CommentTok{// esta variables.}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite el primer numero: "}\OperatorTok{;}
+\NormalTok{    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ num1}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite el segundo numero: "}\OperatorTok{;}
+\NormalTok{    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ num2}\OperatorTok{;}
+    
+\NormalTok{    resultado }\OperatorTok{=}\NormalTok{ suma}\OperatorTok{(}\NormalTok{num1}\OperatorTok{,}\NormalTok{ num2}\OperatorTok{);} \CommentTok{// llamamos a la funcion poniendo el nombre de la }
+                                  \CommentTok{// funcion seguida de los dos parámetros.}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"El resultado es: "}\OperatorTok{\textless{}\textless{}}\NormalTok{resultado}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;} \CommentTok{// finalmente lo imrpimimos}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\CommentTok{//realizamos el cuerpo de la funcion.}
+\DataTypeTok{int}\NormalTok{ suma}\OperatorTok{(}\DataTypeTok{int}\NormalTok{ a}\OperatorTok{,} \DataTypeTok{int}\NormalTok{ b}\OperatorTok{)\{} \CommentTok{// a y b son variables.}
+    \DataTypeTok{int}\NormalTok{ resultado}\OperatorTok{;}
+\NormalTok{    resultado }\OperatorTok{=}\NormalTok{ a }\OperatorTok{+}\NormalTok{ b}\OperatorTok{;}
+    \ControlFlowTok{return}\NormalTok{ resultado}\OperatorTok{;}   \CommentTok{// la palabra "return" es como decir vota el resultado.}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+El programa es básico, ya que solo realiza una suma simple, pero para
+programas más grandes es \textbf{fundamental hacerlo con funciones}, y
+en todo caso, es necesario que lo aprendas como una buena práctica.
+
+\section{Paso de Parámetros}\label{paso-de-paruxe1metros}
+
+Para pasar arreglos, matrices o cadenas de texto, se requiere de otro
+tipo de parámetros que son:
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+int arreglo(int a[], int tamanio);
+//El a[] es para pasar el arreglo y para saber la cantidad ponemos el "tamanio".
+
+int matriz(int a[][100], int filas, int columnas);
+//En este caso en necesario poner el tamaño máximo de columnas, seguida del total
+// de filas y columnas
+
+int cadenas(string nombre);
+// para mandar de parámetro cadenas de texto.
+
+int caracteres(char n);
+//para poder mandar vocales y carácteres únicos.
+\end{verbatim}
+\end{tcolorbox}
+
+Como ves, estos son los parámetros que debes aprender. Pero para hacerlo
+más interesante, vamos a crear un programa que realice una serie de
+opciones. Lo haremos \texttt{solo\ con\ funciones} para que así puedas
+\texttt{reforzar\ tu\ conocimiento} y familiarizarte más con su uso.
+
+Las opciones que habrá en el \texttt{MENU} serán las siguientes:
+
+\begin{tcolorbox}
+\begin{verbatim}
+------------->MENU<-------------
+1. OPERACIONES ARITMÉTICAS.
+2. OPERACIONES CON ARREGLOS.
+3. OPERACIONES CON MATRICES.
+4. JUEGO DE "ADIVINA EL NUMERO".
+5. SALIR.
+\end{verbatim}
+\end{tcolorbox}
+
+Cabe recalcar que cada tema será explicado de una manera casi
+profesional, porque yo también tengo mucho que aprender. Sin embargo, el
+motivo por el cual hago esto es para que no tengas complicaciones
+futuras y logres entender todo de la mejor manera posible. Haciendo
+esto, aprenderás conceptos fundamentales que te servirán mucho más
+adelante.
+
+\section{Programa N.º 1}\label{programa-n.uxba-1}
+
+Para poder realizar este programa, es fundamental retroceder y repasar
+los temas anteriores con atención. Esto te ayudará a que luego te sea
+mucho más fácil entender este pequeño programa.
+
+\bookmarksetup{startatroot}
+
+\chapter{Punteros}\label{punteros}
+
+\section{\texorpdfstring{¿Qué es un
+\textbf{puntero?}}{¿Qué es un puntero?}}\label{quuxe9-es-un-puntero}
+
+Los punteros son una de esas cosas en C++ que al principio suenan
+difíciles\ldots{} pero cuando los entiendes bien, ¡te das cuenta de que
+son súper poderosos!
+
+Un puntero es una variable especial que guarda la dirección de memoria
+de otra variable. O sea, en lugar de guardar directamente un número o
+una letra, guarda el lugar donde esa información está almacenada en la
+memoria de tu computadora.
+
+Piensa que tienes una casa (una variable normal) y un GPS (el puntero)
+que te dice exactamente en qué calle y número está esa casa. El puntero
+no es la casa, pero sabe cómo llegar a ella.
+
+\section{¿Cómo se declara un
+puntero?}\label{cuxf3mo-se-declara-un-puntero}
+
+Para declarar un puntero, se usa el símbolo \texttt{*}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tipo }\OperatorTok{*}\NormalTok{nombre\_puntero}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Por ejemplo, para un puntero a un entero:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int} \OperatorTok{*}\NormalTok{puntero}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+Eso significa: ``puntero es una variable que guarda la dirección de un
+\textbf{int}''.
+
+\section{Ejemplo básico de
+punteros}\label{ejemplo-buxe1sico-de-punteros}
+
+Veamos un ejemplo sencillo para que lo veas en acción:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}\PreprocessorTok{ }
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;} 
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}     
+    \DataTypeTok{int}\NormalTok{ numero }\OperatorTok{=} \DecValTok{10}\OperatorTok{;}     
+    \DataTypeTok{int} \OperatorTok{*}\NormalTok{puntero }\OperatorTok{=} \OperatorTok{\&}\NormalTok{numero}\OperatorTok{;} \CommentTok{// \& = operador de dirección      }
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Valor de la variable: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ numero }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}     
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Dirección de memoria de la variable: "} \OperatorTok{\textless{}\textless{}} \OperatorTok{\&}\NormalTok{numero }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}     
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Valor guardado en el puntero: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ puntero }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}     
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Valor al que apunta el puntero: "} \OperatorTok{\textless{}\textless{}} \OperatorTok{*}\NormalTok{puntero }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}      
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;} 
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{¿Qué está pasando aquí?}
+
+\texttt{int\ numero\ =\ 10;} Creamos una variable normal.
+\texttt{int\ *puntero\ =\ \&numero;} Le decimos al puntero que guarde la
+dirección de \texttt{numero}. \texttt{*puntero} Esto significa:
+``muéstrame el valor que está en esa dirección''.
+
+\textbf{Resultado esperado}
+
+\begin{tcolorbox}[custombox] 
+\begin{verbatim} 
+Valor de la variable: 10 
+Dirección de memoria de la variable: 0x61ff08 
+Valor guardado en el puntero: 0x61ff08 
+Valor al que apunta el puntero: 10 
+\end{verbatim} 
+\end{tcolorbox}`
+
+\begin{quote}
+Nota: las direcciones como \texttt{0x61ff08} van a cambiar cada vez que
+ejecutes el programa. Eso es normal.
+\end{quote}
+
+\textbf{Cambiar el valor desde el puntero}
+
+Una de las cosas más geniales de los punteros es que puedes
+\textbf{modificar el valor original} de una variable usando el puntero.
+Mira:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}\PreprocessorTok{ }
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;} 
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}     
+    \DataTypeTok{int}\NormalTok{ numero }\OperatorTok{=} \DecValTok{5}\OperatorTok{;}     
+    \DataTypeTok{int} \OperatorTok{*}\NormalTok{ptr }\OperatorTok{=} \OperatorTok{\&}\NormalTok{numero}\OperatorTok{;}      
+    \OperatorTok{*}\NormalTok{ptr }\OperatorTok{=} \DecValTok{99}\OperatorTok{;} \CommentTok{// cambia el valor original de numero      }
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Nuevo valor de numero: "} \OperatorTok{\textless{}\textless{}}\NormalTok{ numero }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}     
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;} 
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Esto imprime:}
+
+\begin{tcolorbox}[custombox] 
+\begin{verbatim} 
+Nuevo valor de numero: 99 
+\end{verbatim} 
+\end{tcolorbox}
+
+\begin{quote}
+¡Sí! Aunque nunca escribimos \texttt{numero\ =\ 99;}, el valor cambió.\\
+¿Por qué? Porque \textbf{\texttt{*ptr} apunta directamente a
+\texttt{numero}}, así que cualquier cambio afecta a la variable
+original.
+\end{quote}
+
+\section{\texorpdfstring{\textbf{Aplicación:}}{Aplicación:}}\label{aplicaciuxf3n}
+
+Intercambiar valores con punteros Una de las aplicaciones clásicas de
+punteros es intercambiar valores entre dos variables usando funciones.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\DataTypeTok{void}\NormalTok{ intercambiar}\OperatorTok{(}\DataTypeTok{int} \OperatorTok{*}\NormalTok{a}\OperatorTok{,} \DataTypeTok{int} \OperatorTok{*}\NormalTok{b}\OperatorTok{)\{}
+    \DataTypeTok{int}\NormalTok{ temp }\OperatorTok{=} \OperatorTok{*}\NormalTok{a}\OperatorTok{;}
+    \OperatorTok{*}\NormalTok{a }\OperatorTok{=} \OperatorTok{*}\NormalTok{b}\OperatorTok{;}
+    \OperatorTok{*}\NormalTok{b }\OperatorTok{=}\NormalTok{ temp}\OperatorTok{;}
+\OperatorTok{\}}
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ x }\OperatorTok{=} \DecValTok{5}\OperatorTok{,}\NormalTok{ y }\OperatorTok{=} \DecValTok{8}\OperatorTok{;}
+\NormalTok{    intercambiar}\OperatorTok{(\&}\NormalTok{x}\OperatorTok{,} \OperatorTok{\&}\NormalTok{y}\OperatorTok{);}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"x = "} \OperatorTok{\textless{}\textless{}}\NormalTok{ x }\OperatorTok{\textless{}\textless{}} \StringTok{", y = "} \OperatorTok{\textless{}\textless{}}\NormalTok{ y }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Salida:}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+x = 8, y = 5
+\end{verbatim}
+\end{tcolorbox}
+
+\textbf{¿Por qué funciona?}
+
+Porque estamos pasando la dirección de memoria de \texttt{x} y
+\texttt{y} a la función. Entonces cualquier cambio se hace directamente
+sobre los valores originales.
+
+\textbf{Consejos para trabajar con punteros:}
+
+\begin{itemize}
+\item
+  Siempre inicializa tus punteros (aunque sea con nullptr).
+\item
+  Ten cuidado al usar * (puede causar errores si no sabes qué estás
+  apuntando).
+\item
+  Puedes usar punteros para crear arreglos dinámicos, estructuras,
+  funciones recursivas y más.
+\item
+  Aprender punteros es la puerta a temas más avanzados como memoria
+  dinámica y estructuras enlazadas.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Pilas}\label{pilas}
+
+\section{Introducción}\label{introducciuxf3n-1}
+
+Imagina que estás apilando platos en tu cocina. Pones uno sobre otro y,
+cuando necesitas uno, tomas el que está arriba. Así funcionan las pilas
+en programación: el último elemento en entrar es el primero en salir. A
+esto se le llama estructura LIFO (Last In, First Out). En este capítulo
+aprenderás a trabajar con pilas utilizando listas enlazadas en C++.
+Verás cómo agregar y quitar elementos, además de comprender cómo fluye
+la lógica internamente.
+
+\section{Teoría}\label{teoruxeda}
+
+Una pila es una estructura de datos que permite insertar y eliminar
+elementos sólo desde un extremo, llamado ``tope''. Las operaciones
+principales son:
+
+\texttt{push:} insertar un nuevo elemento (en nuestro código se llama
+agregarPila).
+
+\texttt{pop:} eliminar el elemento del tope (en nuestro código se llama
+quitarPila).
+
+En este ejemplo, usamos una lista enlazada simple, donde cada nodo
+contiene un carácter y un puntero al siguiente nodo.
+
+\section{Código y explicación}\label{cuxf3digo-y-explicaciuxf3n}
+
+Ten en cuenta que el código estará por partes y tu reto será juntarlos y
+hacer que compile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstdlib\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\KeywordTok{struct}\NormalTok{ Nodo}\OperatorTok{\{}
+    \DataTypeTok{char}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{siguiente}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  Creamos una estructura \texttt{Nodo}, que guarda un dato de tipo
+  \texttt{char} y un puntero al siguiente nodo.
+\item
+  Así es como simulamos una pila dinámica.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ menu}\OperatorTok{();}
+\DataTypeTok{void}\NormalTok{ agregarPila}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&,} \DataTypeTok{char}\OperatorTok{);}
+\DataTypeTok{void}\NormalTok{ quitarPila}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&,} \DataTypeTok{char} \OperatorTok{\&);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Declaramos funciones auxiliares para mostrar el menú, agregar
+  elementos a la pila y retirarlos.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+\NormalTok{    menu}\OperatorTok{();}
+\NormalTok{    system}\OperatorTok{(}\StringTok{"pause"}\OperatorTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+La función \texttt{main} simplemente llama al \textbf{menú} y espera una
+tecla antes de terminar. \textbf{Menú principal}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ menu}\OperatorTok{()\{}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{pila }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ opcion}\OperatorTok{;}
+    \DataTypeTok{char}\NormalTok{ dato}\OperatorTok{;}
+    \ControlFlowTok{do}\OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}t\textbackslash{}t}\StringTok{MENU DE PILAS}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"1. Agregar elemento a la pila}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"2. Mostrar todos los elementos de la pila}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"3. salir"}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Ingrese una opcion: "}\OperatorTok{;}
+\NormalTok{        cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ opcion}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  Creamos un puntero llamado \texttt{pila}, inicialmente vacío
+  (\texttt{NULL}).
+\item
+  Mostramos un menú con tres opciones: agregar, mostrar y salir.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+        \ControlFlowTok{switch}\OperatorTok{(}\NormalTok{opcion}\OperatorTok{)\{}
+            \ControlFlowTok{case} \DecValTok{1}\OperatorTok{:}\NormalTok{ cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Digite un caracter: "}\OperatorTok{;}
+\NormalTok{                    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{                    agregarPila}\OperatorTok{(}\NormalTok{pila}\OperatorTok{,}\NormalTok{ dato}\OperatorTok{);}
+                    \ControlFlowTok{break}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Si elige la opción 1, el usuario digita un carácter y se agrega a la
+  pila.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+            \ControlFlowTok{case} \DecValTok{2}\OperatorTok{:}\NormalTok{ cout }\OperatorTok{\textless{}\textless{}} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mostrando todos los elementos de la pila..."}\OperatorTok{;}
+                    \ControlFlowTok{while}\OperatorTok{(}\NormalTok{pila }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)\{}
+\NormalTok{                        quitarPila}\OperatorTok{(}\NormalTok{pila}\OperatorTok{,}\NormalTok{ dato}\OperatorTok{);}
+                        \ControlFlowTok{if}\OperatorTok{(}\NormalTok{pila }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)\{}
+\NormalTok{                            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ dato }\OperatorTok{\textless{}\textless{}} \StringTok{" , "}\OperatorTok{;}
+                        \OperatorTok{\}}
+                        \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{                            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ dato }\OperatorTok{\textless{}\textless{}} \StringTok{"."}\OperatorTok{;}
+                        \OperatorTok{\}}
+                    \OperatorTok{\}}
+\NormalTok{                    cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\NormalTok{                    system}\OperatorTok{(}\StringTok{"pause"}\OperatorTok{);}
+                    \ControlFlowTok{break}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\item
+  Si elige la opción 2, mostramos y eliminamos todos los elementos de la
+  pila, uno por uno.
+\item
+  Si aún hay elementos, se imprime con coma; el último termina con
+  punto.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+            \ControlFlowTok{case} \DecValTok{3}\OperatorTok{:} \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{default}\OperatorTok{:}\NormalTok{ cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Opcion no valida, intente de nuevo."} \OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+        \OperatorTok{\}}
+
+        \ControlFlowTok{if}\OperatorTok{(}\NormalTok{opcion }\OperatorTok{!=} \DecValTok{3}\OperatorTok{)\{}
+\NormalTok{            system}\OperatorTok{(}\StringTok{"cls"}\OperatorTok{);} \CommentTok{// Limpiar la pantalla}
+        \OperatorTok{\}}
+    \OperatorTok{\}}\ControlFlowTok{while}\OperatorTok{(}\NormalTok{opcion }\OperatorTok{!=} \DecValTok{3}\OperatorTok{);}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Si elige salir, termina el ciclo. Si no, se limpia la pantalla y
+  vuelve al menú. Agregar elemento (push)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ agregarPila}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&}\NormalTok{pila}\OperatorTok{,} \DataTypeTok{char}\NormalTok{ n}\OperatorTok{)\{}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{nuevo\_nodo }\OperatorTok{=} \KeywordTok{new}\NormalTok{ Nodo}\OperatorTok{();}
+\NormalTok{    nuevo\_nodo}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{=}\NormalTok{ n}\OperatorTok{;}
+\NormalTok{    nuevo\_nodo}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ pila}\OperatorTok{;}
+\NormalTok{    pila }\OperatorTok{=}\NormalTok{ nuevo\_nodo}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Creamos un nuevo nodo.
+\item
+  Lo enlazamos con el nodo anterior (el que era el tope).
+\item
+  Luego, \texttt{pila} apunta al nuevo nodo. Ahora es el nuevo tope.
+  Quitar elemento (pop)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ quitarPila}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&}\NormalTok{pila}\OperatorTok{,} \DataTypeTok{char} \OperatorTok{\&}\NormalTok{n}\OperatorTok{)\{}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{aux }\OperatorTok{=}\NormalTok{ pila}\OperatorTok{;}
+\NormalTok{    n }\OperatorTok{=}\NormalTok{ aux}\OperatorTok{{-}\textgreater{}}\NormalTok{dato}\OperatorTok{;}
+\NormalTok{    pila }\OperatorTok{=}\NormalTok{ aux}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+    \KeywordTok{delete}\NormalTok{ aux}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Guardamos el nodo actual en \texttt{aux}.
+\item
+  Extraemos su valor a \texttt{n}.
+\item
+  Movemos el tope (\texttt{pila}) al siguiente nodo.
+\item
+  Liberamos la memoria. \textbf{Ejemplo en ejecución}
+\end{itemize}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+        MENU DE PILAS
+1. Agregar elemento a la pila
+2. Mostrar todos los elementos de la pila
+3. salir
+Ingrese una opcion: 1
+Digite un caracter: A
+
+Ingrese una opcion: 1
+Digite un caracter: B
+
+Ingrese una opcion: 2
+Mostrando todos los elementos de la pila...
+B , A.
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{itemize}
+\tightlist
+\item
+  Como puedes ver, el último carácter en entrar fue el primero en salir.
+  Justo como una pila de platos.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Colas}\label{colas}
+
+\section{Introducción}\label{introducciuxf3n-2}
+
+Imagina que estás en la fila de una tienda para pagar. Llega una
+persona, se pone al final. El cajero atiende al primero en la fila. Esa
+es la lógica de una cola en programación: el primero en entrar es el
+primero en salir. A esto se le llama estructura FIFO (First In, First
+Out). En este capítulo, aprenderás a crear y manejar colas en C++
+utilizando listas enlazadas.
+
+\section{Teoría}\label{teoruxeda-1}
+
+Una cola es una estructura lineal donde los datos se insertan por un
+extremo llamado final y se eliminan por otro llamado frente. Las
+operaciones más comunes son:
+
+\begin{itemize}
+\item
+  \texttt{enqueue:} insertar un elemento al final (en nuestro código:
+  \texttt{insertar}).
+\item
+  \texttt{dequeue:} eliminar un elemento del frente (en nuestro código:
+  \texttt{quitar}).
+\end{itemize}
+
+Usaremos listas enlazadas para construir la cola, sin usar bibliotecas
+externas ni STL.
+
+\section{Código y explicación}\label{cuxf3digo-y-explicaciuxf3n-1}
+
+Ten en cuenta que el código estará por partes y tu reto será juntarlos y
+hacer que compile:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstdlib\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\KeywordTok{struct}\NormalTok{ Nodo}\OperatorTok{\{}
+    \DataTypeTok{char}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{siguiente}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Definimos la estructura básica de la cola: cada \texttt{Nodo} tiene un
+  carácter (\texttt{dato}) y un puntero al siguiente nodo.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ menu}\OperatorTok{();}
+\DataTypeTok{void}\NormalTok{ insertar}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&,}\NormalTok{ Nodo }\OperatorTok{*\&,} \DataTypeTok{char}\OperatorTok{);}
+\DataTypeTok{bool}\NormalTok{ cola\_vacia}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*);}
+\DataTypeTok{void}\NormalTok{ quitar}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&,}\NormalTok{ Nodo }\OperatorTok{*\&,} \DataTypeTok{char} \OperatorTok{\&);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Declaramos las funciones para el menú, insertar, verificar si la cola
+  está vacía y quitar elementos.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()\{}
+\NormalTok{    menu}\OperatorTok{();}
+\NormalTok{    system}\OperatorTok{(}\StringTok{"pause"}\OperatorTok{);}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+La función \texttt{main} solo llama al menú y espera una tecla para
+terminar. Menú principal
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ menu}\OperatorTok{()\{}
+    \DataTypeTok{int}\NormalTok{ opcion}\OperatorTok{;}
+    \DataTypeTok{char}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{frente }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{fin }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{frente} es el primer elemento de la cola.
+\item
+  \texttt{fin} apunta al último elemento.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \ControlFlowTok{do}\OperatorTok{\{}
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}}\StringTok{"}\SpecialCharTok{\textbackslash{}t}\StringTok{Menu de opciones}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}}\StringTok{"1. Insertar un caracter en la cola}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}}\StringTok{"2. Mostrar los elementos de la cola}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}}\StringTok{"3. Salir"}\OperatorTok{\textless{}\textless{}}\NormalTok{endl}\OperatorTok{;}
+\NormalTok{        cout}\OperatorTok{\textless{}\textless{}}\StringTok{"Opcion: "}\OperatorTok{;}
+\NormalTok{        cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ opcion}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Mostramos el menú al usuario con tres opciones.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+        \ControlFlowTok{switch}\OperatorTok{(}\NormalTok{opcion}\OperatorTok{)\{}
+            \ControlFlowTok{case} \DecValTok{1}\OperatorTok{:}\NormalTok{ cout}\OperatorTok{\textless{}\textless{}}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Digite un caracter: "}\OperatorTok{;}
+\NormalTok{                    cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{                    insertar}\OperatorTok{(}\NormalTok{frente}\OperatorTok{,}\NormalTok{ fin}\OperatorTok{,}\NormalTok{ dato}\OperatorTok{);}
+                    \ControlFlowTok{break}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Si elige la opción 1, se inserta un nuevo carácter al final de la
+  cola.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+            \ControlFlowTok{case} \DecValTok{2}\OperatorTok{:}\NormalTok{ cout}\OperatorTok{\textless{}\textless{}}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Mostrando los elementos de la cola: "}\OperatorTok{;}
+                    \ControlFlowTok{while}\OperatorTok{(}\NormalTok{frente }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)\{}
+\NormalTok{                        quitar}\OperatorTok{(}\NormalTok{frente}\OperatorTok{,}\NormalTok{ fin}\OperatorTok{,}\NormalTok{ dato}\OperatorTok{);}
+                        \ControlFlowTok{if}\OperatorTok{(}\NormalTok{frente }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)\{}
+\NormalTok{                            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ dato}\OperatorTok{\textless{}\textless{}} \StringTok{" , "}\OperatorTok{;}
+                        \OperatorTok{\}}
+                        \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{                            cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ dato}\OperatorTok{\textless{}\textless{}}\StringTok{"."}\OperatorTok{;} \CommentTok{// Último elemento}
+                        \OperatorTok{\}}
+                    \OperatorTok{\}}
+\NormalTok{                    cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\NormalTok{                    system}\OperatorTok{(}\StringTok{"pause"}\OperatorTok{);}
+                    \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{3}\OperatorTok{:} \ControlFlowTok{break}\OperatorTok{;}
+        \OperatorTok{\}}
+\NormalTok{        system}\OperatorTok{(}\StringTok{"cls"}\OperatorTok{);}
+    \OperatorTok{\}}\ControlFlowTok{while}\OperatorTok{(}\NormalTok{opcion }\OperatorTok{!=} \DecValTok{3}\OperatorTok{);}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Si elige la opción 2, se recorren y eliminan todos los elementos de la
+  cola.
+\item
+  Se imprime el dato y se libera la memoria. \textbf{Insertar elemento
+  (\texttt{enqueue})}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ insertar}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&}\NormalTok{frente}\OperatorTok{,}\NormalTok{ Nodo }\OperatorTok{*\&}\NormalTok{fin}\OperatorTok{,} \DataTypeTok{char}\NormalTok{ n}\OperatorTok{)\{}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{nuevo\_nodo }\OperatorTok{=} \KeywordTok{new}\NormalTok{ Nodo}\OperatorTok{();}
+\NormalTok{    nuevo\_nodo}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{=}\NormalTok{ n}\OperatorTok{;}
+\NormalTok{    nuevo\_nodo}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Creamos un nuevo nodo con el dato ingresado y apuntamos su
+  \texttt{siguiente} a \texttt{NULL} (porque será el último).
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+    \ControlFlowTok{if}\OperatorTok{(}\NormalTok{cola\_vacia}\OperatorTok{(}\NormalTok{frente}\OperatorTok{))\{}
+\NormalTok{        frente }\OperatorTok{=}\NormalTok{ nuevo\_nodo}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        fin}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ nuevo\_nodo}\OperatorTok{;}
+    \OperatorTok{\}}
+\NormalTok{    fin }\OperatorTok{=}\NormalTok{ nuevo\_nodo}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Si la cola está vacía, tanto \texttt{frente} como \texttt{fin} apuntan
+  al nuevo nodo.
+\item
+  Si ya hay nodos, lo conectamos al final y actualizamos el puntero
+  \texttt{fin}. \textbf{Verificar si la cola está vacía}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{bool}\NormalTok{ cola\_vacia}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*}\NormalTok{frente}\OperatorTok{)\{}
+    \ControlFlowTok{return} \OperatorTok{(}\NormalTok{frente }\OperatorTok{==}\NormalTok{ NULL}\OperatorTok{)?} \KeywordTok{true} \OperatorTok{:} \KeywordTok{false}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Una función sencilla que devuelve \texttt{true} si no hay elementos en
+  la cola. \textbf{Quitar elemento (\texttt{dequeue})}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ quitar}\OperatorTok{(}\NormalTok{Nodo }\OperatorTok{*\&}\NormalTok{frente}\OperatorTok{,}\NormalTok{ Nodo }\OperatorTok{*\&}\NormalTok{fin}\OperatorTok{,} \DataTypeTok{char} \OperatorTok{\&}\NormalTok{n}\OperatorTok{)\{}
+\NormalTok{    n }\OperatorTok{=}\NormalTok{ frente}\OperatorTok{{-}\textgreater{}}\NormalTok{dato}\OperatorTok{;}
+\NormalTok{    Nodo }\OperatorTok{*}\NormalTok{aux }\OperatorTok{=}\NormalTok{ frente}\OperatorTok{;}
+
+    \ControlFlowTok{if}\OperatorTok{(}\NormalTok{frente }\OperatorTok{==}\NormalTok{ fin}\OperatorTok{)\{}
+\NormalTok{        frente }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+\NormalTok{        fin }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+    \OperatorTok{\}}
+    \ControlFlowTok{else}\OperatorTok{\{}
+\NormalTok{        frente }\OperatorTok{=}\NormalTok{ frente}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+    \OperatorTok{\}}
+    \KeywordTok{delete}\NormalTok{ aux}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Se guarda el dato del frente, se mueve el puntero \texttt{frente} al
+  siguiente nodo y se libera el anterior.
+\item
+  Si solo había un elemento, ambos punteros quedan en \texttt{NULL}.
+  \textbf{Ejemplo en ejecución}
+\end{itemize}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+    Menu de opciones
+1. Insertar un caracter en la cola
+2. Mostrar los elementos de la cola
+3. Salir
+Opcion: 1
+Digite un caracter: A
+
+Opcion: 1
+Digite un caracter: B
+
+Opcion: 2
+Mostrando los elementos de la cola: A , B.
+\end{verbatim}
+\end{tcolorbox}
+
+Como puedes ver, el primer carácter en entrar fue el primero en salir.
+Exactamente como en una fila de personas.
+
+\bookmarksetup{startatroot}
+
+\chapter{Listas enlazadas}\label{listas-enlazadas}
+
+\section{Introducción}\label{introducciuxf3n-3}
+
+Una lista enlazada es como una cadena de personas tomadas de la mano:
+cada persona conoce a la siguiente. En programación, una lista enlazada
+es una estructura de datos en la que cada elemento (llamado nodo)
+contiene un dato y un puntero al siguiente nodo. A diferencia de los
+arreglos, no necesitamos saber el tamaño de antemano, y podemos insertar
+o eliminar elementos sin mover todos los demás.
+
+\section{Teoría}\label{teoruxeda-2}
+
+\textbf{¿Qué es una lista enlazada?}
+
+Es una colección dinámica de nodos donde cada nodo apunta al siguiente.
+Existen distintos tipos:
+
+\begin{itemize}
+\tightlist
+\item
+  Lista enlazada simple: cada nodo apunta al siguiente.
+\item
+  Lista doblemente enlazada: cada nodo apunta al anterior y al
+  siguiente.
+\item
+  Lista circular: el último nodo apunta al primero.
+\end{itemize}
+
+Aquí trabajaremos con una \texttt{lista\ enlazada\ simple}.
+
+Operaciones básicas:
+
+\begin{itemize}
+\tightlist
+\item
+  Insertar elementos al inicio o al final.
+\item
+  Mostrar todos los elementos.
+\item
+  Eliminar elementos.
+\end{itemize}
+
+\section{Código y explicación}\label{cuxf3digo-y-explicaciuxf3n-2}
+
+A continuación, te presento un código básico de lista enlazada con
+inserción al inicio, recorrido y eliminación de nodos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstdlib\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\KeywordTok{struct}\NormalTok{ Nodo }\OperatorTok{\{}
+    \DataTypeTok{int}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ siguiente}\OperatorTok{;}
+\OperatorTok{\};}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Cada \texttt{Nodo} contiene un dato (\texttt{int}) y un puntero al
+  siguiente nodo de la lista.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ insertarInicio}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&,} \DataTypeTok{int}\OperatorTok{);}
+\DataTypeTok{void}\NormalTok{ mostrarLista}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*);}
+\DataTypeTok{void}\NormalTok{ eliminarLista}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&);}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Declaramos las funciones que nos permiten manipular la lista.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ lista }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ opcion}\OperatorTok{,}\NormalTok{ valor}\OperatorTok{;}
+
+    \ControlFlowTok{do} \OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{{-}{-}{-} MENÚ DE LISTA ENLAZADA {-}{-}{-}}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"1. Insertar elemento al inicio}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"2. Mostrar lista}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"3. Eliminar lista}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"4. Salir}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Opción: "}\OperatorTok{;}
+\NormalTok{        cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ opcion}\OperatorTok{;}
+
+        \ControlFlowTok{switch}\OperatorTok{(}\NormalTok{opcion}\OperatorTok{)} \OperatorTok{\{}
+            \ControlFlowTok{case} \DecValTok{1}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Ingrese un número: "}\OperatorTok{;}
+\NormalTok{                cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ valor}\OperatorTok{;}
+\NormalTok{                insertarInicio}\OperatorTok{(}\NormalTok{lista}\OperatorTok{,}\NormalTok{ valor}\OperatorTok{);}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{2}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Contenido de la lista: "}\OperatorTok{;}
+\NormalTok{                mostrarLista}\OperatorTok{(}\NormalTok{lista}\OperatorTok{);}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{3}\OperatorTok{:}
+\NormalTok{                eliminarLista}\OperatorTok{(}\NormalTok{lista}\OperatorTok{);}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Lista eliminada.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{4}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Saliendo...}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{default}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Opción inválida.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+        \OperatorTok{\}}
+\NormalTok{        system}\OperatorTok{(}\StringTok{"pause"}\OperatorTok{);}
+\NormalTok{        system}\OperatorTok{(}\StringTok{"cls"}\OperatorTok{);}
+    \OperatorTok{\}} \ControlFlowTok{while}\OperatorTok{(}\NormalTok{opcion }\OperatorTok{!=} \DecValTok{4}\OperatorTok{);}
+
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Menú clásico que permite insertar, mostrar y eliminar la lista
+  enlazada. \textbf{Función: Insertar al inicio}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ insertarInicio}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&}\NormalTok{ lista}\OperatorTok{,} \DataTypeTok{int}\NormalTok{ valor}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ nuevo\_nodo }\OperatorTok{=} \KeywordTok{new}\NormalTok{ Nodo}\OperatorTok{();}
+\NormalTok{    nuevo\_nodo}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{=}\NormalTok{ valor}\OperatorTok{;}
+\NormalTok{    nuevo\_nodo}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ lista}\OperatorTok{;}
+\NormalTok{    lista }\OperatorTok{=}\NormalTok{ nuevo\_nodo}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Se crea un nuevo nodo, se enlaza al inicio y el puntero de la lista se
+  actualiza.
+\item
+  Esta operación es rápida, siempre toma el mismo tiempo sin importar
+  cuántos nodos haya. \textbf{Función: Mostrar la lista}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ mostrarLista}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*}\NormalTok{ lista}\OperatorTok{)} \OperatorTok{\{}
+    \ControlFlowTok{while}\OperatorTok{(}\NormalTok{lista }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ lista}\OperatorTok{{-}\textgreater{}}\NormalTok{dato}\OperatorTok{;}
+        \ControlFlowTok{if} \OperatorTok{(}\NormalTok{lista}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)}
+\NormalTok{            cout }\OperatorTok{\textless{}\textless{}} \StringTok{" {-}\textgreater{} "}\OperatorTok{;}
+\NormalTok{        lista }\OperatorTok{=}\NormalTok{ lista}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+    \OperatorTok{\}}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"."} \OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Recorre todos los nodos desde el primero hasta el último.
+\item
+  Imprime cada dato seguido por una flecha, excepto el último que
+  termina en punto. \textbf{Función: Eliminar todos los nodos}
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ eliminarLista}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&}\NormalTok{ lista}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ aux}\OperatorTok{;}
+    \ControlFlowTok{while}\OperatorTok{(}\NormalTok{lista }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        aux }\OperatorTok{=}\NormalTok{ lista}\OperatorTok{;}
+\NormalTok{        lista }\OperatorTok{=}\NormalTok{ lista}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+        \KeywordTok{delete}\NormalTok{ aux}\OperatorTok{;}
+    \OperatorTok{\}}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  Libera la memoria nodo por nodo, evitando pérdidas de memoria (muy
+  importante en programas grandes).
+\end{itemize}
+
+\textbf{Ejemplo en ejecución}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+--- MENÚ DE LISTA ENLAZADA ---
+1. Insertar elemento al inicio
+2. Mostrar lista
+3. Eliminar lista
+4. Salir
+Opción: 1
+Ingrese un número: 5
+
+Opción: 1
+Ingrese un número: 8
+
+Opción: 2
+Contenido de la lista: 8 -> 5.
+\end{verbatim}
+\end{tcolorbox}
+
+\begin{itemize}
+\tightlist
+\item
+  Como estamos insertando al inicio, el último elemento agregado aparece
+  primero.
+\end{itemize}
+
+\bookmarksetup{startatroot}
+
+\chapter{Listas Doblemente Enlazadas}\label{listas-doblemente-enlazadas}
+
+\section{Teoría}\label{teoruxeda-3}
+
+Las listas doblemente enlazadas son una estructura de datos dinámica en
+la que cada nodo almacena tres cosas:
+
+\begin{itemize}
+\tightlist
+\item
+  Un dato (el valor que queremos guardar).
+\item
+  Un puntero al siguiente nodo.
+\item
+  Un puntero al nodo anterior.
+\end{itemize}
+
+A diferencia de las listas enlazadas simples, donde solo se puede
+avanzar hacia adelante, con una lista doblemente enlazada podemos
+movernos en ambos sentidos: hacia adelante (next) y hacia atrás (prev).
+Esto las hace especialmente útiles para operaciones como insertar o
+eliminar nodos en cualquier parte de la lista de forma eficiente.
+
+✨ Imagina una fila de personas tomadas de las manos con los de adelante
+y atrás: así es una lista doblemente enlazada.
+
+\section{Código explicado}\label{cuxf3digo-explicado}
+
+Vamos a implementar una lista doblemente enlazada que permite:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Insertar elementos al final.
+\item
+  Mostrar los elementos de izquierda a derecha.
+\item
+  Mostrar los elementos de derecha a izquierda.
+\item
+  Eliminar elementos por valor.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\PreprocessorTok{\#include }\ImportTok{\textless{}iostream\textgreater{}}
+\PreprocessorTok{\#include }\ImportTok{\textless{}cstdlib\textgreater{}}
+\KeywordTok{using} \KeywordTok{namespace}\NormalTok{ std}\OperatorTok{;}
+
+\CommentTok{// Estructura del nodo}
+\KeywordTok{struct}\NormalTok{ Nodo }\OperatorTok{\{}
+    \DataTypeTok{int}\NormalTok{ dato}\OperatorTok{;}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ siguiente}\OperatorTok{;}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ anterior}\OperatorTok{;}
+\OperatorTok{\};}
+
+\CommentTok{// Prototipos}
+\DataTypeTok{void}\NormalTok{ insertarFinal}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&,}\NormalTok{ Nodo}\OperatorTok{*\&,} \DataTypeTok{int}\OperatorTok{);}
+\DataTypeTok{void}\NormalTok{ mostrarInicioAFin}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*);}
+\DataTypeTok{void}\NormalTok{ mostrarFinAInicio}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*);}
+\DataTypeTok{void}\NormalTok{ eliminarElemento}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&,}\NormalTok{ Nodo}\OperatorTok{*\&,} \DataTypeTok{int}\OperatorTok{);}
+\DataTypeTok{void}\NormalTok{ menu}\OperatorTok{();}
+
+\DataTypeTok{int}\NormalTok{ main}\OperatorTok{()} \OperatorTok{\{}
+\NormalTok{    menu}\OperatorTok{();}
+    \ControlFlowTok{return} \DecValTok{0}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Menú de opciones}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ menu}\OperatorTok{()} \OperatorTok{\{}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ cabeza }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ cola }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+    \DataTypeTok{int}\NormalTok{ opcion}\OperatorTok{,}\NormalTok{ valor}\OperatorTok{;}
+
+    \ControlFlowTok{do} \OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"}\SpecialCharTok{\textbackslash{}n\textbackslash{}t\textbackslash{}t}\StringTok{MENU {-} LISTA DOBLEMENTE ENLAZADA}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"1. Insertar elemento al final}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"2. Mostrar de inicio a fin}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"3. Mostrar de fin a inicio}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"4. Eliminar un elemento por valor}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"5. Salir}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Seleccione una opcion: "}\OperatorTok{;}
+\NormalTok{        cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ opcion}\OperatorTok{;}
+
+        \ControlFlowTok{switch}\OperatorTok{(}\NormalTok{opcion}\OperatorTok{)} \OperatorTok{\{}
+            \ControlFlowTok{case} \DecValTok{1}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Ingrese un numero: "}\OperatorTok{;}
+\NormalTok{                cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ valor}\OperatorTok{;}
+\NormalTok{                insertarFinal}\OperatorTok{(}\NormalTok{cabeza}\OperatorTok{,}\NormalTok{ cola}\OperatorTok{,}\NormalTok{ valor}\OperatorTok{);}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{2}\OperatorTok{:}
+\NormalTok{                mostrarInicioAFin}\OperatorTok{(}\NormalTok{cabeza}\OperatorTok{);}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{3}\OperatorTok{:}
+\NormalTok{                mostrarFinAInicio}\OperatorTok{(}\NormalTok{cola}\OperatorTok{);}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{4}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Ingrese el valor a eliminar: "}\OperatorTok{;}
+\NormalTok{                cin }\OperatorTok{\textgreater{}\textgreater{}}\NormalTok{ valor}\OperatorTok{;}
+\NormalTok{                eliminarElemento}\OperatorTok{(}\NormalTok{cabeza}\OperatorTok{,}\NormalTok{ cola}\OperatorTok{,}\NormalTok{ valor}\OperatorTok{);}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{case} \DecValTok{5}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Saliendo del programa...}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+                \ControlFlowTok{break}\OperatorTok{;}
+            \ControlFlowTok{default}\OperatorTok{:}
+\NormalTok{                cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Opcion no valida.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+        \OperatorTok{\}}
+\NormalTok{        system}\OperatorTok{(}\StringTok{"pause"}\OperatorTok{);}
+\NormalTok{        system}\OperatorTok{(}\StringTok{"cls"}\OperatorTok{);}
+    \OperatorTok{\}} \ControlFlowTok{while}\OperatorTok{(}\NormalTok{opcion }\OperatorTok{!=} \DecValTok{5}\OperatorTok{);}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Insertar al final}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ insertarFinal}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&}\NormalTok{ cabeza}\OperatorTok{,}\NormalTok{ Nodo}\OperatorTok{*\&}\NormalTok{ cola}\OperatorTok{,} \DataTypeTok{int}\NormalTok{ valor}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ nuevo }\OperatorTok{=} \KeywordTok{new}\NormalTok{ Nodo}\OperatorTok{();}
+\NormalTok{    nuevo}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{=}\NormalTok{ valor}\OperatorTok{;}
+\NormalTok{    nuevo}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+\NormalTok{    nuevo}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior }\OperatorTok{=}\NormalTok{ cola}\OperatorTok{;}
+
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{cabeza }\OperatorTok{==}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cabeza }\OperatorTok{=}\NormalTok{ nuevo}\OperatorTok{;}
+    \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+\NormalTok{        cola}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ nuevo}\OperatorTok{;}
+    \OperatorTok{\}}
+\NormalTok{    cola }\OperatorTok{=}\NormalTok{ nuevo}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Mostrar de inicio a fin}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ mostrarInicioAFin}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*}\NormalTok{ cabeza}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Lista de inicio a fin: "}\OperatorTok{;}
+    \ControlFlowTok{while} \OperatorTok{(}\NormalTok{cabeza }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ cabeza}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{\textless{}\textless{}} \StringTok{" "}\OperatorTok{;}
+\NormalTok{        cabeza }\OperatorTok{=}\NormalTok{ cabeza}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+    \OperatorTok{\}}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Mostrar de fin a inicio}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ mostrarFinAInicio}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*}\NormalTok{ cola}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Lista de fin a inicio: "}\OperatorTok{;}
+    \ControlFlowTok{while} \OperatorTok{(}\NormalTok{cola }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ cola}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{\textless{}\textless{}} \StringTok{" "}\OperatorTok{;}
+\NormalTok{        cola }\OperatorTok{=}\NormalTok{ cola}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior}\OperatorTok{;}
+    \OperatorTok{\}}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}}\NormalTok{ endl}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Eliminar un nodo por valor}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DataTypeTok{void}\NormalTok{ eliminarElemento}\OperatorTok{(}\NormalTok{Nodo}\OperatorTok{*\&}\NormalTok{ cabeza}\OperatorTok{,}\NormalTok{ Nodo}\OperatorTok{*\&}\NormalTok{ cola}\OperatorTok{,} \DataTypeTok{int}\NormalTok{ valor}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{    Nodo}\OperatorTok{*}\NormalTok{ actual }\OperatorTok{=}\NormalTok{ cabeza}\OperatorTok{;}
+
+    \ControlFlowTok{while} \OperatorTok{(}\NormalTok{actual }\OperatorTok{!=}\NormalTok{ NULL }\OperatorTok{\&\&}\NormalTok{ actual}\OperatorTok{{-}\textgreater{}}\NormalTok{dato }\OperatorTok{!=}\NormalTok{ valor}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        actual }\OperatorTok{=}\NormalTok{ actual}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+    \OperatorTok{\}}
+
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{actual }\OperatorTok{==}\NormalTok{ NULL}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Elemento no encontrado.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+        \ControlFlowTok{return}\OperatorTok{;}
+    \OperatorTok{\}}
+
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{actual }\OperatorTok{==}\NormalTok{ cabeza}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cabeza }\OperatorTok{=}\NormalTok{ actual}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+        \ControlFlowTok{if} \OperatorTok{(}\NormalTok{cabeza }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)}\NormalTok{ cabeza}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+    \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+\NormalTok{        actual}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ actual}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{;}
+    \OperatorTok{\}}
+
+    \ControlFlowTok{if} \OperatorTok{(}\NormalTok{actual }\OperatorTok{==}\NormalTok{ cola}\OperatorTok{)} \OperatorTok{\{}
+\NormalTok{        cola }\OperatorTok{=}\NormalTok{ actual}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior}\OperatorTok{;}
+        \ControlFlowTok{if} \OperatorTok{(}\NormalTok{cola }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)}\NormalTok{ cola}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{=}\NormalTok{ NULL}\OperatorTok{;}
+    \OperatorTok{\}} \ControlFlowTok{else} \OperatorTok{\{}
+        \ControlFlowTok{if} \OperatorTok{(}\NormalTok{actual}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente }\OperatorTok{!=}\NormalTok{ NULL}\OperatorTok{)}
+\NormalTok{            actual}\OperatorTok{{-}\textgreater{}}\NormalTok{siguiente}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior }\OperatorTok{=}\NormalTok{ actual}\OperatorTok{{-}\textgreater{}}\NormalTok{anterior}\OperatorTok{;}
+    \OperatorTok{\}}
+
+    \KeywordTok{delete}\NormalTok{ actual}\OperatorTok{;}
+\NormalTok{    cout }\OperatorTok{\textless{}\textless{}} \StringTok{"Elemento eliminado con éxito.}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\OperatorTok{;}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Ejemplo de uso}
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+> Insertar: 10
+> Insertar: 20
+> Insertar: 30
+> Mostrar de inicio a fin: 10 20 30
+> Mostrar de fin a inicio: 30 20 10
+> Eliminar: 20
+> Mostrar de inicio a fin: 10 30
+\end{verbatim}
+\end{tcolorbox}
+
+Como puedes ver, puedes navegar fácilmente hacia adelante y hacia atrás,
+e incluso eliminar elementos en cualquier posición.
+
+\section{Conclusión}\label{conclusiuxf3n}
+
+Las listas doblemente enlazadas son herramientas muy poderosas cuando
+necesitas recorrer la lista en ambos sentidos, insertar o eliminar nodos
+en posiciones arbitrarias. Aunque ocupan un poco más de memoria (por el
+puntero adicional), su flexibilidad las hace muy útiles en muchos
+algoritmos y aplicaciones reales como editores de texto, sistemas de
+navegación, e incluso juegos.
+
+
+
+
+\end{document}

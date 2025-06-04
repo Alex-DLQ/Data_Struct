@@ -1,0 +1,166 @@
+---
+title: "Pilas"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## Introducción
+
+Imagina que estás apilando platos en tu cocina. Pones uno sobre otro y, cuando necesitas uno, tomas el que está arriba. Así funcionan las pilas en programación: el último elemento en entrar es el primero en salir. A esto se le llama estructura LIFO (Last In, First Out). En este capítulo aprenderás a trabajar con pilas utilizando listas enlazadas en C++. Verás cómo agregar y quitar elementos, además de comprender cómo fluye la lógica internamente.
+
+## Teoría
+
+Una pila es una estructura de datos que permite insertar y eliminar elementos sólo desde un extremo, llamado "tope". Las operaciones principales son:
+
+`push:` insertar un nuevo elemento (en nuestro código se llama agregarPila).
+
+`pop:` eliminar el elemento del tope (en nuestro código se llama quitarPila).
+
+En este ejemplo, usamos una lista enlazada simple, donde cada nodo contiene un carácter y un puntero al siguiente nodo.
+
+## Código y explicación
+
+Ten en cuenta que el código estará por partes y tu reto será juntarlos y hacer que compile:
+
+``` cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+struct Nodo{
+    char dato;
+    Nodo *siguiente;
+};
+```
+
+-   Creamos una estructura `Nodo`, que guarda un dato de tipo `char` y un puntero al siguiente nodo.
+
+-   Así es como simulamos una pila dinámica.
+
+``` cpp
+void menu();
+void agregarPila(Nodo *&, char);
+void quitarPila(Nodo *&, char &);
+```
+
+-   Declaramos funciones auxiliares para mostrar el menú, agregar elementos a la pila y retirarlos.
+
+``` cpp
+int main(){
+    menu();
+    system("pause");
+    return 0;
+}
+```
+
+La función `main` simplemente llama al **menú** y espera una tecla antes de terminar. **Menú principal**
+
+``` cpp
+void menu(){
+    Nodo *pila = NULL;
+    int opcion;
+    char dato;
+    do{
+        cout << "\n\t\tMENU DE PILAS\n";
+        cout << "1. Agregar elemento a la pila\n";
+        cout << "2. Mostrar todos los elementos de la pila\n";
+        cout << "3. salir"<<endl;
+        cout << "Ingrese una opcion: ";
+        cin >> opcion;
+```
+
+-   Creamos un puntero llamado `pila`, inicialmente vacío (`NULL`).
+
+-   Mostramos un menú con tres opciones: agregar, mostrar y salir.
+
+``` cpp
+        switch(opcion){
+            case 1: cout << "Digite un caracter: ";
+                    cin >> dato;
+                    agregarPila(pila, dato);
+                    break;
+```
+
+-   Si elige la opción 1, el usuario digita un carácter y se agrega a la pila.
+
+``` cpp
+            case 2: cout << "\nMostrando todos los elementos de la pila...";
+                    while(pila != NULL){
+                        quitarPila(pila, dato);
+                        if(pila != NULL){
+                            cout << dato << " , ";
+                        }
+                        else{
+                            cout << dato << ".";
+                        }
+                    }
+                    cout << endl;
+                    system("pause");
+                    break;
+```
+
+-   Si elige la opción 2, mostramos y eliminamos todos los elementos de la pila, uno por uno.
+
+-   Si aún hay elementos, se imprime con coma; el último termina con punto.
+
+``` cpp
+            case 3: break;
+            default: cout << "Opcion no valida, intente de nuevo." << endl;
+        }
+
+        if(opcion != 3){
+            system("cls"); // Limpiar la pantalla
+        }
+    }while(opcion != 3);
+}
+```
+
+-   Si elige salir, termina el ciclo. Si no, se limpia la pantalla y vuelve al menú. Agregar elemento (push)
+
+``` cpp
+void agregarPila(Nodo *&pila, char n){
+    Nodo *nuevo_nodo = new Nodo();
+    nuevo_nodo->dato = n;
+    nuevo_nodo->siguiente = pila;
+    pila = nuevo_nodo;
+}
+```
+
+-   Creamos un nuevo nodo.
+-   Lo enlazamos con el nodo anterior (el que era el tope).
+-   Luego, `pila` apunta al nuevo nodo. Ahora es el nuevo tope. Quitar elemento (pop)
+
+``` cpp
+void quitarPila(Nodo *&pila, char &n){
+    Nodo *aux = pila;
+    n = aux->dato;
+    pila = aux->siguiente;
+    delete aux;
+}
+```
+
+-   Guardamos el nodo actual en `aux`.
+-   Extraemos su valor a `n`.
+-   Movemos el tope (`pila`) al siguiente nodo.
+-   Liberamos la memoria. **Ejemplo en ejecución**
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+        MENU DE PILAS
+1. Agregar elemento a la pila
+2. Mostrar todos los elementos de la pila
+3. salir
+Ingrese una opcion: 1
+Digite un caracter: A
+
+Ingrese una opcion: 1
+Digite un caracter: B
+
+Ingrese una opcion: 2
+Mostrando todos los elementos de la pila...
+B , A.
+\end{verbatim}
+\end{tcolorbox}
+```
+
+-   Como puedes ver, el último carácter en entrar fue el primero en salir. Justo como una pila de platos.

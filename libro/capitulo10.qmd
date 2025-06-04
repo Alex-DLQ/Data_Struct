@@ -1,0 +1,140 @@
+---
+title: "Punteros"
+author: "Ales Dannis Lipa Quispe"
+---
+
+## ¿Qué es un **puntero?**
+
+Los punteros son una de esas cosas en C++ que al principio suenan difíciles... pero cuando los entiendes bien, ¡te das cuenta de que son súper poderosos!
+
+Un puntero es una variable especial que guarda la dirección de memoria de otra variable. O sea, en lugar de guardar directamente un número o una letra, guarda el lugar donde esa información está almacenada en la memoria de tu computadora.
+
+Piensa que tienes una casa (una variable normal) y un GPS (el puntero) que te dice exactamente en qué calle y número está esa casa. El puntero no es la casa, pero sabe cómo llegar a ella.
+
+## ¿Cómo se declara un puntero?
+
+Para declarar un puntero, se usa el símbolo `*`:
+
+``` cpp
+tipo *nombre_puntero;
+```
+
+Por ejemplo, para un puntero a un entero:
+
+``` cpp
+int *puntero;
+```
+
+Eso significa: "puntero es una variable que guarda la dirección de un **int**".
+
+## Ejemplo básico de punteros
+
+Veamos un ejemplo sencillo para que lo veas en acción:
+
+``` cpp
+#include <iostream> 
+using namespace std; 
+int main(){     
+    int numero = 10;     
+    int *puntero = &numero; // & = operador de dirección      
+    cout << "Valor de la variable: " << numero << endl;     
+    cout << "Dirección de memoria de la variable: " << &numero << endl;     
+    cout << "Valor guardado en el puntero: " << puntero << endl;     
+    cout << "Valor al que apunta el puntero: " << *puntero << endl;      
+    return 0; 
+}
+```
+
+**¿Qué está pasando aquí?**
+
+`int numero = 10;` Creamos una variable normal. `int *puntero = &numero;` Le decimos al puntero que guarde la dirección de `numero`. `*puntero` Esto significa: "muéstrame el valor que está en esa dirección".
+
+**Resultado esperado**
+
+```{=latex}
+\begin{tcolorbox}[custombox] 
+\begin{verbatim} 
+Valor de la variable: 10 
+Dirección de memoria de la variable: 0x61ff08 
+Valor guardado en el puntero: 0x61ff08 
+Valor al que apunta el puntero: 10 
+\end{verbatim} 
+\end{tcolorbox}`
+```
+
+> Nota: las direcciones como `0x61ff08` van a cambiar cada vez que ejecutes el programa. Eso es normal.
+
+**Cambiar el valor desde el puntero**
+
+Una de las cosas más geniales de los punteros es que puedes **modificar el valor original** de una variable usando el puntero. Mira:
+
+``` cpp
+#include <iostream> 
+using namespace std; 
+int main(){     
+    int numero = 5;     
+    int *ptr = &numero;      
+    *ptr = 99; // cambia el valor original de numero      
+    cout << "Nuevo valor de numero: " << numero << endl;     
+    return 0; 
+}
+```
+
+**Esto imprime:**
+
+```{=latex}
+\begin{tcolorbox}[custombox] 
+\begin{verbatim} 
+Nuevo valor de numero: 99 
+\end{verbatim} 
+\end{tcolorbox}
+```
+
+> ¡Sí! Aunque nunca escribimos `numero = 99;`, el valor cambió.\
+> ¿Por qué? Porque **`*ptr` apunta directamente a `numero`**, así que cualquier cambio afecta a la variable original.
+
+## **Aplicación:**
+
+Intercambiar valores con punteros Una de las aplicaciones clásicas de punteros es intercambiar valores entre dos variables usando funciones.
+
+``` cpp
+#include <iostream>
+using namespace std;
+
+void intercambiar(int *a, int *b){
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main(){
+    int x = 5, y = 8;
+    intercambiar(&x, &y);
+    cout << "x = " << x << ", y = " << y << endl;
+    return 0;
+}
+```
+
+**Salida:**
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+x = 8, y = 5
+\end{verbatim}
+\end{tcolorbox}
+```
+
+**¿Por qué funciona?**
+
+Porque estamos pasando la dirección de memoria de `x` y `y` a la función. Entonces cualquier cambio se hace directamente sobre los valores originales.
+
+**Consejos para trabajar con punteros:**
+
+-   Siempre inicializa tus punteros (aunque sea con nullptr).
+
+-   Ten cuidado al usar \* (puede causar errores si no sabes qué estás apuntando).
+
+-   Puedes usar punteros para crear arreglos dinámicos, estructuras, funciones recursivas y más.
+
+-   Aprender punteros es la puerta a temas más avanzados como memoria dinámica y estructuras enlazadas.

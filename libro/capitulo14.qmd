@@ -1,0 +1,198 @@
+---
+title: "Listas Doblemente Enlazadas"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## Teoría
+
+Las listas doblemente enlazadas son una estructura de datos dinámica en la que cada nodo almacena tres cosas:
+
+-   Un dato (el valor que queremos guardar).
+-   Un puntero al siguiente nodo.
+-   Un puntero al nodo anterior.
+
+A diferencia de las listas enlazadas simples, donde solo se puede avanzar hacia adelante, con una lista doblemente enlazada podemos movernos en ambos sentidos: hacia adelante (next) y hacia atrás (prev). Esto las hace especialmente útiles para operaciones como insertar o eliminar nodos en cualquier parte de la lista de forma eficiente.
+
+✨ Imagina una fila de personas tomadas de las manos con los de adelante y atrás: así es una lista doblemente enlazada.
+
+## Código explicado
+
+Vamos a implementar una lista doblemente enlazada que permite:
+
+1.  Insertar elementos al final.
+2.  Mostrar los elementos de izquierda a derecha.
+3.  Mostrar los elementos de derecha a izquierda.
+4.  Eliminar elementos por valor.
+
+``` cpp
+#include <iostream>
+#include <cstdlib>
+using namespace std;
+
+// Estructura del nodo
+struct Nodo {
+    int dato;
+    Nodo* siguiente;
+    Nodo* anterior;
+};
+
+// Prototipos
+void insertarFinal(Nodo*&, Nodo*&, int);
+void mostrarInicioAFin(Nodo*);
+void mostrarFinAInicio(Nodo*);
+void eliminarElemento(Nodo*&, Nodo*&, int);
+void menu();
+
+int main() {
+    menu();
+    return 0;
+}
+```
+
+**Menú de opciones**
+
+``` cpp
+void menu() {
+    Nodo* cabeza = NULL;
+    Nodo* cola = NULL;
+    int opcion, valor;
+
+    do {
+        cout << "\n\t\tMENU - LISTA DOBLEMENTE ENLAZADA\n";
+        cout << "1. Insertar elemento al final\n";
+        cout << "2. Mostrar de inicio a fin\n";
+        cout << "3. Mostrar de fin a inicio\n";
+        cout << "4. Eliminar un elemento por valor\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch(opcion) {
+            case 1:
+                cout << "Ingrese un numero: ";
+                cin >> valor;
+                insertarFinal(cabeza, cola, valor);
+                break;
+            case 2:
+                mostrarInicioAFin(cabeza);
+                break;
+            case 3:
+                mostrarFinAInicio(cola);
+                break;
+            case 4:
+                cout << "Ingrese el valor a eliminar: ";
+                cin >> valor;
+                eliminarElemento(cabeza, cola, valor);
+                break;
+            case 5:
+                cout << "Saliendo del programa...\n";
+                break;
+            default:
+                cout << "Opcion no valida.\n";
+        }
+        system("pause");
+        system("cls");
+    } while(opcion != 5);
+}
+```
+
+**Insertar al final**
+
+``` cpp
+void insertarFinal(Nodo*& cabeza, Nodo*& cola, int valor) {
+    Nodo* nuevo = new Nodo();
+    nuevo->dato = valor;
+    nuevo->siguiente = NULL;
+    nuevo->anterior = cola;
+
+    if (cabeza == NULL) {
+        cabeza = nuevo;
+    } else {
+        cola->siguiente = nuevo;
+    }
+    cola = nuevo;
+}
+```
+
+**Mostrar de inicio a fin**
+
+``` cpp
+void mostrarInicioAFin(Nodo* cabeza) {
+    cout << "Lista de inicio a fin: ";
+    while (cabeza != NULL) {
+        cout << cabeza->dato << " ";
+        cabeza = cabeza->siguiente;
+    }
+    cout << endl;
+}
+```
+
+**Mostrar de fin a inicio**
+
+``` cpp
+void mostrarFinAInicio(Nodo* cola) {
+    cout << "Lista de fin a inicio: ";
+    while (cola != NULL) {
+        cout << cola->dato << " ";
+        cola = cola->anterior;
+    }
+    cout << endl;
+}
+```
+
+**Eliminar un nodo por valor**
+
+``` cpp
+void eliminarElemento(Nodo*& cabeza, Nodo*& cola, int valor) {
+    Nodo* actual = cabeza;
+
+    while (actual != NULL && actual->dato != valor) {
+        actual = actual->siguiente;
+    }
+
+    if (actual == NULL) {
+        cout << "Elemento no encontrado.\n";
+        return;
+    }
+
+    if (actual == cabeza) {
+        cabeza = actual->siguiente;
+        if (cabeza != NULL) cabeza->anterior = NULL;
+    } else {
+        actual->anterior->siguiente = actual->siguiente;
+    }
+
+    if (actual == cola) {
+        cola = actual->anterior;
+        if (cola != NULL) cola->siguiente = NULL;
+    } else {
+        if (actual->siguiente != NULL)
+            actual->siguiente->anterior = actual->anterior;
+    }
+
+    delete actual;
+    cout << "Elemento eliminado con éxito.\n";
+}
+```
+
+**Ejemplo de uso**
+
+```{=latex}
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+> Insertar: 10
+> Insertar: 20
+> Insertar: 30
+> Mostrar de inicio a fin: 10 20 30
+> Mostrar de fin a inicio: 30 20 10
+> Eliminar: 20
+> Mostrar de inicio a fin: 10 30
+\end{verbatim}
+\end{tcolorbox}
+```
+
+Como puedes ver, puedes navegar fácilmente hacia adelante y hacia atrás, e incluso eliminar elementos en cualquier posición.
+
+## Conclusión 
+
+Las listas doblemente enlazadas son herramientas muy poderosas cuando necesitas recorrer la lista en ambos sentidos, insertar o eliminar nodos en posiciones arbitrarias. Aunque ocupan un poco más de memoria (por el puntero adicional), su flexibilidad las hace muy útiles en muchos algoritmos y aplicaciones reales como editores de texto, sistemas de navegación, e incluso juegos.
