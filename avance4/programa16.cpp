@@ -1,3 +1,4 @@
+//C2:P3 final 2.3.2
 #include <bits/stdc++.h>
 using namespace std;
 
@@ -7,7 +8,6 @@ int main() {
     s[3] = 1;
     s[4] = 1;
     s[7] = 1;
-
     cout << s[4] << "\n"; // 1
     cout << s[5] << "\n"; // 0
     cout << s.count() << "\n"; // 4
