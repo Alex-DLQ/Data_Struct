@@ -1,0 +1,7 @@
+COMPLEJIDAD ALGORITMICA
+Estructura		        Insercion	Busqueda	Eliminacion	Actualizacion
+Pila			        O(1)		O(n)		O(1)		O(1)
+Cola			        O(1)		O(n)		O(1)		O(1)
+Lista			        O(1)-O(n)	O(n)		O(n)		O(n)
+Arbol (sin balancear)	O(n)		O(n)		O(n)		O(n)
+Arbol (balanceado)	    O(log n)	O(log n)	O(log n)	O(log n)

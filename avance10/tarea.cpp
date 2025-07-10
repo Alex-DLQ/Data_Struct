@@ -177,6 +177,22 @@ void medirYGuardar(const string& estructura, int N, ofstream& archivo) {
     archivo << estructura << "," << t_insert << "," << t_busq << "," << t_elim << "," << t_actual << "\n";
 }
 
+void guardarComplejidad() {
+    string tabla =
+        "Estructura\t\tInsercion\tBusqueda\tEliminacion\tActualizacion\n"
+        "Pila\t\t\tO(1)\t\tO(n)\t\tO(1)\t\tO(1)\n"
+        "Cola\t\t\tO(1)\t\tO(n)\t\tO(1)\t\tO(1)\n"
+        "Lista\t\t\tO(1)-O(n)\tO(n)\t\tO(n)\t\tO(n)\n"
+        "Arbol (sin balancear)\tO(n)\t\tO(n)\t\tO(n)\t\tO(n)\n"
+        "Arbol (balanceado)\tO(log n)\tO(log n)\tO(log n)\tO(log n)\n";
+
+    cout << "\nCOMPLEJIDAD ALGORITMICA:\n" << tabla << endl;
+
+    ofstream resumen("complejidad.txt");
+    resumen << "COMPLEJIDAD ALGORITMICA\n" << tabla;
+    resumen.close();
+}
+
 int main() {
     int N;
     int repeticiones = 5;
@@ -194,6 +210,10 @@ int main() {
     }
 
     archivo.close();
-    cout << "Pruebas completadas y guardadas en resultados_repetidos.csv ✅" << endl;
+    guardarComplejidad();
+
+    cout << "\n Pruebas completadas.\n";
+    cout << " Resultados: resultados_repetidos.csv\n";
+    cout << " Complejidad: complejidad.txt\n";
     return 0;
 }
