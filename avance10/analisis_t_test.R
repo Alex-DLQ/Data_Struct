@@ -13,8 +13,8 @@ print(head(datos))
 comparar_pares <- function(variable) {
   estructuras <- unique(datos$Estructura)
   cat("\n Comparaciones por pares en:", variable, "\n")
-  for (i in 1:(length(estructuras)-1)) {
-    for (j in (i+1):length(estructuras)) {
+  for (i in 1:(length(estructuras) - 1)) {
+    for (j in (i + 1):length(estructuras)) {
       grupo1 <- subset(datos, Estructura == estructuras[i])[[variable]]
       grupo2 <- subset(datos, Estructura == estructuras[j])[[variable]]
       resultado <- t.test(grupo1, grupo2)
