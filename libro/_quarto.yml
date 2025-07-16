@@ -23,6 +23,8 @@ book:
     - capitulo12.qmd
     - capitulo13.qmd
     - capitulo14.qmd
+    - capitulo15.qmd
+    - capitulo16.qmd
 format:
   pdf:
     pdf-engine: xelatex

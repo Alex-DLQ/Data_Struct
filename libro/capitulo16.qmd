@@ -1,0 +1,163 @@
+---
+title: "Árboles Binarios"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## Teoría 
+
+Un árbol binario es una estructura de datos jerárquica en la que cada nodo tiene a lo sumo dos hijos: uno izquierdo y uno derecho. Es muy útil para representar relaciones jerárquicas, búsquedas rápidas y estructuras como árboles de expresión, árboles de decisión, etc.
+
+**Cada nodo contiene:**
+
+-   Un dato.
+
+-   Un puntero al hijo izquierdo.
+
+-   Un puntero al hijo derecho.
+
+✨ Imagina un árbol genealógico: cada persona puede tener dos hijos, y así se van ramificando generaciones. ¡Así son los árboles binarios!
+
+## Código explicado 
+
+Vamos a crear un árbol binario que permita:
+
+1.  Insertar elementos.
+
+2.  Mostrar elementos en orden (inorden).
+
+3.  Mostrar en preorden y postorden.
+
+``` cpp
+#include <iostream>
+using namespace std;
+
+// Estructura del nodo
+struct Nodo {
+    int dato;
+    Nodo* izq;
+    Nodo* der;
+};
+
+// Prototipos
+Nodo* insertar(Nodo*, int);
+void inorden(Nodo*);
+void preorden(Nodo*);
+void postorden(Nodo*);
+void menu();
+
+int main() {
+    menu();
+    return 0;
+}
+```
+
+**Menú de opciones**
+
+``` cpp
+void menu() {
+    Nodo* raiz = NULL;
+    int opcion, valor;
+
+    do {
+        cout << "\n\t\tMENU - ARBOL BINARIO\n";
+        cout << "1. Insertar elemento\n";
+        cout << "2. Mostrar Inorden\n";
+        cout << "3. Mostrar Preorden\n";
+        cout << "4. Mostrar Postorden\n";
+        cout << "5. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese un número: ";
+                cin >> valor;
+                raiz = insertar(raiz, valor);
+                break;
+            case 2:
+                cout << "Recorrido inorden: ";
+                inorden(raiz);
+                cout << endl;
+                break;
+            case 3:
+                cout << "Recorrido preorden: ";
+                preorden(raiz);
+                cout << endl;
+                break;
+            case 4:
+                cout << "Recorrido postorden: ";
+                postorden(raiz);
+                cout << endl;
+                break;
+            case 5:
+                cout << "Saliendo...\n";
+                break;
+            default:
+                cout << "Opcion no valida.\n";
+        }
+        system("pause");
+        system("cls");
+    } while(opcion != 5);
+}
+```
+
+**Insertar en el árbol**
+
+``` cpp
+Nodo* insertar(Nodo* nodo, int valor) {
+    if (nodo == NULL) {
+        Nodo* nuevo = new Nodo();
+        nuevo->dato = valor;
+        nuevo->izq = nuevo->der = NULL;
+        return nuevo;
+    } else if (valor < nodo->dato) {
+        nodo->izq = insertar(nodo->izq, valor);
+    } else {
+        nodo->der = insertar(nodo->der, valor);
+    }
+    return nodo;
+}
+```
+
+**Recorridos**
+
+``` cpp
+void inorden(Nodo* nodo) {
+    if (nodo != NULL) {
+        inorden(nodo->izq);
+        cout << nodo->dato << " ";
+        inorden(nodo->der);
+    }
+}
+
+void preorden(Nodo* nodo) {
+    if (nodo != NULL) {
+        cout << nodo->dato << " ";
+        preorden(nodo->izq);
+        preorden(nodo->der);
+    }
+}
+
+void postorden(Nodo* nodo) {
+    if (nodo != NULL) {
+        postorden(nodo->izq);
+        postorden(nodo->der);
+        cout << nodo->dato << " ";
+    }
+}
+```
+
+**Ejemplo de uso**
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+> Insertar: 8, 3, 10, 1, 6
+> Inorden: 1 3 6 8 10
+> Preorden: 8 3 1 6 10
+> Postorden: 1 6 3 10 8
+\end{verbatim}
+\end{tcolorbox}
+
+## Conclusión 
+
+Los árboles binarios son una base fundamental para muchas estructuras más avanzadas como árboles AVL, B, B+, heaps y más. Entender cómo insertar y recorrer árboles es esencial para resolver problemas que implican decisiones jerárquicas, búsquedas rápidas y almacenamiento eficiente.

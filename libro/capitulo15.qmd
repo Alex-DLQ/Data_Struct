@@ -1,0 +1,110 @@
+---
+title: "Recursión"
+author: "Alex Dannis Lipa Quispe"
+---
+
+## Teoría
+
+La recursión es una técnica de programación en la que una función se llama a sí misma para resolver un problema. Esta técnica se basa en dividir un problema grande en problemas más pequeños, hasta llegar a un caso base que puede resolverse directamente.
+
+-   Una función recursiva debe tener:
+
+-   Un caso base (condición de parada): evita que la función se llame infinitamente.
+
+-   Una llamada recursiva que reduce el problema en cada paso.
+
+✨ Imagina unas muñecas rusas (matrioskas), cada una contiene una más pequeña dentro. Recursión funciona así: vas abriendo una a una hasta llegar a la más pequeña (caso base), y luego las vuelves a cerrar en orden inverso.
+
+## Código explicado 
+
+Vamos a resolver dos problemas clásicos con recursión:
+
+1.  Calcular el factorial de un número.
+
+2.  Calcular el n-ésimo número de la secuencia Fibonacci.
+
+``` cpp
+#include <iostream>
+using namespace std;
+
+// Prototipos
+int factorial(int);
+int fibonacci(int);
+void menu();
+
+int main() {
+    menu();
+    return 0;
+}
+```
+
+**Menú de opciones**
+
+``` cpp
+void menu() {
+    int opcion, numero;
+    
+    do {
+        cout << "\n\t\tMENU - RECURSION\n";
+        cout << "1. Calcular factorial\n";
+        cout << "2. Calcular n-ésimo Fibonacci\n";
+        cout << "3. Salir\n";
+        cout << "Seleccione una opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+            case 1:
+                cout << "Ingrese un número: ";
+                cin >> numero;
+                cout << "Factorial de " << numero << " es: " << factorial(numero) << endl;
+                break;
+            case 2:
+                cout << "Ingrese la posición n: ";
+                cin >> numero;
+                cout << "Fibonacci(" << numero << ") = " << fibonacci(numero) << endl;
+                break;
+            case 3:
+                cout << "Saliendo del programa...\n";
+                break;
+            default:
+                cout << "Opcion no valida.\n";
+        }
+        system("pause");
+        system("cls");
+    } while(opcion != 3);
+}
+```
+
+**Factorial de forma recursiva**
+
+``` cpp
+int factorial(int n) {
+    if (n == 0 || n == 1) // Caso base
+        return 1;
+    else
+        return n * factorial(n - 1); // Llamada recursiva
+}
+```
+
+**Fibonacci de forma recursiva.**
+
+``` cpp
+int fibonacci(int n) {
+    if (n == 0) return 0; // Caso base 1
+    if (n == 1) return 1; // Caso base 2
+    return fibonacci(n - 1) + fibonacci(n - 2); // Llamadas recursivas
+}
+```
+
+**Ejemplo de uso.**
+
+\begin{tcolorbox}[custombox]
+\begin{verbatim}
+> Ingrese 5 para factorial → Resultado: 120
+> Ingrese 6 para fibonacci → Resultado: 8
+\end{verbatim}
+\end{tcolorbox}
+
+## Conclusión 
+
+La recursión es una forma elegante y poderosa de resolver problemas, especialmente cuando la solución se puede expresar en términos del mismo problema. Aunque no siempre es la más eficiente (como en Fibonacci sin memoización), es clave para entender algoritmos más avanzados como recorridos en árboles o resolución de laberintos.
